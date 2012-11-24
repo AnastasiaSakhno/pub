@@ -2,6 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  edit: "Edit"
+  back: "Back"
+  show: "Show"
+  confirmation: "Are you sure?"
+  continue: "Continue"
   activerecord:
     models:
       poster: "Poster"

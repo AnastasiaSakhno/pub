@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Url:</b>
+  <b><%= Poster.human_attribute_name(:url)%>:</b>
   <%= @poster.url %>
 </p>
 
 <p>
-  <b>Title:</b>
+  <b><%= Poster.human_attribute_name(:title)%>:</b>
   <%= @poster.title %>
 </p>
 
 <p>
-  <b>Context:</b>
+  <b><%= Poster.human_attribute_name(:context)%>:</b>
   <%= @poster.context %>
 </p>
 
 <p>
-  <b>Approximate date:</b>
+  <b><%= Poster.human_attribute_name(:approximate_date)%>:</b>
   <%= @poster.approximate_date %>
 </p>
 
 
-<%= link_to 'Edit', edit_poster_path(@poster) %> |
-<%= link_to 'Back', posters_path %>
+<%= link_to "#{t :edit}", edit_poster_path(@poster) %> |
+<%= link_to "#{t :back}", posters_path %>

@@ -1,5 +1,10 @@
 
 ua:
+  edit: "Редагувати"
+  back: "Назад"
+  show: "Показати"
+  confirmation: "Ви впевнені?"
+  continue: "Продовжити"
   activerecord:
     models:
       poster: "Афіша"
