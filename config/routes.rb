@@ -1,4 +1,6 @@
 Makhnopub::Application.routes.draw do
+  resources :posters
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,33 @@
+<%= form_for(@poster) do |f| %>
+  <% if @poster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@poster.errors.count, "error") %> prohibited this poster from being saved:</h2>
+
+      <ul>
+      <% @poster.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :context %><br />
+    <%= f.text_area :context %>
+  </div>
+  <div class="field">
+    <%= f.label :approximate_date %><br />
+    <%= f.datetime_select :approximate_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
