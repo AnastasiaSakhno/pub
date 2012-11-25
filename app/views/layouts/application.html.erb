@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Makhnopub</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title><%= t :title %></title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<%= render 'layouts/navbar' %>
+
+<div class="container-fluid">
+  <%= render  :partial => 'layouts/flash', :locals => {:flash => flash} %>
+  <div class="row-fluid">
+    <%= yield %>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>© <%= t :title %> 2012</p>
+  </footer>
+
+</div>
 
 </body>
 </html>

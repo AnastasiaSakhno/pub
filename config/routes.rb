@@ -1,5 +1,7 @@
 Makhnopub::Application.routes.draw do
   resources :posters
+  match 'home' => 'welcome#index'
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,27 @@
+<div class="span9">
+  <div class="hero-unit">
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="<%=asset_path "1.jpg"%>" alt="">
+          <div class="carousel-caption">
+            <h4>First label</h4>
+            <p>first text</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="<%=asset_path "2.jpg"%>" alt="">
+          <div class="carousel-caption">
+            <h4>Second label</h4>
+            <p>second text</p>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+    </div>
+  </div>
+</div>
+<div class="span3">
+  <%= render :template => 'posters/index' %>
+</div>
