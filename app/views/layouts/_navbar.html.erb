@@ -9,9 +9,15 @@
       <a class="brand" href="#"><%= t :title %></a>
 
       <div class="nav-collapse collapse">
-        <p class="navbar-text pull-right">
-          Logged in as <a href="#" class="navbar-link">Username</a>
-        </p>
+        <ul class="nav nav-pills pull-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Language <strong class="caret"></strong></a>
+            <div class="dropdown-menu" >
+              <%= render 'layouts/language' %>
+            </div>
+          </li>
+          <li><a href="#" class="navbar-link">Username</a></li>
+        </ul>
         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>

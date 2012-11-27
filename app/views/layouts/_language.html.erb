@@ -1,0 +1,5 @@
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+  <% Dir[Rails.root.join('config', 'locales', '*.{yml}')].map do |entry| %>
+      <li><%= link_to File.basename(entry, '.yml'), {:url => :home, :locale => File.basename(entry, '.yml')} %></li>
+  <% end %>
+</ul>
