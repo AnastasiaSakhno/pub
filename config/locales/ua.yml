@@ -1,5 +1,7 @@
 
 ua:
+  language: "Мова"
+  language_value: "Українська"
   title: "Махнопаб"
   edit: "Редагувати"
   back: "Назад"

@@ -11,10 +11,11 @@
       <div class="nav-collapse collapse">
         <ul class="nav nav-pills pull-right">
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Language <strong class="caret"></strong></a>
-            <div class="dropdown-menu" >
-              <%= render 'layouts/language' %>
-            </div>
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              <%= t :language %>
+              <span class="caret"></span>
+            </a>
+            <%= render 'layouts/language' %>
           </li>
           <li><a href="#" class="navbar-link">Username</a></li>
         </ul>
