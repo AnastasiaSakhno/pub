@@ -1,4 +1,6 @@
 class PostersController < ApplicationController
+  load_and_authorize_resource
+
   # GET /posters
   # GET /posters.json
   def index

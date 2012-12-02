@@ -1,4 +1,6 @@
 Makhnopub::Application.routes.draw do
+  devise_for :users
+
   resources :posters
   match 'home' => 'welcome#index'
   root :to => 'welcome#index'

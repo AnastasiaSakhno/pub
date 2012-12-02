@@ -17,7 +17,13 @@
             </a>
             <%= render 'layouts/language' %>
           </li>
-          <li><a href="#" class="navbar-link">Username</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              <%= t :username %>
+              <span class="caret"></span>
+            </a>
+            <%= render 'shared/links' %>
+          </li>
         </ul>
         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
