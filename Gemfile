@@ -11,6 +11,7 @@ gem 'devise'
 gem 'mini_magick'
 gem 'cancan'
 gem 'fog'
+gem 'rolify'
 
 
 # Gems used only for assets and not required

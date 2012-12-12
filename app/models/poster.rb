@@ -1,5 +1,6 @@
 class Poster < ActiveRecord::Base
-  attr_accessible :approximate_date, :context, :title, :url
+  mount_uploader :url, PosterUploader
+  attr_accessible :approximate_date, :context, :title, :url, :url_cache
 
   validates :url, :presence => true
   validates :title, :presence => true

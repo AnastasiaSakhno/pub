@@ -1,23 +1,28 @@
-<p>
-  <b><%= Poster.human_attribute_name(:url)%>:</b>
-  <%= @poster.url %>
-</p>
+<div class="well">
+  <p class="lead"><u><%= @poster.title %></u></p>
+  <strong><p><%= I18n.localize(@poster.approximate_date, :format => :short) %></p></strong>
+  <% if @poster.url.present? %>
+      <%= image_tag @poster.url, :class => "img-rounded", :width => "100%" %>
+  <% end %>
+  <br/><br/>
 
-<p>
-  <b><%= Poster.human_attribute_name(:title)%>:</b>
-  <%= @poster.title %>
-</p>
+  <div class="accordion" id="poster-<%= @poster.id %>">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#poster-<%= @poster.id %>" href="#collapse-poster-<%= @poster.id %>">
+          <%= @poster.context[0, 60].concat '...' %>
+        </a>
+      </div>
+      <div id="collapse-poster-<%= @poster.id %>" class="accordion-body collapse" style="height: 0px;">
+        <div class="accordion-inner">
+          <p>
+            <small><%= @poster.context %></small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <b><%= Poster.human_attribute_name(:context)%>:</b>
-  <%= @poster.context %>
-</p>
-
-<p>
-  <b><%= Poster.human_attribute_name(:approximate_date)%>:</b>
-  <%= @poster.approximate_date %>
-</p>
-
-
-<%= link_to "#{t :edit}", edit_poster_path(@poster) %> |
-<%= link_to "#{t :back}", posters_path %>
+  <%= link_to "#{t :edit}", edit_poster_path(@poster), :class => "btn-small" %>
+  <%= link_to "#{t :destroy}", @poster, method: :delete, data: {confirm: "#{t :confirmation}"}, :class => "btn-small" %>
+</div>

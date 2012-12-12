@@ -1,22 +1,21 @@
 class User < ActiveRecord::Base
+  rolify
+  after_create :add_default_role
   mount_uploader :avatar, AvatarUploader
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar
-  # attr_accessible :title, :body
-  before_create :create_role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :avatar, :avatar_cache, :remove_avatar
 
-  has_many :users_roles
-  has_many :roles, :through => :users_roles
+  validates :email, :presence => true,
+            :uniqueness => true,
+            :length => {:minimum => 5, :maximum => 100},
+            :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
 
   private
 
-  def create_role
+  def add_default_role
     self.roles << Role.find_by_name(:user)
   end
 end

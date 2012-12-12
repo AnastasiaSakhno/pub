@@ -1,29 +1,10 @@
-<h1><%= Poster.model_name.human%></h1>
+<div>
+  <% @posters.each do |poster| %>
+      <%= render :template => 'posters/show', :locals => {:poster => @poster = poster} %>
+      <% if @posters.last != poster %>
+          <hr/>
+      <% end %>
+  <% end %>
 
-<table>
-  <tr>
-    <th><%= Poster.human_attribute_name(:url)%></th>
-    <th><%= Poster.human_attribute_name(:title)%></th>
-    <th><%= Poster.human_attribute_name(:context)%></th>
-    <th><%= Poster.human_attribute_name(:approximate_date)%></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posters.each do |poster| %>
-  <tr>
-    <td><%= poster.url %></td>
-    <td><%= poster.title %></td>
-    <td><%= poster.context %></td>
-    <td><%= poster.approximate_date %></td>
-    <td><%= link_to 'Show', poster %></td>
-    <td><%= link_to 'Edit', edit_poster_path(poster) %></td>
-    <td><%= link_to 'Destroy', poster, method: :delete, data: { confirm: "#{t :confirmation}" } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to "#{Poster.human_attribute_name(:new)}", new_poster_path %>
+  <%= button_to "#{Poster.human_attribute_name(:new)}", new_poster_path, :class => "btn btn-primary" %>
+</div>
