@@ -3,22 +3,29 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true}) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label :email %>
-      <br/>
-      <%= f.email_field :email %></div>
+    <fieldset>
+      <%= f.label :email %>
+      <div class="input-prepend">
+        <span class="add-on">@</span>
+        <%= f.email_field :email, :autocomplete => "off", :class => "span2" %>
+      </div>
 
-    <div><%= f.label :password %>
-      <br/>
-      <%= f.password_field :password %></div>
+      <%= f.label :password %>
+      <div class="input-prepend">
+        <span class="add-on">#</span>
+        <%= f.password_field :password, :autocomplete => "off", :class => "span2" %>
+      </div>
 
-    <div><%= f.label :password_confirmation %>
-      <br/>
-      <%= f.password_field :password_confirmation %></div>
+      <%= f.label :password_confirmation %>
+      <div class="input-prepend">
+        <span class="add-on">#</span>
+        <%= f.password_field :password_confirmation, :class => "span2" %>
+      </div>
 
-    <div><%= f.label :avatar %>
-      <br/>
+      <%= f.label :avatar %>
       <%= f.file_field :avatar %>
-      <%= f.hidden_field :avatar_cache %></div>
+      <%= f.hidden_field :avatar_cache %>
+    </fieldset>
 
     <div><%= f.submit "Sign up" %></div>
 <% end %>

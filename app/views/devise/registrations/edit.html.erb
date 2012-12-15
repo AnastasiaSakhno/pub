@@ -3,32 +3,46 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :multipart => true}) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label :email %>
-      <br/>
-      <%= f.email_field :email %></div>
-
-    <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
-      <%= f.password_field :password, :autocomplete => "off" %></div>
-
-    <div><%= f.label :password_confirmation %>
-      <br/>
-      <%= f.password_field :password_confirmation %></div>
-
-    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
-      <%= f.password_field :current_password %></div>
-
-    <div><%= f.label :avatar %>
-      <div>
-        <%= image_tag resource.avatar.url if current_user.avatar.url.present? %>
+    <fieldset>
+      <%= f.label :email %>
+      <div class="input-prepend">
+        <span class="add-on">@</span>
+        <%= f.email_field :email, :class => "span2" %>
       </div>
-      <%= f.file_field :avatar %>
-      <%= f.hidden_field :avatar_cache %>
-      <label>
-        <%= f.check_box :remove_avatar %>
-        Remove avatar
-      </label></div>
 
-    <div><%= f.submit "Update" %></div>
+      <%= f.label :password %>
+      <div class="input-prepend">
+        <span class="add-on">#</span>
+        <%= f.password_field :password, :autocomplete => "off", :class => "span2" %>
+      </div>
+      <span class="help-block">leave blank if you don't want to change it</span>
+
+      <%= f.label :password_confirmation %>
+      <div class="input-prepend">
+        <span class="add-on">#</span>
+        <%= f.password_field :password_confirmation, :autocomplete => "off", :class => "span2" %>
+      </div>
+
+      <%= f.label :current_password %>
+      <div class="input-prepend">
+        <span class="add-on">#</span>
+        <%= f.password_field :current_password, :autocomplete => "off", :class => "span2" %>
+      </div>
+      <span class="help-block">we need your current password to confirm your changes</span>
+
+      <div><%= f.label :avatar %>
+        <div>
+          <%= image_tag resource.avatar.url if current_user.avatar.url.present? %>
+        </div>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
+        <label>
+          <%= f.check_box :remove_avatar %>
+          Remove avatar
+        </label></div>
+    </fieldset>
+
+    <div><%= f.submit "#{t :edit}" %></div>
 <% end %>
 
 <h3>Cancel my account</h3>
@@ -36,4 +50,4 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete %>
   .</p>
 
-<%= link_to "Back", :back %>
+<%= link_to "#{t :back}", :back %>
