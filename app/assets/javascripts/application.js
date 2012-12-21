@@ -14,12 +14,40 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(function() {
+$(function () {
     // Setup drop down menu
     $('.dropdown-toggle').dropdown();
 
     // Fix input element click problem
-    $('.dropdown input, .dropdown label').click(function(e) {
+    $('.dropdown input, .dropdown label').click(function (e) {
         e.stopPropagation();
     });
+
+    switchActiveMenu();
 });
+
+function switchActiveMenu() {
+    var exec = /\/\w+$/.exec(window.location.href);
+    if (exec) {
+        var obj = getLinkParentByHref(exec[0]);
+        if (obj) {
+            setActive(getLinkParentByHref('/home'), false);
+            setActive(obj, true);
+        }
+    }
+}
+
+function getLinkParentByHref(href) {
+    return $('a[href="' + href + '"]:first').parent();
+}
+
+function setActive(el, active) {
+    eval('el.' + (active ? 'add' : 'remove') + 'Class("active")'
+        + '.find("a").each(function () {'
+        + 'var divIdToShow = $(this).attr("href");'
+        + '});');
+}
+
+function scrollUp() {
+    $("html, body").animate({ scrollTop:0 }, 2000);
+}

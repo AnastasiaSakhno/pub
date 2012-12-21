@@ -1,0 +1,10 @@
+<% if can? :manaage, :all %>
+    <div>
+      <% @users.each do |user| %>
+          <%= render :template => 'users/show', :locals => {:user => @user = user} %>
+          <% if @users.last != user %>
+              <hr/>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>

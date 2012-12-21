@@ -1,0 +1,5 @@
+<div>
+  <%= gmaps4rails(@json) %>
+
+  <%= button_to "#{Location.human_attribute_name(:new)}", new_location_path, :class => "btn btn-primary" %>
+</div>

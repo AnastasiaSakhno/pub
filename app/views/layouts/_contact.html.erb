@@ -1,0 +1,28 @@
+<div class="hero-unit">
+  <div class="row">
+    <div class="span4">
+      <address>
+        <strong>Dnepropetrovsk, Gopnera, 4a</strong><br>
+        from 00:00 to 24:00<br>
+        <abbr title="Phone">P:</abbr> (093) 111-11-11
+      </address>
+
+      <address>
+        <strong>Our email</strong><br>
+        <a href="mailto:#">admin@makhnopub.ua</a>
+      </address>
+    </div>
+
+    <div class="span8">
+      <%=
+          # first variant
+          # render :template => 'locations/index', :locals => {:locations => @locations = Location.all.to_gmaps4rails}
+          # second variant (static picture but i get lat and lng from the gmaps4rails-geolocation)
+          #location = JSON.parse(Location.find(2).to_gmaps4rails)[0]
+          #image_tag "http://maps.google.com/maps/api/staticmap?size=600x400&sensor=false&zoom=16&markers=#{location['lat'].to_s}%2C#{location['lng']}"
+          # third variant (static lat and lng)
+          image_tag "http://maps.google.com/maps/api/staticmap?size=600x400&sensor=false&zoom=16&markers=48.4638%2C35.052"
+      %>
+    </div>
+  </div>
+</div>

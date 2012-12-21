@@ -6,5 +6,7 @@
       <% end %>
   <% end %>
 
-  <%= button_to "#{Poster.human_attribute_name(:new)}", new_poster_path, :class => "btn btn-primary" %>
+  <% if can? :manaage, :all %>
+      <%= button_to "#{Poster.human_attribute_name(:new)}", new_poster_path, :class => "btn btn-primary" %>
+  <% end %>
 </div>

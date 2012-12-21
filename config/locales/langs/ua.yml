@@ -40,6 +40,7 @@ ua:
   activerecord:
     models:
       poster: "Афіша"
+      location: "Розташування"
     attributes:
       poster:
         new: "Нова афіша"
@@ -48,6 +49,9 @@ ua:
         title: "Заголовок"
         context: "Зміст"
         approximate_date: "Дата та час"
+      location:
+        new: "Нове розташування"
+        create: "Створити розташування"
   date:
     formats:
       # Use the strftime parameters for formats.

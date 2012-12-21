@@ -1,8 +1,13 @@
 Makhnopub::Application.routes.draw do
+  #resources :locations
+
   devise_for :users
+  resources :users
 
   resources :posters
   match 'home' => 'welcome#index'
+  match 'contact' => 'welcome#contact'
+  match 'about' => 'welcome#about'
   root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
