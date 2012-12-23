@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
+  caches_page :index, :about, :contact
+
   def index
-    @posters = Poster.scoped
+    fill_posters
   end
 
   def about

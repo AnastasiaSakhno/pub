@@ -42,10 +42,7 @@ function getLinkParentByHref(href) {
 }
 
 function setActive(el, active) {
-    eval('el.' + (active ? 'add' : 'remove') + 'Class("active")'
-        + '.find("a").each(function () {'
-        + 'var divIdToShow = $(this).attr("href");'
-        + '});');
+    eval('el.' + (active ? 'add' : 'remove') + 'Class("active");');
 }
 
 function scrollUp() {

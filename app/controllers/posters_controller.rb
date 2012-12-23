@@ -1,5 +1,6 @@
 class PostersController < ApplicationController
   load_and_authorize_resource
+  caches_page :index
 
   # GET /posters
   # GET /posters.json
