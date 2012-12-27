@@ -15,5 +15,7 @@
 /tmp
 /.idea
 /config/database.yml
+/config/deploy.rb
+/config/mongrel_cluster.yml
 /public/uploads
 dbsettings.txt

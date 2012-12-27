@@ -13,6 +13,7 @@ gem 'cancan'
 gem 'fog'
 gem 'rolify'
 gem 'gmaps4rails'
+gem 'mongrel'
 
 
 # Gems used only for assets and not required
