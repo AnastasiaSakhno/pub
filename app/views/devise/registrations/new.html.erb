@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2><%= t :sign_up %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true}) do |f| %>
     <%= devise_error_messages! %>
@@ -12,13 +12,13 @@
 
       <%= f.label :password %>
       <div class="input-prepend">
-        <span class="add-on">#</span>
+        <span class="add-on">*</span>
         <%= f.password_field :password, :autocomplete => "off", :class => "span2" %>
       </div>
 
       <%= f.label :password_confirmation %>
       <div class="input-prepend">
-        <span class="add-on">#</span>
+        <span class="add-on">*</span>
         <%= f.password_field :password_confirmation, :class => "span2" %>
       </div>
 

@@ -2,14 +2,24 @@
   <div class="row">
     <div class="span4">
       <address>
-        <strong>Dnepropetrovsk, Gopnera, 4a</strong><br>
-        from 00:00 to 24:00<br>
-        <abbr title="Phone">P:</abbr> (093) 111-11-11
+        <strong><%= t :address %></strong><br>
+        <%= t :address_value %>
       </address>
 
       <address>
-        <strong>Our email</strong><br>
-        <a href="mailto:#">admin@makhnopub.ua</a>
+        <strong><%= t :work_time %></strong><br>
+        <%= t :work_time_value %>
+      </address>
+
+      <address>
+        <strong><%= t :phone %></strong><br>
+        <abbr title="<%= t :phone_type_m_title %>"><%= t :phone_type_m %>:</abbr> <%= t :cellphone_value_1 %><br/>
+        <abbr title="<%= t :phone_type_m_title %>"><%= t :phone_type_m %>:</abbr> <%= t :cellphone_value_2 %>
+      </address>
+
+      <address>
+        <strong><%= t :email %></strong><br>
+        <a href="mailto:#"><%= t :email_value %></a>
       </address>
     </div>
 
