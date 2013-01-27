@@ -3,6 +3,10 @@ ua:
   home: "Домашня сторінка"
   about: "Туточки про Махно"
   contact: "Осьочки наші контакти"
+  managing: "Керування"
+  users: "Користувачі"
+  posters: "Афіши"
+  photos: "Слайди"
   username: "Вхід не виконано"
   sign_in: "Вхід"
   sign_out: "Вихід"
@@ -92,6 +96,7 @@ ua:
     models:
       poster: "Афіша"
       location: "Розташування"
+      photo: "Слайд"
     attributes:
       poster:
         new: "Нова афіша"
@@ -103,6 +108,9 @@ ua:
       location:
         new: "Нове розташування"
         create: "Створити розташування"
+      photo:
+        new: "Новий слайд"
+        create: "Створити слайд"
   date:
     formats:
       # Use the strftime parameters for formats.

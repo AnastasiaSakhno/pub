@@ -1,6 +1,5 @@
 <div class="carousel slide" id="photo-carousel">
   <div class="carousel-inner">
-    <% puts "photos:\n #{@photos.size}" %>
     <% @photos.each do |photo| %>
         <% if @photos.first == photo %>
             <div class="item active">
