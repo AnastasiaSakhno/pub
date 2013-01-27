@@ -15,6 +15,7 @@
 //= require_tree .
 
 $(function () {
+    initCarousel();
     // Setup drop down menu
     $('.dropdown-toggle').dropdown();
 
@@ -25,6 +26,14 @@ $(function () {
 
     switchActiveMenu();
 });
+
+function initCarousel(){
+    $('.carousel').carousel({
+        interval: 4000
+    });
+
+    $('.carousel').carousel('cycle');
+}
 
 function switchActiveMenu() {
     var exec = /\/\w+$/.exec(window.location.href);

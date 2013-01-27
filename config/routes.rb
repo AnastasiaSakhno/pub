@@ -1,4 +1,7 @@
 Makhnopub::Application.routes.draw do
+  resources :photos
+
+
   #resources :locations
 
   devise_for :users

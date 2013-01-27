@@ -8,5 +8,7 @@
       <% end %>
   <% end %>
 
-  <%= render :partial => "posters/button_to_new" %>
+  <% if !@posters.blank? %>
+      <%= render :partial => "posters/button_to_new" %>
+  <% end %>
 </div>
