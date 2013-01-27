@@ -1,4 +1,6 @@
 <div>
+  <%= render :partial => "posters/button_to_new" %>
+
   <% @posters.each do |poster| %>
       <%= render :template => 'posters/show', :locals => {:poster => @poster = poster} %>
       <% if @posters.last != poster %>
@@ -6,7 +8,5 @@
       <% end %>
   <% end %>
 
-  <% if can? :manaage, :all %>
-      <%= button_to "#{Poster.human_attribute_name(:new)}", new_poster_path, :class => "btn btn-primary" %>
-  <% end %>
+  <%= render :partial => "posters/button_to_new" %>
 </div>

@@ -6,24 +6,26 @@
   <% end %>
   <br/><br/>
 
-  <div class="accordion" id="poster-<%= @poster.id %>">
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#poster-<%= @poster.id %>" href="#collapse-poster-<%= @poster.id %>">
-          <%= @poster.context[0, 60].concat '...' %>
-        </a>
-      </div>
-      <div id="collapse-poster-<%= @poster.id %>" class="accordion-body collapse" style="height: 0px;">
-        <div class="accordion-inner">
-          <p>
-            <small><%= @poster.context %></small>
-          </p>
+  <% if @poster.context? %>
+      <div class="accordion" id="poster-<%= @poster.id %>">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#poster-<%= @poster.id %>" href="#collapse-poster-<%= @poster.id %>">
+              <%= @poster.context[0, 60].concat '...' %>
+            </a>
+          </div>
+          <div id="collapse-poster-<%= @poster.id %>" class="accordion-body collapse" style="height: 0px;">
+            <div class="accordion-inner">
+              <p>
+                <small><%= @poster.context %></small>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+  <% end %>
 
-  <% if can? :manaage, :all %>
+  <% if can? :manage, :all %>
       <%= link_to "#{t :edit}", edit_poster_path(@poster), :class => "btn-small" %>
       <%= link_to "#{t :destroy}", @poster, method: :delete, data: {confirm: "#{t :confirmation}"}, :class => "btn-small" %>
   <% end %>

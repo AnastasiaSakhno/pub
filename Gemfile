@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,9 +15,10 @@ gem 'rolify'
 gem 'gmaps4rails'
 gem 'capistrano'
 gem 'dispatcher'
-gem 'mongrel'
+gem 'thin'
 gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
+gem 'execjs'
 
 
 # Gems used only for assets and not required

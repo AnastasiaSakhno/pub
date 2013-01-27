@@ -5,7 +5,7 @@ class PostersController < ApplicationController
   # GET /posters
   # GET /posters.json
   def index
-    @posters = Poster.all
+    @posters = Poster.ordered_posters
 
     respond_to do |format|
       format.html # index.html.erb

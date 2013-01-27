@@ -1,1 +1,1 @@
-<%= render :template => 'posters/index', :locale => {:posters => Poster.scoped} %>
+<%= render :template => 'posters/index', :locale => {:posters => @posters = Poster.ordered_posters} %>
