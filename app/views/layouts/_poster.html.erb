@@ -1,1 +1,3 @@
-<%= render :template => 'posters/index', :locale => {:posters => @posters = Poster.ordered_posters} %>
+<% cache ('poster_partial') do %>
+  <%= render :template => 'posters/index', :locale => {:posters => @posters = Poster.ordered_posters} %>
+<% end %>

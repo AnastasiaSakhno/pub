@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  caches_page :index, :about, :contact
+  cache_sweeper :poster_sweeper, :only => [:create, :update, :destroy]
 
   def index
     fill_posters

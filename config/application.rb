@@ -59,5 +59,6 @@ module Makhnopub
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.action_controller.perform_caching = true
+    config.autoload_paths += %W(#{config.root}/app/sweepers)
   end
 end
