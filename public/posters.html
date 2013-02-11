@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>МахноПАБ</title>
+  <link rel="SHORTCUT ICON" href="#">
+  <link href="/assets/application.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/bootstrap/bootstrap-responsive.min.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/bootstrap/bootstrap.min.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/gmaps4rails.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/locations.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/photos.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/posters.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/scaffolds.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/welcome.css?body=1" media="all" rel="stylesheet" type="text/css" />
+  <link href="/assets/gmaps4rails.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap/bootstrap.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap/bootstrap.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.base.js?body=1" type="text/javascript"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.bing.js?body=1" type="text/javascript"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.googlemaps.js?body=1" type="text/javascript"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.mapquest.js?body=1" type="text/javascript"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.openlayers.js?body=1" type="text/javascript"></script>
+<script src="/assets/locations.js?body=1" type="text/javascript"></script>
+<script src="/assets/photos.js?body=1" type="text/javascript"></script>
+<script src="/assets/posters.js?body=1" type="text/javascript"></script>
+<script src="/assets/welcome.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="eNtTAiAaEAQMwXbthMy7dsE3vB4dDeKXgp2YVxR4ls4=" name="csrf-token" />
+</head>
+<body>
+
+<div id="navbar-top" class="navbar navbar-inverse navbar-fixed-top top-title">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">МахноПАБ</a>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav nav-pills pull-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              Мова
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+      <li><a href="/posters?locale=ua&amp;url=home">Українська</a>
+      </li>
+</ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                  anastasia.sakhno@gmail.com
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+      <li><a href="/users/edit">Мій профіль</a> </li>
+      <li><a href="/users/sign_out">Вихід</a> </li>
+</ul>
+          </li>
+        </ul>
+        <ul class="nav menu">
+          <li class="active"><a href="/home">Домашня сторінка</a></li>
+          <li><a href="/about">Туточки про Махно</a></li>
+          <li><a href="/contact">Осьочки наші контакти</a></li>
+              <li class="dropdown" id="manage">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                  Керування
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu menu">
+  <li><a href="/users">Користувачі</a></li>
+  <li><a href="/posters">Афіши</a></li>
+  <li><a href="/photos">Слайди</a></li>
+</ul>
+              </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <div class="row-fluid">
+    <div>
+      <form action="/posters/new" class="button_to" method="get"><div><input class="btn btn-primary" type="submit" value="Нова афіша" /></div></form>
+
+
+      <div class="well">
+  <p class="lead"><u>Фото-сушка</u></p>
+  <strong><p>19 Січ 19:00</p></strong>
+      <img alt="19.01" class="img-rounded" src="/uploads/poster/2/url/19.01.jpg" width="100%" />
+  <br/><br/>
+
+
+      <a href="/posters/2/edit" class="btn-small">Редагувати</a>
+      <a href="/posters/2" class="btn-small" data-confirm="Ви впевнені?" data-method="delete" rel="nofollow">Видалити</a>
+</div>
+
+          <hr/>
+      <div class="well">
+  <p class="lead"><u>Творчий салон</u></p>
+  <strong><p>11 Січ 19:00</p></strong>
+      <img alt="11.01..." class="img-rounded" src="/uploads/poster/1/url/11.01....jpg" width="100%" />
+  <br/><br/>
+
+
+      <a href="/posters/1/edit" class="btn-small">Редагувати</a>
+      <a href="/posters/1" class="btn-small" data-confirm="Ви впевнені?" data-method="delete" rel="nofollow">Видалити</a>
+</div>
+
+
+          <form action="/posters/new" class="button_to" method="get"><div><input class="btn btn-primary" type="submit" value="Нова афіша" /></div></form>
+
+</div>
+
+  </div>
+
+  <hr/>
+
+  <footer>
+    
+    <p>© МахноПАБ 2013</p>
+  </footer>
+</div>
+
+</body>
+</html>

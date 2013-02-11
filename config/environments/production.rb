@@ -7,6 +7,18 @@ Makhnopub::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  memcache_options = {
+      :c_threshold => 10_000,
+      :compression => false,
+      :debug => false,
+      :readonly => false,
+      :urlencode => false,
+      :ttl => 300,
+      :namespace => 'igprod',
+      :disabled => false
+  }
+
+  CACHE = MemCache.new memcache_options
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
