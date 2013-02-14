@@ -7,18 +7,9 @@ Makhnopub::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  memcache_options = {
-      :c_threshold => 10_000,
-      :compression => false,
-      :debug => false,
-      :readonly => false,
-      :urlencode => false,
-      :ttl => 300,
-      :namespace => 'igprod',
-      :disabled => false
-  }
 
-  CACHE = MemCache.new memcache_options
+  # Use a different cache store in production
+  config.cache_store = :dalli_store, '127.0.0.1:9000', { :namespace => Makhnopub, :expires_in => 1.day, :compress => true }
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
@@ -50,9 +41,6 @@ Makhnopub::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
-  # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
