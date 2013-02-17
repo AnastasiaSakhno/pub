@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217114659) do
+ActiveRecord::Schema.define(:version => 20130217131331) do
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20130217114659) do
   end
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], :name => "index_roles_on_name"
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
 
   create_table "slides", :force => true do |t|
     t.string   "url"
