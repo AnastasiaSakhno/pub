@@ -1,5 +1,5 @@
 Makhnopub::Application.routes.draw do
-  resources :photos
+  resources :slides
 
 
   #resources :locations

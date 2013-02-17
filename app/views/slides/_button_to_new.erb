@@ -1,0 +1,3 @@
+<% if can? :manage, :all %>
+    <%= button_to "#{Slide.human_attribute_name(:new)}", new_slide_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>

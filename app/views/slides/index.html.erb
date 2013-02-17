@@ -1,0 +1,14 @@
+<div>
+  <%= render :partial => "slides/button_to_new" %>
+
+  <% @slides.each do |slide| %>
+      <%= render :template => 'slides/show', :locals => {:slide => @slide = slide} %>
+      <% if @slides.last != slide %>
+          <hr/>
+      <% end %>
+  <% end %>
+
+  <% if !@slides.blank? %>
+      <%= render :partial => "slides/button_to_new" %>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+<div class="well">
+  <p class="lead"><u><%= @slide.title %></u></p>
+  <%= image_tag @slide.url, :class => "img-rounded", :width => "100%" %>
+  <br/><br/>
+
+  <% if @slide.description? %>
+      <div class="accordion" id="slide-<%= @slide.id %>">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#slide-<%= @slide.id %>" href="#collapse-slide-<%= @slide.id %>">
+              <%= @slide.description[0, 60].concat '...' %>
+            </a>
+          </div>
+          <div id="collapse-slide-<%= @slide.id %>" class="accordion-body collapse" style="height: 0px;">
+            <div class="accordion-inner">
+              <p>
+                <small><%= @slide.description %></small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+  <% if can? :manage, :all %>
+      <%= link_to (t :edit), edit_slide_path(@slide), :class => "btn-small" %>
+      <%= link_to (t :destroy), @slide, method: :delete, data: {confirm: (t :confirmation)}, :class => "btn-small" %>
+  <% end %>
+</div>
