@@ -1,5 +1,5 @@
 class Slide < ActiveRecord::Base
-  mount_uploader :url, PhotoUploader
+  mount_uploader :url, SlideUploader
   attr_accessible :description, :title, :url, :url_cache
 
   validates :url, :presence => true

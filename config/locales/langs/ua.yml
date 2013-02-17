@@ -6,7 +6,7 @@ ua:
   managing: "Керування"
   users: "Користувачі"
   posters: "Афіши"
-  photos: "Слайди"
+  slides: "Слайди"
   username: "Вхід не виконано"
   sign_in: "Вхід"
   sign_out: "Вихід"
@@ -96,7 +96,7 @@ ua:
     models:
       poster: "Афіша"
       location: "Розташування"
-      photo: "Слайд"
+      slide: "Слайд"
     attributes:
       poster:
         new: "Нова афіша"
@@ -108,7 +108,7 @@ ua:
       location:
         new: "Нове розташування"
         create: "Створити розташування"
-      photo:
+      slide:
         new: "Новий слайд"
         create: "Створити слайд"
   date:

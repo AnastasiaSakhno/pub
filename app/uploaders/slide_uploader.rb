@@ -1,0 +1,2 @@
+class SlideUploader < BasicUploader
+end
