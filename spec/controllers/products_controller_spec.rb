@@ -82,10 +82,6 @@ describe ProductsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested product" do
-        # Assuming there are no other products in the database, this
-        # specifies that the Product created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         Product.any_instance.should_receive(:update_attributes).with({"name" => "MyString"})
         update_product.call ({"name" => "MyString"})
       end
@@ -110,7 +106,6 @@ describe ProductsController do
       end
 
       it "re-renders the 'edit' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Product.any_instance.stub(:save).and_return(false)
         update_product.call ({"name" => "invalid value"})
         response.should render_template("edit")

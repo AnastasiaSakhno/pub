@@ -11,10 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219192610) do
+ActiveRecord::Schema.define(:version => 20130223175801) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ingredients", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "menu_id"
+    t.float    "amount"
+    t.integer  "measure_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

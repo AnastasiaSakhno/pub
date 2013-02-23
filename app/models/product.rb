@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :amount_per_one, :description, :incoming_price, :measure_id, :name, :sale_price, :total_count
+  has_many :ingredients
   has_many :menus, :through => :ingredients
 
   validates :amount_per_one, :presence => true

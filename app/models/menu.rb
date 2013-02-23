@@ -1,5 +1,6 @@
 class Menu < ActiveRecord::Base
   attr_accessible :category_id, :name, :price
+  has_many :ingredients
   has_many :products, :through => :ingredients
 
   validates :name, :presence => true
