@@ -36,6 +36,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'webrat'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'

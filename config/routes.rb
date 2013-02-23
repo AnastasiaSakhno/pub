@@ -1,13 +1,14 @@
 Makhnopub::Application.routes.draw do
+  resources :categories
+  resources :menus
+  resources :posters
+  resources :products
   resources :slides
-
-
   #resources :locations
 
   devise_for :users
   resources :users
 
-  resources :posters
   match 'home' => 'welcome#index'
   match 'contact' => 'welcome#contact'
   match 'about' => 'welcome#about'

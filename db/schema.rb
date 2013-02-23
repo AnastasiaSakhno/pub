@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217131331) do
+ActiveRecord::Schema.define(:version => 20130219192610) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
@@ -24,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20130217131331) do
     t.integer  "building"
   end
 
+  create_table "menus", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.float    "price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "posters", :force => true do |t|
     t.string   "url"
     t.string   "title"
@@ -31,6 +45,18 @@ ActiveRecord::Schema.define(:version => 20130217131331) do
     t.datetime "approximate_date"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "incoming_price"
+    t.float    "sale_price"
+    t.float    "total_count"
+    t.float    "amount_per_one"
+    t.integer  "measure_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "roles", :force => true do |t|

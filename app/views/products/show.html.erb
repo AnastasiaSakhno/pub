@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Incoming price:</b>
+  <%= @product.incoming_price %>
+</p>
+
+<p>
+  <b>Sale price:</b>
+  <%= @product.sale_price %>
+</p>
+
+<p>
+  <b>Total count:</b>
+  <%= @product.total_count %>
+</p>
+
+<p>
+  <b>Amount per one:</b>
+  <%= @product.amount_per_one %>
+</p>
+
+<p>
+  <b>Measure:</b>
+  <%= @product.measure_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
