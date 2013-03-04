@@ -68,3 +68,7 @@ def sign_in(user)
     click_button('Sign in')
   end
 end
+
+def call_lambda lambda_func
+  lambda_func.call
+end

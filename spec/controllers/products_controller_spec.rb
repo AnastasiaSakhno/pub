@@ -6,7 +6,6 @@ describe ProductsController do
     @valid_product_hash = {:name => "some name",
                            :amount_per_one => 1,
                            :measure_id => 1,
-                           :sale_price => 10,
                            :total_count => 5,
                            :incoming_price => 5,
                            :sale_price => 10}
@@ -64,7 +63,6 @@ describe ProductsController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved product as @product" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Product.any_instance.stub(:save).and_return(false)
         @created_product = create_product.call ({:name => "invalid value"})
         assigns(@created_product).should be_a_new(Product)
@@ -145,9 +143,4 @@ describe ProductsController do
       delete :destroy, {:id => @product.to_param}, valid_session
     end
   end
-
-  def call_lambda lambda_func
-    lambda_func.call
-  end
-
 end

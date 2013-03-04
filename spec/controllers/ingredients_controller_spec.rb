@@ -139,9 +139,4 @@ describe IngredientsController do
       delete :destroy, {:id => @ingredient.to_param}, valid_session
     end
   end
-
-  def call_lambda lambda_func
-    lambda_func.call
-  end
-
 end

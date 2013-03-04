@@ -1,4 +1,7 @@
 Makhnopub::Application.routes.draw do
+  resources :sales
+
+
   resources :ingredients
 
 

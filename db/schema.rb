@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223175801) do
+ActiveRecord::Schema.define(:version => 20130225181423) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(:version => 20130223175801) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
+
+  create_table "sales", :force => true do |t|
+    t.integer  "menu_id"
+    t.float    "sale_price"
+    t.date     "sale_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "slides", :force => true do |t|
     t.string   "url"
