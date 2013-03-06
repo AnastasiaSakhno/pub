@@ -1,12 +1,23 @@
 class Sale < ActiveRecord::Base
-  before_save :init_data
+  before_save :init, :debit_products
   attr_accessible :menu_id, :sale_date, :sale_price
 
   validates :menu_id, :presence => true
 
-  def init_data
+  private
+
+  def init
     self.sale_date ||= Date.today if new_record?
     self.sale_price ||= Menu.find(self.menu_id).price if new_record?
+  end
+
+  def debit_products
+    ingredients = Ingredient.find_all_by_menu_id(self.menu_id)
+    ingredients.each do |ingredient|
+      product = Product.find(ingredient.product_id)
+      product.total_count -= product.amount_per_one * ingredient.amount
+      product.save
+    end
   end
 end
 

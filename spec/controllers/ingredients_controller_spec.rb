@@ -6,7 +6,6 @@ describe IngredientsController do
 
     @valid_ingredient_hash = {:product_id => 1,
                               :menu_id => 1,
-                              :measure_id => 1,
                               :amount => 1.5}
     @invalid_ingredient_hash = {:product_id => 1}
   end

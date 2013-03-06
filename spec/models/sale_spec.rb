@@ -36,4 +36,41 @@ describe Sale do
       end
     end
   end
+
+  it "should debit products after save" do
+    product1 = create_product Constants::Measure::KILO
+    product2 = create_product Constants::Measure::LITER
+    product3 = create_product Constants::Measure::UNIT
+    menu = FactoryGirl.create(:menu)
+    ingredient1 = create_ingredient product1, menu, 10
+    ingredient2 = create_ingredient product2, menu, 15
+    ingredient3 = create_ingredient product3, menu, 20
+    sale = Sale.new
+    sale.menu_id = menu.id
+    sale.save
+    check_product_change product1, ingredient1
+    check_product_change product2, ingredient2
+    check_product_change product3, ingredient3
+  end
+  
+  private
+
+  def check_product_change product, ingredient
+    Product.find(product.id).total_count.should eq(product.total_count - product.amount_per_one * ingredient.amount)
+  end
+
+  def create_product measure
+    product = FactoryGirl.create(:product)
+    product.measure = measure
+    product
+  end
+  
+  def create_ingredient product, menu, amount
+    ingredient = Ingredient.new
+    ingredient.product_id = product.id
+    ingredient.menu_id = menu.id
+    ingredient.amount = amount
+    ingredient.save
+    ingredient
+  end
 end

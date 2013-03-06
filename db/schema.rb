@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225181423) do
+ActiveRecord::Schema.define(:version => 20130306083904) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20130225181423) do
     t.integer  "product_id"
     t.integer  "menu_id"
     t.float    "amount"
-    t.integer  "measure_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -63,9 +62,9 @@ ActiveRecord::Schema.define(:version => 20130225181423) do
     t.float    "sale_price"
     t.float    "total_count"
     t.float    "amount_per_one"
-    t.integer  "measure_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "measure"
   end
 
   create_table "roles", :force => true do |t|

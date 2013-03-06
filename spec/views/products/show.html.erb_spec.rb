@@ -9,7 +9,7 @@ describe "products/show" do
       :sale_price => 1.5,
       :total_count => 1.5,
       :amount_per_one => 1.5,
-      :measure_id => 1
+      :measure => Constants::Measure::KILO
     ))
   end
 

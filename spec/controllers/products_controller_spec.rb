@@ -5,7 +5,7 @@ describe ProductsController do
     @product = FactoryGirl.create(:product)
     @valid_product_hash = {:name => "some name",
                            :amount_per_one => 1,
-                           :measure_id => 1,
+                           :measure => Constants::Measure::KILO,
                            :total_count => 5,
                            :incoming_price => 5,
                            :sale_price => 10}

@@ -18,6 +18,6 @@ describe "products/index" do
     assert_select "tr>td", :text => @product1.sale_price.to_s, :count => 2
     assert_select "tr>td", :text => @product1.total_count.to_s, :count => 2
     assert_select "tr>td", :text => @product1.amount_per_one.to_s, :count => 2
-    assert_select "tr>td", :text => @product1.measure_id.to_s, :count => 2
+    assert_select "tr>td", :text => @product1.measure.to_s, :count => 2
   end
 end
