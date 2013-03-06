@@ -13,26 +13,26 @@ describe Sale do
 
     describe "date" do
       it "should be today's date if it does not set" do
-        @sale.sale_date.should eq(Date.today)
+        @sale.date.should eq(Date.today)
       end
 
       it "should stay the same if it set" do
-        @sale.sale_date = Date.yesterday
+        @sale.date = Date.yesterday
         @sale.save
-        @sale.sale_date.should eq(Date.yesterday)
+        @sale.date.should eq(Date.yesterday)
       end
     end
 
     describe "price" do
       it "should be menu's price if it does not set" do
-        @sale.sale_price.should eq(Menu.find(@sale.menu_id).price)
+        @sale.price.should eq(Menu.find(@sale.menu_id).price)
       end
 
       it "should stay the same if it set" do
         price = 12.12
-        @sale.sale_price = price
+        @sale.price = price
         @sale.save
-        @sale.sale_price.should eq(price)
+        @sale.price.should eq(price)
       end
     end
   end

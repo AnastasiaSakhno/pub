@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>Menu</th>
-    <th>Sale price</th>
-    <th>Sale date</th>
+    <th>Price</th>
+    <th>Date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +13,8 @@
 <% @sales.each do |sale| %>
   <tr>
     <td><%= sale.menu_id %></td>
-    <td><%= sale.sale_price %></td>
-    <td><%= sale.sale_date %></td>
+    <td><%= sale.price %></td>
+    <td><%= sale.date %></td>
     <td><%= link_to 'Show', sale %></td>
     <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
     <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>

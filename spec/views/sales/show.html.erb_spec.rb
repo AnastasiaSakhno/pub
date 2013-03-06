@@ -4,7 +4,7 @@ describe "sales/show" do
   before(:each) do
     @sale = assign(:sale, stub_model(Sale,
       :menu_id => 1,
-      :sale_price => 1.5
+      :price => 1.5
     ))
   end
 

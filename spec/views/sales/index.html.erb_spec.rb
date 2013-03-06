@@ -5,11 +5,11 @@ describe "sales/index" do
     assign(:sales, [
       stub_model(Sale,
         :menu_id => 1,
-        :sale_price => 1.5
+        :price => 1.5
       ),
       stub_model(Sale,
         :menu_id => 1,
-        :sale_price => 1.5
+        :price => 1.5
       )
     ])
   end
