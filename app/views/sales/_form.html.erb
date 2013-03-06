@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :menu_id %><br />
-    <%= f.number_field :menu_id %>
+    <%= f.select :menu_id, options_from_collection_for_select(Menu.all, "id", "name"), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :price %><br />

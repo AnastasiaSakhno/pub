@@ -7,6 +7,9 @@ ua:
   users: "Користувачі"
   posters: "Афіши"
   slides: "Слайди"
+  sales: "Збут"
+  products: "Продукти"
+  menus: "Меню"
   username: "Вхід не виконано"
   sign_in: "Вхід"
   sign_out: "Вихід"
@@ -97,6 +100,9 @@ ua:
       poster: "Афіша"
       location: "Розташування"
       slide: "Слайд"
+      sale: "Продаж"
+      product: "Продукт"
+      menu: "Меню"
     attributes:
       poster:
         new: "Нова афіша"
@@ -111,6 +117,28 @@ ua:
       slide:
         new: "Новий слайд"
         create: "Створити слайд"
+      product:
+        new: "Новий продукт"
+        create: "Створити продукт"
+        name: "Найменування"
+        description: "Опис"
+        incoming_price: "Ціна закупки"
+        sale_price: "Ціна продажу"
+        total_count: "Кількість у наявності"
+        amount_per_one: "В одному"
+        measure: "Міра"
+      menu:
+        new: "Нове меню"
+        create: "Створити меню"
+        name: "Найменування"
+        category_id: "Категорія"
+        price: "Ціна"
+      sale:
+        new: "Новий продаж"
+        create: "Створити продаж"
+        menu_id: "Меню"
+        price: "Ціна"
+        date: "Дата"
     errors:
       messages:
         taken: "%{model} з таким ім'ям вже існує"

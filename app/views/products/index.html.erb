@@ -1,6 +1,6 @@
 <h1>Listing products</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -23,9 +23,9 @@
     <td><%= product.total_count %></td>
     <td><%= product.amount_per_one %></td>
     <td><%= product.measure %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to (t :show), product %></td>
+    <td><%= link_to (t :edit), edit_product_path(product) %></td>
+    <td><%= link_to (t :destroy), product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

@@ -19,5 +19,7 @@ class Sale < ActiveRecord::Base
       product.save
     end
   end
+
+  scope :ordered_sales, -> { order("created_at desc") }
 end
 

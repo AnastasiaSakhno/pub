@@ -12,12 +12,12 @@
 
 <% @ingredients.each do |ingredient| %>
   <tr>
-    <td><%= ingredient.product_id %></td>
-    <td><%= ingredient.menu_id %></td>
+    <td><%= Product.find(ingredient.product_id).name %></td>
+    <td><%= Menu.find(ingredient.menu_id).name %></td>
     <td><%= ingredient.amount %></td>
-    <td><%= link_to 'Show', ingredient %></td>
-    <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-    <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to (t :show), ingredient %></td>
+    <td><%= link_to (t :edit), edit_ingredient_path(ingredient) %></td>
+    <td><%= link_to (t :destroy), ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

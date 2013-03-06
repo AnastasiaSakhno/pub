@@ -1,27 +1,27 @@
-<h1>Listing sales</h1>
+<h1><%= t :sales %></h1>
 
-<table>
+<table class="table">
+  <thead>
   <tr>
-    <th>Menu</th>
-    <th>Price</th>
-    <th>Date</th>
-    <th></th>
-    <th></th>
+    <th><%= t 'activerecord.attributes.sale.menu_id' %></th>
+    <th><%= t 'activerecord.attributes.sale.price' %></th>
+    <th><%= t 'activerecord.attributes.sale.date' %></th>
     <th></th>
   </tr>
+  </thead>
 
-<% @sales.each do |sale| %>
-  <tr>
-    <td><%= sale.menu_id %></td>
-    <td><%= sale.price %></td>
-    <td><%= sale.date %></td>
-    <td><%= link_to 'Show', sale %></td>
-    <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-    <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+  <% @sales.each do |sale| %>
+      <tr>
+        <td><%= Menu.find(sale.menu_id).name %></td>
+        <td><%= sale.price %></td>
+        <td><%= sale.date %></td>
+        <td><%= link_to (t :show), sale %></td>
+      </tr>
+  <% end %>
+  </tbody>
 </table>
 
-<br />
+<br/>
 
-<%= link_to 'New Sale', new_sale_path %>
+<%= link_to (t 'activerecord.attributes.sale.new'), new_sale_path %>
