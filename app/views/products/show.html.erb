@@ -1,40 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t 'activerecord.attributes.product.name' %>:</b>
   <%= @product.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= t 'activerecord.attributes.product.description' %>:</b>
   <%= @product.description %>
 </p>
 
 <p>
-  <b>Incoming price:</b>
+  <b><%= t 'activerecord.attributes.product.incoming_price' %>:</b>
   <%= @product.incoming_price %>
 </p>
 
 <p>
-  <b>Sale price:</b>
+  <b><%= t 'activerecord.attributes.product.sale_price' %>:</b>
   <%= @product.sale_price %>
 </p>
 
 <p>
-  <b>Total count:</b>
+  <b><%= t 'activerecord.attributes.product.total_count' %>:</b>
   <%= @product.total_count %>
 </p>
 
 <p>
-  <b>Amount per one:</b>
+  <b><%= t 'activerecord.attributes.product.amount_per_one' %>:</b>
   <%= @product.amount_per_one %>
 </p>
 
 <p>
-  <b>Measure:</b>
+  <b><%= t 'activerecord.attributes.product.measure' %>:</b>
   <%= @product.measure %>
 </p>
 
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to (t :edit), edit_product_path(@product) %> |
+<%= link_to (t :back), products_path %>

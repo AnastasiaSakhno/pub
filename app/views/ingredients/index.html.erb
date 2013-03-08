@@ -1,27 +1,33 @@
-<h1>Listing ingredients</h1>
+<h1><%= t :ingredients %></h1>
 
 <table>
   <tr>
-    <th>Product</th>
-    <th>Menu</th>
-    <th>Amount</th>
+    <th><%= t 'activerecord.attributes.ingredient.product_id' %></th>
+    <th><%= t 'activerecord.attributes.ingredient.menu_id' %></th>
+    <th><%= t 'activerecord.attributes.ingredient.amount' %></th>
     <th></th>
-    <th></th>
-    <th></th>
+    <% if can? :manage, Ingredient %>
+        <th></th>
+        <th></th>
+    <% end %>
   </tr>
 
-<% @ingredients.each do |ingredient| %>
-  <tr>
-    <td><%= Product.find(ingredient.product_id).name %></td>
-    <td><%= Menu.find(ingredient.menu_id).name %></td>
-    <td><%= ingredient.amount %></td>
-    <td><%= link_to (t :show), ingredient %></td>
-    <td><%= link_to (t :edit), edit_ingredient_path(ingredient) %></td>
-    <td><%= link_to (t :destroy), ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= Product.find(ingredient.product_id).name %></td>
+        <td><%= Menu.find(ingredient.menu_id).name %></td>
+        <td><%= ingredient.amount %></td>
+        <td><%= link_to (t :show), ingredient, class: 'btn btn-mini' %></td>
+        <% if can? :manage, Ingredient %>
+            <td><%= link_to (t :edit), edit_ingredient_path(ingredient), class: 'btn btn-mini btn-warning' %></td>
+            <td><%= button_to (t :destroy), ingredient, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
+        <% end %>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
-<%= link_to 'New Ingredient', new_ingredient_path %>
+<% if can? :manage, Ingredient %>
+    <%= link_to (t 'activerecord.attributes.ingredient.new'), new_ingredient_path, class: 'btn btn-inverse' %>
+<% end %>

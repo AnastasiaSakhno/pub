@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t 'activerecord.attributes.menu.name' %>:</b>
   <%= @menu.name %>
 </p>
 
 <p>
-  <b>Category:</b>
+  <b><%= t 'activerecord.attributes.menu.category_id' %>:</b>
   <%= Category.find(@menu.category_id).name %>
 </p>
 
 <p>
-  <b>Price:</b>
+  <b><%= t 'activerecord.attributes.menu.price' %>:</b>
   <%= @menu.price %>
 </p>
 
 
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+<%= link_to (t :edit), edit_menu_path(@menu) %> |
+<%= link_to (t :back), menus_path %>

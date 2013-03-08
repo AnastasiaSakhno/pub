@@ -1,35 +1,41 @@
-<h1>Listing products</h1>
+<h1><%= t :products %></h1>
 
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Incoming price</th>
-    <th>Sale price</th>
-    <th>Total count</th>
-    <th>Amount per one</th>
-    <th>Measure</th>
+    <th><%= t 'activerecord.attributes.product.name' %></th>
+    <th><%= t 'activerecord.attributes.product.description' %></th>
+    <th><%= t 'activerecord.attributes.product.incoming_price' %></th>
+    <th><%= t 'activerecord.attributes.product.sale_price' %></th>
+    <th><%= t 'activerecord.attributes.product.total_count' %></th>
+    <th><%= t 'activerecord.attributes.product.amount_per_one' %></th>
+    <th><%= t 'activerecord.attributes.product.measure' %></th>
     <th></th>
-    <th></th>
-    <th></th>
+    <% if can? :manage, Product %>
+        <th></th>
+        <th></th>
+    <% end %>
   </tr>
 
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.description %></td>
-    <td><%= product.incoming_price %></td>
-    <td><%= product.sale_price %></td>
-    <td><%= product.total_count %></td>
-    <td><%= product.amount_per_one %></td>
-    <td><%= product.measure %></td>
-    <td><%= link_to (t :show), product %></td>
-    <td><%= link_to (t :edit), edit_product_path(product) %></td>
-    <td><%= link_to (t :destroy), product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.incoming_price %></td>
+        <td><%= product.sale_price %></td>
+        <td><%= product.total_count %></td>
+        <td><%= product.amount_per_one %></td>
+        <td><%= product.measure %></td>
+        <td><%= link_to (t :show), product, class: 'btn btn-mini' %></td>
+        <% if can? :manage, Product %>
+            <td><%= link_to (t :edit), edit_product_path(product), class: 'btn btn-mini btn-warning' %></td>
+            <td><%= button_to (t :destroy), product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
+        <% end %>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
-<%= link_to 'New Product', new_product_path %>
+<% if can? :manage, Product %>
+    <%= link_to (t 'activerecord.attributes.product.new'), new_product_path, class: 'btn btn-inverse' %>
+<% end %>

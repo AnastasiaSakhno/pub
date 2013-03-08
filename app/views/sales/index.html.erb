@@ -13,10 +13,14 @@
   <tbody>
   <% @sales.each do |sale| %>
       <tr>
-        <td><%= Menu.find(sale.menu_id).name %></td>
+        <td><%= Menu.find(sale.menu_id)? Menu.find(sale.menu_id).name : sale.menu_id %></td>
         <td><%= sale.price %></td>
         <td><%= sale.date %></td>
-        <td><%= link_to (t :show), sale %></td>
+        <td><%= link_to (t :show), sale, class: 'btn btn-mini' %></td>
+        <% if can? :manage, Sale %>
+            <td><%= link_to (t :edit), edit_sale_path(sale), class: 'btn btn-mini btn-warning' %></td>
+            <td><%= button_to (t :destroy), sale, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>
@@ -24,4 +28,6 @@
 
 <br/>
 
-<%= link_to (t 'activerecord.attributes.sale.new'), new_sale_path %>
+<% if can? :create, Sale %>
+    <%= link_to (t 'activerecord.attributes.sale.new'), new_sale_path, class: 'btn btn-inverse' %>
+<% end %>

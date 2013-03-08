@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Product:</b>
+  <b><%= t 'activerecord.attributes.ingredient.product_id' %>:</b>
   <%= @ingredient.product_id %>
 </p>
 
 <p>
-  <b>Menu:</b>
+  <b><%= t 'activerecord.attributes.ingredient.menu_id' %>:</b>
   <%= @ingredient.menu_id %>
 </p>
 
 <p>
-  <b>Amount:</b>
+  <b><%= t 'activerecord.attributes.ingredient.amount' %>:</b>
   <%= @ingredient.amount %>
 </p>
 
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<%= link_to (t :edit), edit_ingredient_path(@ingredient) %> |
+<%= link_to (t :back), ingredients_path %>

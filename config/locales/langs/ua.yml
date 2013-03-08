@@ -10,6 +10,8 @@ ua:
   sales: "Збут"
   products: "Продукти"
   menus: "Меню"
+  categories: "Категорії"
+  ingredients: "Інгредієнти"
   username: "Вхід не виконано"
   sign_in: "Вхід"
   sign_out: "Вихід"
@@ -103,6 +105,7 @@ ua:
       sale: "Продаж"
       product: "Продукт"
       menu: "Меню"
+      ingredient: "Інгредієнт"
     attributes:
       poster:
         new: "Нова афіша"
@@ -139,6 +142,16 @@ ua:
         menu_id: "Меню"
         price: "Ціна"
         date: "Дата"
+      ingredient:
+        new: "Новий інгредієнт"
+        create: "Створити інгредієнт"
+        product_id: "Продукт"
+        menu_id: "Меню"
+        amount: "Кількість"
+      category:
+        new: "Нова категорія"
+        create: "Створити категорію"
+        name: "Найменування"
     errors:
       messages:
         taken: "%{model} з таким ім'ям вже існує"
