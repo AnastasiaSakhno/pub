@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe IngredientsController do
   before(:each) do
+    create_and_sign_in_admin
     @ingredient = FactoryGirl.create(:ingredient)
 
     @valid_ingredient_hash = {:product_id => 1,
@@ -10,34 +11,32 @@ describe IngredientsController do
     @invalid_ingredient_hash = {:product_id => 1}
   end
 
-  def valid_session
-    {}
-  end
+  it{ should be_able_to(:manage, Ingredient.new) }
 
   describe "GET index" do
     it "assigns all ingredients as @ingredients" do
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:ingredients).should eq([@ingredient])
     end
   end
 
   describe "GET show" do
     it "assigns the requested ingredient as @ingredient" do
-      get :show, {:id => @ingredient.to_param}, valid_session
+      get :show, {:id => @ingredient.to_param}
       assigns(:ingredient).should eq(@ingredient)
     end
   end
 
   describe "GET new" do
     it "assigns a new ingredient as @ingredient" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:ingredient).should be_a_new(Ingredient)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested ingredient as @ingredient" do
-      get :edit, {:id => @ingredient.to_param}, valid_session
+      get :edit, {:id => @ingredient.to_param}
       assigns(:ingredient).should eq(@ingredient)
     end
   end
@@ -121,21 +120,21 @@ describe IngredientsController do
 
   def create_ingredient
     lambda do |hash = @valid_ingredient_hash|
-      post :create, {:ingredient => hash}, valid_session
+      post :create, {:ingredient => hash}
       :ingredient
     end
   end
 
   def update_ingredient
     lambda do |hash = @valid_ingredient_hash|
-      put :update, {:id => @ingredient.to_param, :ingredient => hash}, valid_session
+      put :update, {:id => @ingredient.to_param, :ingredient => hash}
       :ingredient
     end
   end
 
   def delete_ingredient
     lambda do
-      delete :destroy, {:id => @ingredient.to_param}, valid_session
+      delete :destroy, {:id => @ingredient.to_param}
     end
   end
 end

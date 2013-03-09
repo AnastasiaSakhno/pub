@@ -24,7 +24,7 @@ describe "products/edit" do
       assert_select "input#product_sale_price", :name => "product[sale_price]"
       assert_select "input#product_total_count", :name => "product[total_count]"
       assert_select "input#product_amount_per_one", :name => "product[amount_per_one]"
-      assert_select "input#product_measure", :name => "product[measure]"
+      assert_select "select#product_measure", :name => "product[measure]"
     end
   end
 end

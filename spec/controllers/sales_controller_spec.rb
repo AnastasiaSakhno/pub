@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe SalesController do
   before(:each) do
+    create_and_sign_in_admin
     @menu = FactoryGirl.create(:menu)
     @sale = FactoryGirl.create(:sale)
     @sale.menu_id = @menu.id
@@ -10,34 +11,32 @@ describe SalesController do
     @invalid_sale_hash = {:menu_id => "string"}
   end
 
-  def valid_session
-    {}
-  end
+  it{ should be_able_to(:manage, Sale.new) }
 
   describe "GET index" do
     it "assigns all sales as @sales" do
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:sales).should eq([@sale])
     end
   end
 
   describe "GET show" do
     it "assigns the requested sale as @sale" do
-      get :show, {:id => @sale.to_param}, valid_session
+      get :show, {:id => @sale.to_param}
       assigns(:sale).should eq(@sale)
     end
   end
 
   describe "GET new" do
     it "assigns a new sale as @sale" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:sale).should be_a_new(Sale)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested sale as @sale" do
-      get :edit, {:id => @sale.to_param}, valid_session
+      get :edit, {:id => @sale.to_param}
       assigns(:sale).should eq(@sale)
     end
   end
@@ -118,21 +117,21 @@ describe SalesController do
 
   def create_sale
     lambda do |hash = @valid_sale_hash|
-      post :create, {:sale => hash}, valid_session
+      post :create, {:sale => hash}
       :sale
     end
   end
 
   def update_sale
     lambda do |hash = @valid_sale_hash|
-      put :update, {:id => @sale.to_param, :sale => hash}, valid_session
+      put :update, {:id => @sale.to_param, :sale => hash}
       :sale
     end
   end
 
   def delete_sale
     lambda do
-      delete :destroy, {:id => @sale.to_param}, valid_session
+      delete :destroy, {:id => @sale.to_param}
     end
   end
 end

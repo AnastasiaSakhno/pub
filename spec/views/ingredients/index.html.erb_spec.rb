@@ -2,24 +2,29 @@ require 'spec_helper'
 
 describe "ingredients/index" do
   before(:each) do
+    @menu = FactoryGirl.create(:menu)
+    @product = FactoryGirl.create(:product)
+    @amount = 1.5
     assign(:ingredients, [
-      stub_model(Ingredient,
-        :product_id => 1,
-        :menu_id => 2,
-        :amount => 1.5
-      ),
-      stub_model(Ingredient,
-        :product_id => 1,
-        :menu_id => 2,
-        :amount => 1.5
-      )
+      create_ingredient,
+      create_ingredient
     ])
   end
 
   it "renders a list of ingredients" do
     render
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
+    assert_select "tr>td", :text => @menu.name.to_s, :count => 2
+    assert_select "tr>td", :text => @product.name.to_s, :count => 2
+    assert_select "tr>td", :text => @amount.to_s, :count => 2
+  end
+
+  private
+
+  def create_ingredient
+    ingredient = Ingredient.new
+    ingredient.menu_id = @menu.id
+    ingredient.product_id = @product.id
+    ingredient.amount = @amount
+    ingredient
   end
 end

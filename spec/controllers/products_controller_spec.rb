@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ProductsController do
   before(:each) do
+    create_and_sign_in_admin
     @product = FactoryGirl.create(:product)
     @valid_product_hash = {:name => "some name",
                            :amount_per_one => 1,
@@ -10,35 +11,33 @@ describe ProductsController do
                            :incoming_price => 5,
                            :sale_price => 10}
   end
-
-  def valid_session
-    {}
-  end
+  
+  it { should be_able_to(:manage, Product.new) }
 
   describe "GET index" do
     it "assigns all products as @products" do
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:products).should eq([@product])
     end
   end
 
   describe "GET show" do
     it "assigns the requested product as @product" do
-      get :show, {:id => @product.to_param}, valid_session
+      get :show, {:id => @product.to_param}
       assigns(:product).should eq(@product)
     end
   end
 
   describe "GET new" do
     it "assigns a new product as @product" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:product).should be_a_new(Product)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested product as @product" do
-      get :edit, {:id => @product.to_param}, valid_session
+      get :edit, {:id => @product.to_param}
       assigns(:product).should eq(@product)
     end
   end
@@ -126,21 +125,21 @@ describe ProductsController do
 
   def create_product
     lambda do |hash = @valid_product_hash|
-      post :create, {:product => hash}, valid_session
+      post :create, {:product => hash}
       :product
     end
   end
 
   def update_product
     lambda do |hash = @valid_product_hash|
-      put :update, {:id => @product.to_param, :product => hash}, valid_session
+      put :update, {:id => @product.to_param, :product => hash}
       :product
     end
   end
 
   def delete_product
     lambda do
-      delete :destroy, {:id => @product.to_param}, valid_session
+      delete :destroy, {:id => @product.to_param}
     end
   end
 end

@@ -13,8 +13,8 @@ describe "ingredients/edit" do
     render
 
     assert_select "form", :action => ingredients_path(@ingredient), :method => "post" do
-      assert_select "input#ingredient_product_id", :name => "ingredient[product_id]"
-      assert_select "input#ingredient_menu_id", :name => "ingredient[menu_id]"
+      assert_select "select#ingredient_product_id", :name => "ingredient[product_id]"
+      assert_select "select#ingredient_menu_id", :name => "ingredient[menu_id]"
       assert_select "input#ingredient_amount", :name => "ingredient[amount]"
     end
   end

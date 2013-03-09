@@ -4,7 +4,8 @@ class Product < ActiveRecord::Base
   has_many :menus, :through => :ingredients
 
   validates :amount_per_one, :presence => true
-  validates :measure, :presence => true
+  validates :measure, :presence => true, :inclusion => { :in => Constants::Measure.all,
+                                      :message => "%{value} is not a valid measure" }
   validates :name, :presence => true
   validates :sale_price, :presence => true
   validates :total_count, :presence => true

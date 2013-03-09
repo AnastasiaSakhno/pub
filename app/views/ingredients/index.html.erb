@@ -1,6 +1,7 @@
 <h1><%= t :ingredients %></h1>
 
-<table>
+<table class="table table-striped">
+  <thead>
   <tr>
     <th><%= t 'activerecord.attributes.ingredient.product_id' %></th>
     <th><%= t 'activerecord.attributes.ingredient.menu_id' %></th>
@@ -11,7 +12,9 @@
         <th></th>
     <% end %>
   </tr>
+  </thead>
 
+  <tbody>
   <% @ingredients.each do |ingredient| %>
       <tr>
         <td><%= Product.find(ingredient.product_id).name %></td>
@@ -24,6 +27,7 @@
         <% end %>
       </tr>
   <% end %>
+  </tbody>
 </table>
 
 <br/>

@@ -1,6 +1,7 @@
 <h1><%= t :products %></h1>
 
-<table class="table">
+<table class="table table-striped">
+  <thead>
   <tr>
     <th><%= t 'activerecord.attributes.product.name' %></th>
     <th><%= t 'activerecord.attributes.product.description' %></th>
@@ -15,7 +16,9 @@
         <th></th>
     <% end %>
   </tr>
+  </thead>
 
+  <tbody>
   <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
@@ -32,6 +35,7 @@
         <% end %>
       </tr>
   <% end %>
+  </tbody>
 </table>
 
 <br/>

@@ -1,6 +1,7 @@
 <h1><%= t :categories %></h1>
 
-<table class="table">
+<table class="table table-striped">
+  <thead>
   <tr>
     <th><%= t 'activerecord.attributes.category.name' %></th>
     <th></th>
@@ -9,7 +10,9 @@
         <th></th>
     <% end %>
   </tr>
+  </thead>
 
+  <tbody>
   <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
@@ -20,6 +23,7 @@
         <% end %>
       </tr>
   <% end %>
+  </tbody>
 </table>
 
 <br/>

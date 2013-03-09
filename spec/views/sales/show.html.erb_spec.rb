@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "sales/show" do
   before(:each) do
+    menu = FactoryGirl.create(:menu)
     @sale = assign(:sale, stub_model(Sale,
       :menu_id => 1,
       :price => 1.5

@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :measure %><br />
-    <%= f.text_field :measure %>
+    <%= f.select :measure, options_for_select(Constants::Measure.all, @product.measure) %>
   </div>
   <div class="actions">
     <%= f.submit %>

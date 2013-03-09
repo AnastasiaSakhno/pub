@@ -14,7 +14,8 @@ include Capybara::DSL
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, :type => :view
   config.include Rails.application.routes.url_helpers
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.infer_base_class_for_anonymous_controllers = false
@@ -39,11 +40,11 @@ end
 # @user.should have_ability({create: true, read: false, update: false, destroy: true}, for: Post.new)
 RSpec::Matchers.define :have_ability do |ability_hash, options = {}|
   match do |user|
-    ability         = Ability.new(user)
-    target          = options[:for]
+    ability = Ability.new(user)
+    target = options[:for]
     @ability_result = {}
-    ability_hash    = {ability_hash => true} if ability_hash.is_a? Symbol # e.g.: :create => {:create => true}
-    ability_hash    = ability_hash.inject({}){|_, i| _.merge({i=>true}) } if ability_hash.is_a? Array # e.g.: [:create, :read] => {:create=>true, :read=>true}
+    ability_hash = {ability_hash => true} if ability_hash.is_a? Symbol # e.g.: :create => {:create => true}
+    ability_hash = ability_hash.inject({}) { |_, i| _.merge({i => true}) } if ability_hash.is_a? Array # e.g.: [:create, :read] => {:create=>true, :read=>true}
     ability_hash.each do |action, true_or_false|
       @ability_result[action] = ability.can?(action, target)
     end
@@ -51,22 +52,34 @@ RSpec::Matchers.define :have_ability do |ability_hash, options = {}|
   end
 
   failure_message_for_should do |user|
-    ability_hash,options = expected
-    ability_hash         = {ability_hash => true} if ability_hash.is_a? Symbol # e.g.: :create
-    ability_hash         = ability_hash.inject({}){|_, i| _.merge({i=>true}) } if ability_hash.is_a? Array # e.g.: [:create, :read] => {:create=>true, :read=>true}
-    target               = options[:for]
-    message              = "expected User:#{user} to have ability:#{ability_hash} for #{target}, but actual result is #{@ability_result}"
+    ability_hash, options = expected
+    ability_hash = {ability_hash => true} if ability_hash.is_a? Symbol # e.g.: :create
+    ability_hash = ability_hash.inject({}) { |_, i| _.merge({i => true}) } if ability_hash.is_a? Array # e.g.: [:create, :read] => {:create=>true, :read=>true}
+    target = options[:for]
+    message = "expected User:#{user} to have ability:#{ability_hash} for #{target}, but actual result is #{@ability_result}"
   end
 end
 
 def sign_in(user)
-  visit root_path
-  click_link("Login")
-  within(".page-region") do
-    fill_in("Email", with: user.email)
-    fill_in("Password", with: user.password)
-    click_button('Sign in')
-  end
+  visit root_path + 'users/sign_in'
+  fill_in("Email", with: user.email)
+  fill_in("Password", with: user.password)
+  click_button('Sign in')
+end
+
+def create_and_sign_in_user
+  create_and_sign_in :user
+end
+
+def create_and_sign_in_admin
+  create_and_sign_in :admin
+end
+
+def create_and_sign_in user_role
+  load "#{Rails.root}/db/seeds.rb"
+  user = FactoryGirl.create(user_role)
+  sign_in user
+  user
 end
 
 def call_lambda lambda_func

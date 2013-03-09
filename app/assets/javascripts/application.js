@@ -25,6 +25,14 @@ $(function () {
     });
 
     switchActiveMenu();
+
+    $('.create-ingredient').click(function(){
+        var id = $(this).attr('id');
+        var re = /create-ingredient-(\d+)/;
+        var menu_id = id.match(re)[1];
+        $('#ingredient_menu_id').val(menu_id);
+        $('#create-ingredient').modal('show');
+    });
 });
 
 function initCarousel(){
