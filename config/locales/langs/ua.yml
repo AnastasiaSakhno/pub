@@ -110,6 +110,10 @@ ua:
       menu: "Меню"
       ingredient: "Інгредієнт"
     attributes:
+      user:
+        email: "Пошта"
+        roles: "Ролі"
+        avatar: "Аватар"
       poster:
         new: "Нова афіша"
         create: "Створити афішу"

@@ -1,0 +1,19 @@
+<%= form_for(@user) do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <br/>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :roles %>
+      <br/>
+      <%= f.select(
+                  :roles,
+                  options_from_collection_for_select(Role.all, "id", "name", @user.roles.map { |r| r.id }),
+                  {:prompt => "Please select"},
+                  {:multiple => true, :size => 3}) %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

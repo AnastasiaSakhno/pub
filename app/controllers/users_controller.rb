@@ -59,6 +59,8 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    puts "Roles = #{params[:user][:roles]}"
+    params[:user][:roles] = params[:user][:roles].select{ |role| !role.blank? }.collect{ |role| Role.find(role) }
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
