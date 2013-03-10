@@ -1,15 +1,16 @@
+<h1><%= t :users %></h1>
+<br/>
+
 <% if can? :manage, :User %>
-    <div>
-      <% @users.each do |user| %>
-          <%= render :template => 'users/show', :locals => {:user => @user = user} %>
-          <%= link_to (t :show), user, class: 'btn btn-mini' %>
-          <td><%= link_to (t :edit), edit_user_path(user), class: 'btn btn-mini btn-warning' %></td>
-          <div style="display: inline-block;">
-            <td><%= button_to (t :destroy), user, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
-          </div>
-          <% if @users.last != user %>
-              <hr/>
-          <% end %>
-      <% end %>
-    </div>
+    <% @users.each do |user| %>
+        <%= render :template => 'users/show', :locals => {:user => @user = user} %>
+        <%= link_to (t :show), user, class: 'btn btn-mini' %>
+        <td><%= link_to (t :edit), edit_user_path(user), class: 'btn btn-mini btn-warning' %></td>
+        <div style="display: inline-block;">
+          <td><%= button_to (t :destroy), user, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
+        </div>
+        <% if @users.last != user %>
+            <hr/>
+        <% end %>
+    <% end %>
 <% end %>
