@@ -1,3 +1,5 @@
+require 'writeexcel'
+
 class SalesController < ApplicationController
   load_and_authorize_resource
   # GET /sales
@@ -80,5 +82,27 @@ class SalesController < ApplicationController
       format.html { redirect_to sales_url }
       format.json { head :no_content }
     end
+  end
+
+  def download
+    @date_from = 1.day.ago
+    @date_to = DateTime.now
+    @sales = Sale.where(:created_at => @date_from..@date_to)
+    file_name = "public/downloads/sales/#{DateTime.now}.xls"
+    workbook = WriteExcel.new file_name
+    worksheet = workbook.add_worksheet
+    format = workbook.add_format
+    format.set_bold
+    format.set_align('right')
+    worksheet.write 0, 1, t('activerecord.attributes.menu.name'), format
+    worksheet.write 0, 2, t('activerecord.attributes.sale.price'), format
+    worksheet.write 0, 3, t('activerecord.attributes.sale.date'), format
+    @sales.each_with_index do |sale, i|
+      worksheet.write i + 1, 1, Menu.find(sale.menu_id).name
+      worksheet.write i + 1, 2, sale.price
+      worksheet.write i + 1, 3, sale.date
+    end
+    workbook.close
+    send_file file_name
   end
 end

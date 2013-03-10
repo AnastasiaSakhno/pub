@@ -20,6 +20,7 @@ gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
 gem 'execjs'
 gem 'dalli'
+gem 'writeexcel'
 
 
 # Gems used only for assets and not required
