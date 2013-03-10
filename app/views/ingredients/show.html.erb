@@ -16,5 +16,7 @@
 </p>
 
 
-<%= link_to (t :edit), edit_ingredient_path(@ingredient) %> |
+<% if can? :manage, Ingredient %>
+    <%= link_to (t :edit), edit_ingredient_path(@ingredient) %> |
+<% end %>
 <%= link_to (t :back), ingredients_path %>

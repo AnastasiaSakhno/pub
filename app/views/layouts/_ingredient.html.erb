@@ -14,5 +14,5 @@
   <% end %>
 </ul>
 <% if can? :create, Ingredient %>
-    <button id="create-ingredient-<%= @menu.id %>" class="btn btn-mini btn-primary create-ingredient"><%= (t 'activerecord.attributes.ingredient.create') %></button>
+    <button id="create-ingredient-<%= @menu.id %>" class="btn btn-mini btn-primary create-ingredient"><%= (t 'activerecord.attributes.ingredient.new') %></button>
 <% end %>

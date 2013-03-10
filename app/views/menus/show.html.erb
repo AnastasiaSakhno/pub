@@ -15,6 +15,7 @@
   <%= @menu.price %>
 </p>
 
-
-<%= link_to (t :edit), edit_menu_path(@menu) %> |
+<% if can? :manage, Menu %>
+    <%= link_to (t :edit), edit_menu_path(@menu) %> |
+<% end %>
 <%= link_to (t :back), menus_path %>
