@@ -1,0 +1,18 @@
+<ul>
+  <% Ingredient.find_all_by_menu_id(@menu.id).each do |ingredient| %>
+      <li>
+        <%= ingredient.amount %>
+        <%= t Product.find(ingredient.product_id).measure %>
+        <%= Product.find(ingredient.product_id).name %>
+        <% if can? :manage, Ingredient %>
+            <%= link_to (t :edit), edit_ingredient_path(ingredient), class: 'btn btn-mini btn-warning' %>
+            <div style="display: inline-block;">
+              <%= button_to (t :destroy), ingredient, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %>
+            </div>
+        <% end %>
+      </li>
+  <% end %>
+</ul>
+<% if can? :create, Ingredient %>
+    <button id="create-ingredient-<%= @menu.id %>" class="btn btn-mini btn-primary create-ingredient"><%= (t 'activerecord.attributes.ingredient.create') %></button>
+<% end %>

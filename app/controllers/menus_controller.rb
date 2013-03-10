@@ -3,7 +3,7 @@ class MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all
+    @menus = Menu.ordered_by_category
 
     respond_to do |format|
       format.html # index.html.erb

@@ -4,11 +4,8 @@
   <thead>
   <tr>
     <th><%= t 'activerecord.attributes.menu.name' %></th>
-    <th><%= t 'activerecord.attributes.menu.category_id' %></th>
+    <th><%= t :ingredients %></th>
     <th><%= t 'activerecord.attributes.menu.price' %></th>
-    <% if can? :create, Ingredient %>
-        <th></th>
-    <% end %>
     <th></th>
     <% if can? :manage, Menu %>
         <th></th>
@@ -21,9 +18,10 @@
   <% @menus.each do |menu| %>
       <tr>
         <td><%= menu.name %></td>
-        <td><%= Category.find(menu.category_id).name %></td>
+        <td>
+          <%= render :partial => 'layouts/ingredient', :locale => {:menu => @menu = menu} %>
+        </td>
         <td><%= menu.price %></td>
-        <td><button id="create-ingredient-<%= menu.id %>" class="btn btn-mini btn-primary create-ingredient"><%= (t 'activerecord.attributes.ingredient.create') %></button></td>
         <td><%= link_to (t :show), menu, class: 'btn btn-mini' %></td>
         <% if can? :manage, Menu %>
             <td><%= link_to (t :edit), edit_menu_path(menu), class: 'btn btn-mini btn-warning' %></td>

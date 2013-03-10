@@ -14,12 +14,12 @@
     <div class="field">
       <%= f.label :menu_id %>
       <br/>
-      <%= f.select :menu_id, options_from_collection_for_select(Menu.all, "id", "name"), :include_blank => true %>
+      <%= f.select :menu_id, options_from_collection_for_select(Menu.all, "id", "name", @ingredient.menu_id), :include_blank => true %>
     </div>
     <div class="field">
       <%= f.label :product_id %>
       <br/>
-      <%= f.select :product_id, options_from_collection_for_select(Product.all, "id", "name"), :include_blank => true %>
+      <%= f.select :product_id, options_from_collection_for_select(Product.all, "id", "name", @ingredient.product_id), :include_blank => true %>
     </div>
     <div class="field">
       <%= f.label :amount %>
