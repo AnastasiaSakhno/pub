@@ -17,5 +17,6 @@
 /config/database.yml
 /config/deploy.rb
 /config/mongrel_cluster.yml
+/public/downloads
 /public/uploads
 dbsettings.txt
