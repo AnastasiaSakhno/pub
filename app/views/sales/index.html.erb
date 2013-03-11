@@ -5,7 +5,7 @@
   <tr>
     <th><%= t 'activerecord.attributes.sale.menu_id' %></th>
     <th><%= t 'activerecord.attributes.sale.price' %></th>
-    <th><%= t 'activerecord.attributes.sale.date' %></th>
+    <th><%= t 'activerecord.attributes.sale.datetime' %></th>
     <th></th>
   </tr>
   </thead>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= Menu.find(sale.menu_id)? Menu.find(sale.menu_id).name : sale.menu_id %></td>
         <td><%= sale.price %></td>
-        <td><%= sale.date %></td>
+        <td><%= sale.datetime %></td>
         <td><%= link_to (t :show), sale, class: 'btn btn-mini' %></td>
         <% if can? :manage, Sale %>
             <td><%= link_to (t :edit), edit_sale_path(sale), class: 'btn btn-mini btn-warning' %></td>

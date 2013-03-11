@@ -11,15 +11,15 @@ describe Sale do
       @sale.save
     end
 
-    describe "date" do
-      it "should be today's date if it does not set" do
-        @sale.date.should eq(Date.today)
+    describe "datetime" do
+      it "should be today's datetime if it does not set" do
+        @sale.datetime.should eq(DateTime.now)
       end
 
       it "should stay the same if it set" do
-        @sale.date = Date.yesterday
+        @sale.datetime = 1.day.ago
         @sale.save
-        @sale.date.should eq(Date.yesterday)
+        @sale.datetime.should eq(1.day.ago)
       end
     end
 

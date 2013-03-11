@@ -1,13 +1,13 @@
 class Sale < ActiveRecord::Base
   before_save :init, :debit_products
-  attr_accessible :menu_id, :date, :price
+  attr_accessible :menu_id, :datetime, :price
 
   validates :menu_id, :presence => true
 
   private
 
   def init
-    self.date ||= Date.today if new_record?
+    self.datetime ||= DateTime.now if new_record?
     self.price ||= Menu.find(self.menu_id).price if new_record?
   end
 

@@ -87,7 +87,7 @@ class SalesController < ApplicationController
   def download
     @date_from = 1.day.ago
     @date_to = DateTime.now
-    @sales = Sale.where(:created_at => @date_from..@date_to)
+    @sales = Sale.where(:datetime => @date_from..@date_to)
     file_name = "public/downloads/sales/#{DateTime.now}.xls"
     workbook = WriteExcel.new file_name
     worksheet = workbook.add_worksheet
@@ -96,11 +96,11 @@ class SalesController < ApplicationController
     format.set_align('right')
     worksheet.write 0, 1, t('activerecord.attributes.menu.name'), format
     worksheet.write 0, 2, t('activerecord.attributes.sale.price'), format
-    worksheet.write 0, 3, t('activerecord.attributes.sale.date'), format
+    worksheet.write 0, 3, t('activerecord.attributes.sale.datetime'), format
     @sales.each_with_index do |sale, i|
       worksheet.write i + 1, 1, Menu.find(sale.menu_id).name
       worksheet.write i + 1, 2, sale.price
-      worksheet.write i + 1, 3, sale.date
+      worksheet.write i + 1, 3, sale.datetime
     end
     workbook.close
     send_file file_name
