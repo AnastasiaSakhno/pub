@@ -6,4 +6,5 @@ describe Menu do
   it { should validate_presence_of(:category_id) }
 
   it { should have_many(:products).through(:ingredients) }
+  it { should have_many(:sales) }
 end

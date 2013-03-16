@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe "sales/show" do
   before(:each) do
+    load_seeds
+    seller = FactoryGirl.create(:employee)
     menu = FactoryGirl.create(:menu)
-    @sale = assign(:sale, stub_model(Sale,
-      :menu_id => 1,
-      :price => 1.5
-    ))
+    @sale = assign(:sale, FactoryGirl.create(:sale))
   end
 
   it "renders attributes in <p>" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/1/)
-    rendered.should match(/1.5/)
+    rendered.should match(Regexp.new Menu.find(@sale.menu_id).name.to_s)
+    rendered.should match(Regexp.new @sale.price.to_s)
+    rendered.should match(Regexp.new User.find(@sale.seller_id).email.to_s)
+    rendered.should match(Regexp.new @sale.client_name.to_s)
   end
 end

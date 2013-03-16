@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Sale do
+  it { should belong_to(:menu) }
+  it { should belong_to(:user) }
   it { should validate_presence_of(:menu_id) }
+  it { should validate_presence_of(:seller_id) }
 
   describe "default" do
     before(:each) do
@@ -13,13 +16,14 @@ describe Sale do
 
     describe "datetime" do
       it "should be today's datetime if it does not set" do
-        @sale.datetime.should eq(DateTime.now)
+        @sale.datetime.to_s.should eq(Time.zone.now.to_s)
       end
 
       it "should stay the same if it set" do
-        @sale.datetime = 1.day.ago
+        datetime = 1.day.ago
+        @sale.datetime = datetime
         @sale.save
-        @sale.datetime.should eq(1.day.ago)
+        @sale.datetime.should eq(datetime)
       end
     end
 
@@ -47,7 +51,9 @@ describe Sale do
     ingredient3 = create_ingredient product3, menu, 20
     sale = Sale.new
     sale.menu_id = menu.id
-    sale.save
+    load_seeds
+    sale.seller_id = FactoryGirl.create(:user).id
+    sale.save!
     check_product_change product1, ingredient1
     check_product_change product2, ingredient2
     check_product_change product3, ingredient3
@@ -62,6 +68,7 @@ describe Sale do
   def create_product measure
     product = FactoryGirl.create(:product)
     product.measure = measure
+    product.save
     product
   end
   

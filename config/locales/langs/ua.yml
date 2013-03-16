@@ -112,6 +112,9 @@ ua:
       ingredient: "Інгредієнт"
     attributes:
       user:
+        name: "Ім'я"
+        middle_name: "По батькові"
+        last_name: "Прізвище"
         email: "Пошта"
         roles: "Ролі"
         avatar: "Аватар"
@@ -150,6 +153,8 @@ ua:
         menu_id: "Меню"
         price: "Ціна"
         datetime: "Дата та час"
+        seller_id: "Продавець"
+        client_name: "Покупець"
       ingredient:
         new: "Новий інгредієнт"
         create: "Створити інгредієнт"

@@ -76,10 +76,14 @@ def create_and_sign_in_admin
 end
 
 def create_and_sign_in user_role
-  load "#{Rails.root}/db/seeds.rb"
+  load_seeds
   user = FactoryGirl.create(user_role)
   sign_in user
   user
+end
+
+def load_seeds
+  load "#{Rails.root}/db/seeds.rb"
 end
 
 def call_lambda lambda_func

@@ -2,10 +2,11 @@ require 'writeexcel'
 
 class SalesController < ApplicationController
   load_and_authorize_resource
+
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.ordered_sales
+    @sales = Sale.ordered
 
     respond_to do |format|
       format.html # index.html.erb

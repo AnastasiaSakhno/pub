@@ -7,11 +7,14 @@ describe SalesController do
     @sale = FactoryGirl.create(:sale)
     @sale.menu_id = @menu.id
     @sale.save
-    @valid_sale_hash = {:menu_id => @menu.id}
+    @valid_sale_hash = {
+        :menu_id => @menu.id,
+        :seller_id => 1
+    }
     @invalid_sale_hash = {:menu_id => "string"}
   end
 
-  it{ should be_able_to(:manage, Sale.new) }
+  it { should be_able_to(:manage, Sale.new) }
 
   describe "GET index" do
     it "assigns all sales as @sales" do
@@ -71,7 +74,7 @@ describe SalesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested sale" do
-        hash = { "menu_id" => "2" }
+        hash = {"menu_id" => "2"}
         Sale.any_instance.should_receive(:update_attributes).with(hash)
         update_sale.call hash
       end

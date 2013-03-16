@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "sales/index" do
   before(:each) do
+    load_seeds
     @menu = FactoryGirl.create(:menu)
     @price = 1.5
     assign(:sales, [
@@ -22,6 +23,7 @@ describe "sales/index" do
     sale = Sale.new
     sale.menu_id = menu.id
     sale.price = 1.5
+    sale.seller_id = FactoryGirl.create(:user).id
     sale.save
     sale
   end

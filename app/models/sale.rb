@@ -1,13 +1,16 @@
 class Sale < ActiveRecord::Base
+  belongs_to :menu
+  belongs_to :user, :foreign_key => :seller_id
   before_save :init, :debit_products
-  attr_accessible :menu_id, :datetime, :price
+  attr_accessible :menu_id, :datetime, :price, :seller_id, :client_name
 
   validates :menu_id, :presence => true
+  validates :seller_id, :presence => true
 
   private
 
   def init
-    self.datetime ||= DateTime.now if new_record?
+    self.datetime ||= Time.zone.now if new_record?
     self.price ||= Menu.find(self.menu_id).price if new_record?
   end
 
@@ -20,6 +23,6 @@ class Sale < ActiveRecord::Base
     end
   end
 
-  scope :ordered_sales, -> { order("created_at desc") }
+  scope :ordered, -> { order("created_at desc") }
 end
 

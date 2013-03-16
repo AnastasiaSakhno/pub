@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   rolify
+  has_many :sales
   after_create :add_default_role
   mount_uploader :avatar, AvatarUploader
 

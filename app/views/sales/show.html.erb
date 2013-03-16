@@ -9,6 +9,16 @@
 </p>
 
 <p>
+  <b><%= t 'activerecord.attributes.sale.seller_id' %>:</b>
+  <%= User.find(@sale.seller_id).email %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.sale.client_name' %>:</b>
+  <%= @sale.client_name %>
+</p>
+
+<p>
   <b><%= t 'activerecord.attributes.sale.datetime' %>:</b>
   <%= @sale.datetime %>
 </p>
