@@ -5,6 +5,7 @@
   <tr>
     <th><%= t 'activerecord.attributes.menu.name' %></th>
     <th><%= t :ingredients %></th>
+    <th><%= t 'activerecord.attributes.menu.weight' %></th>
     <th><%= t 'activerecord.attributes.menu.price' %></th>
     <th></th>
     <% if can? :manage, Menu %>
@@ -21,6 +22,7 @@
         <td>
           <%= render :partial => 'layouts/ingredient', :locale => {:menu => @menu = menu} %>
         </td>
+        <td><%= menu.weight %></td>
         <td><%= menu.price %></td>
         <td><%= link_to (t :show), menu, class: 'btn btn-mini' %></td>
         <% if can? :manage, Menu %>

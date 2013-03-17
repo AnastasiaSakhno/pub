@@ -19,6 +19,10 @@
     <%= f.label :category_id %><br />
     <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name", @menu.category_id), :include_blank => true %>
   </div>
+    <div class="field">
+      <%= f.label :weight %><br />
+      <%= f.text_field :weight %>
+    </div>
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>

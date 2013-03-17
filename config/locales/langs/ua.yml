@@ -147,6 +147,7 @@ ua:
         name: "Найменування"
         category_id: "Категорія"
         price: "Ціна"
+        weight: "Вага"
       sale:
         new: "Новий продаж"
         create: "Створити продаж"
