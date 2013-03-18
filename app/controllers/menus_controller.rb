@@ -61,7 +61,7 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.update_attributes(params[:menu])
-        format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
+        format.html { redirect_to table_url, notice: 'Menu was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,8 +77,14 @@ class MenusController < ApplicationController
     @menu.destroy
 
     respond_to do |format|
-      format.html { redirect_to menus_url }
+      format.html { redirect_to table_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def table_url
+    '/menus/table'
   end
 end

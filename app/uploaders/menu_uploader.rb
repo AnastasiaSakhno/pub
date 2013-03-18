@@ -1,0 +1,2 @@
+class MenuUploader < BasicUploader
+end

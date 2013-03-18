@@ -2,13 +2,15 @@ Makhnopub::Application.routes.draw do
   resources :sales do
     get :download, :on => :collection
   end
+  resources :menus do
+    get :table, :on => :collection
+  end
 
 
   resources :ingredients
 
 
   resources :categories
-  resources :menus
   resources :posters
   resources :products
   resources :slides

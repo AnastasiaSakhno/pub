@@ -1,52 +1,32 @@
-<h1><%= t :menus %></h1>
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th><%= t 'activerecord.attributes.menu.name' %></th>
-    <th><%= t :ingredients %></th>
-    <th><%= t 'activerecord.attributes.menu.weight' %></th>
-    <th><%= t 'activerecord.attributes.menu.price' %></th>
-    <th></th>
-    <% if can? :manage, Menu %>
-        <th></th>
-        <th></th>
-    <% end %>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @menus.each do |menu| %>
+<% Category.all.each do |category| %>
+    <h2><%= category.name %></h2>
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <td><%= menu.name %></td>
-        <td>
-          <%= render :partial => 'layouts/ingredient', :locale => {:menu => @menu = menu} %>
-        </td>
-        <td><%= menu.weight %></td>
-        <td><%= menu.price %></td>
-        <td><%= link_to (t :show), menu, class: 'btn btn-mini' %></td>
-        <% if can? :manage, Menu %>
-            <td><%= link_to (t :edit), edit_menu_path(menu), class: 'btn btn-mini btn-warning' %></td>
-            <td><%= button_to (t :destroy), menu, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
-        <% end %>
+        <th><%= t 'activerecord.attributes.menu.name' %></th>
+        <th><%= t 'activerecord.attributes.menu.picture' %></th>
+        <th><%= t :ingredients %></th>
+        <th><%= t 'activerecord.attributes.menu.weight' %></th>
+        <th><%= t 'activerecord.attributes.menu.price' %></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br/>
-
-<% if can? :manage, Menu %>
-    <%= link_to (t 'activerecord.attributes.menu.new'), new_menu_path, class: 'btn btn-inverse' %>
+      <tbody>
+      <% Menu.where(:category_id => category.id).each do |menu| %>
+          <tr>
+            <td width="200px"><%= menu.name %></td>
+            <td>
+              <% if menu.picture.present? %>
+                  <%= image_tag menu.picture, :class => "img-rounded", :width => "300px" %>
+              <% end %>
+            </td>
+            <td>
+              <%= render :partial => 'layouts/ingredient', :locale => {:menu => @menu = menu} %>
+            </td>
+            <td><%= menu.weight %></td>
+            <td><%= menu.price %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 <% end %>
-
-<!-- ingredient creating modal window -->
-<div class="modal hide" id="create-ingredient">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3><%= t 'activerecord.attributes.ingredient.new' %></h3>
-  </div>
-  <div class="modal-body">
-    <%= render 'ingredients/form', :locals => {:ingredient => @ingredient = Ingredient.new} %>
-  </div>
-</div>

@@ -6,6 +6,13 @@
 </p>
 
 <p>
+  <b><%= t 'activerecord.attributes.menu.picture' %>:</b>
+  <% if @menu.picture.present? %>
+      <%= image_tag @menu.picture, :class => "img-rounded", :width => "100%" %>
+  <% end %>
+</p>
+
+<p>
   <b><%= t 'activerecord.attributes.menu.category_id' %>:</b>
   <%= Category.find(@menu.category_id).name %>
 </p>

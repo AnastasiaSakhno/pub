@@ -12,8 +12,8 @@ ua:
   menus: "Меню"
   categories: "Категорії"
   ingredients: "Інгредієнти"
-  KILO: "Кілограм"
-  LITER: "Літри"
+  KILO: "кілограм"
+  LITER: "літри"
   UNIT: "Одиниць"
   username: "Вхід не виконано"
   sign_in: "Вхід"
@@ -148,6 +148,7 @@ ua:
         category_id: "Категорія"
         price: "Ціна"
         weight: "Вага"
+        picture: "Зображення"
       sale:
         new: "Новий продаж"
         create: "Створити продаж"

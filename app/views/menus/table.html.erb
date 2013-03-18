@@ -1,0 +1,43 @@
+<h1><%= t :menus %></h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= t 'activerecord.attributes.menu.name' %></th>
+    <th><%= t 'activerecord.attributes.menu.category_id' %></th>
+    <th><%= t :ingredients %></th>
+    <th><%= t 'activerecord.attributes.menu.weight' %></th>
+    <th><%= t 'activerecord.attributes.menu.price' %></th>
+    <th></th>
+    <% if can? :manage, Menu %>
+        <th></th>
+        <th></th>
+    <% end %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.name %></td>
+        <td><%= Category.find(menu.category_id).name %></td>
+        <td>
+          <%= render :partial => 'layouts/ingredient', :locale => {:menu => @menu = menu} %>
+        </td>
+        <td><%= menu.weight %></td>
+        <td><%= menu.price %></td>
+        <td><%= link_to (t :show), menu, class: 'btn btn-mini' %></td>
+        <% if can? :manage, Menu %>
+            <td><%= link_to (t :edit), edit_menu_path(menu), class: 'btn btn-mini btn-warning' %></td>
+            <td><%= button_to (t :destroy), menu, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<% if can? :manage, Menu %>
+    <%= link_to (t 'activerecord.attributes.menu.new'), new_menu_path, class: 'btn btn-inverse' %>
+<% end %>

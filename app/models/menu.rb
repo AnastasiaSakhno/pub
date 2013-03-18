@@ -1,5 +1,6 @@
 class Menu < ActiveRecord::Base
-  attr_accessible :category_id, :name, :price, :weight
+  mount_uploader :picture, MenuUploader
+  attr_accessible :category_id, :name, :price, :weight, :picture, :picture_cache
   has_many :ingredients
   has_many :products, :through => :ingredients
   has_many :sales
