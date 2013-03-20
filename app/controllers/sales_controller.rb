@@ -86,7 +86,7 @@ class SalesController < ApplicationController
   end
 
   def download
-    @date_from = 1.day.ago
+    @date_from = 7.day.ago
     @date_to = DateTime.now
     @sales = Sale.where(:datetime => @date_from..@date_to)
     file_name = "public/downloads/sales/#{DateTime.now}.xls"
@@ -96,12 +96,19 @@ class SalesController < ApplicationController
     format.set_bold
     format.set_align('right')
     worksheet.write 0, 1, t('activerecord.attributes.menu.name'), format
-    worksheet.write 0, 2, t('activerecord.attributes.sale.price'), format
-    worksheet.write 0, 3, t('activerecord.attributes.sale.datetime'), format
+    worksheet.write 0, 2, t('activerecord.attributes.sale.count'), format
+    worksheet.write 0, 3, t('activerecord.attributes.sale.price'), format
+    worksheet.write 0, 4, t('activerecord.attributes.sale.seller_id'), format
+    worksheet.write 0, 5, t('activerecord.attributes.sale.client_name'), format
+    worksheet.write 0, 6, t('activerecord.attributes.sale.datetime'), format
     @sales.each_with_index do |sale, i|
-      worksheet.write i + 1, 1, Menu.find(sale.menu_id).name
-      worksheet.write i + 1, 2, sale.price
-      worksheet.write i + 1, 3, sale.datetime
+      row = i + 1
+      worksheet.write row, 1, Menu.find(sale.menu_id).name
+      worksheet.write row, 2, sale.count
+      worksheet.write row, 3, sale.price
+      worksheet.write row, 4, User.find(sale.seller_id).email
+      worksheet.write row, 5, sale.client_name
+      worksheet.write row, 6, sale.datetime
     end
     workbook.close
     send_file file_name

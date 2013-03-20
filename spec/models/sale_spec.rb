@@ -5,6 +5,7 @@ describe Sale do
   it { should belong_to(:user) }
   it { should validate_presence_of(:menu_id) }
   it { should validate_presence_of(:seller_id) }
+  it { should validate_presence_of(:count) }
 
   describe "default" do
     before(:each) do
@@ -51,18 +52,19 @@ describe Sale do
     ingredient3 = create_ingredient product3, menu, 20
     sale = Sale.new
     sale.menu_id = menu.id
+    sale.count = 5
     load_seeds
     sale.seller_id = FactoryGirl.create(:user).id
     sale.save!
-    check_product_change product1, ingredient1
-    check_product_change product2, ingredient2
-    check_product_change product3, ingredient3
+    check_product_change product1, ingredient1, sale
+    check_product_change product2, ingredient2, sale
+    check_product_change product3, ingredient3, sale
   end
   
   private
 
-  def check_product_change product, ingredient
-    Product.find(product.id).total_count.should eq(product.total_count - product.amount_per_one * ingredient.amount)
+  def check_product_change product, ingredient, sale
+    Product.find(product.id).total_count.should eq(product.total_count - product.amount_per_one * ingredient.amount * sale.count)
   end
 
   def create_product measure

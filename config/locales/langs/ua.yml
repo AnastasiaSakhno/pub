@@ -157,6 +157,7 @@ ua:
         datetime: "Дата та час"
         seller_id: "Продавець"
         client_name: "Покупець"
+        count: "Кількість"
       ingredient:
         new: "Новий інгредієнт"
         create: "Створити інгредієнт"

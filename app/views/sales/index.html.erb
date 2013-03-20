@@ -4,6 +4,7 @@
   <thead>
   <tr>
     <th><%= t 'activerecord.attributes.sale.menu_id' %></th>
+    <th><%= t 'activerecord.attributes.sale.count' %></th>
     <th><%= t 'activerecord.attributes.sale.price' %></th>
     <th><%= t 'activerecord.attributes.sale.seller_id' %></th>
     <th><%= t 'activerecord.attributes.sale.client_name' %></th>
@@ -16,6 +17,7 @@
   <% @sales.each do |sale| %>
       <tr>
         <td><%= Menu.find(sale.menu_id)? Menu.find(sale.menu_id).name : sale.menu_id %></td>
+        <td><%= sale.count %></td>
         <td><%= sale.price %></td>
         <td><%= User.find(sale.seller_id).email %></td>
         <td><%= sale.client_name %></td>

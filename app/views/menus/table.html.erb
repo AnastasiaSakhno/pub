@@ -41,3 +41,5 @@
 <% if can? :manage, Menu %>
     <%= link_to (t 'activerecord.attributes.menu.new'), new_menu_path, class: 'btn btn-inverse' %>
 <% end %>
+
+<%= render :partial => 'ingredients/ingredient_modal' %>
