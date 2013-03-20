@@ -1,7 +1,7 @@
 class Sale < ActiveRecord::Base
   belongs_to :menu
   belongs_to :user, :foreign_key => :seller_id
-  before_save :init, :debit_products
+  before_create :init, :debit_products
   attr_accessible :menu_id, :datetime, :price, :seller_id, :client_name, :count
 
   validates :menu_id, :presence => true

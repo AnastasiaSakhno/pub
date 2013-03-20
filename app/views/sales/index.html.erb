@@ -1,3 +1,10 @@
+<% if can? :create, Sale %>
+    <%= link_to (t 'activerecord.attributes.sale.new'), new_sale_path, class: 'btn btn-inverse' %>
+    <%= link_to (t :get_sales_as_file), "sales/download", :class => 'btn btn-primary' %>
+<% end %>
+
+<br/><br/>
+
 <h1><%= t :sales %></h1>
 
 <table class="table table-striped">
@@ -19,9 +26,10 @@
         <td><%= Menu.find(sale.menu_id)? Menu.find(sale.menu_id).name : sale.menu_id %></td>
         <td><%= sale.count %></td>
         <td><%= sale.price %></td>
-        <td><%= User.find(sale.seller_id).email %></td>
+        <% user = User.find(sale.seller_id) %>
+        <td><%= "#{user.last_name} #{user.name} #{user.middle_name}" %></td>
         <td><%= sale.client_name %></td>
-        <td><%= sale.datetime %></td>
+        <td><%=  I18n.localize(sale.datetime, :format => :long) %></td>
         <td><%= link_to (t :show), sale, class: 'btn btn-mini' %></td>
         <% if can? :manage, Sale %>
             <td><%= link_to (t :edit), edit_sale_path(sale), class: 'btn btn-mini btn-warning' %></td>
@@ -31,10 +39,3 @@
   <% end %>
   </tbody>
 </table>
-
-<br/>
-
-<% if can? :create, Sale %>
-    <%= link_to (t 'activerecord.attributes.sale.new'), new_sale_path, class: 'btn btn-inverse' %>
-    <%= link_to (t :get_sales_as_file), "sales/download", :class => 'btn btn-primary' %>
-<% end %>

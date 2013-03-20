@@ -106,9 +106,10 @@ class SalesController < ApplicationController
       worksheet.write row, 1, Menu.find(sale.menu_id).name
       worksheet.write row, 2, sale.count
       worksheet.write row, 3, sale.price
-      worksheet.write row, 4, User.find(sale.seller_id).email
+      user = User.find(sale.seller_id)
+      worksheet.write row, 4, "#{user.last_name} #{user.name} #{user.middle_name}"
       worksheet.write row, 5, sale.client_name
-      worksheet.write row, 6, sale.datetime
+      worksheet.write row, 6, I18n.localize(sale.datetime, :format => :long)
     end
     workbook.close
     send_file file_name

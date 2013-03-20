@@ -219,7 +219,7 @@ ua:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"
       short: "%d %b %H:%M"
-      long: "%B %d, %Y %H:%M"
+      long: "%d %b %Y, %H:%M"
     am: "am"
     pm: "pm"
 

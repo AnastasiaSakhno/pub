@@ -4,6 +4,24 @@
     <%= devise_error_messages! %>
 
     <fieldset>
+      <%= f.label :name %>
+      <div class="input-prepend">
+        <span class="add-on"></span>
+        <%= f.text_field :name, :autocomplete => "off", :class => "span2" %>
+      </div>
+
+      <%= f.label :middle_name %>
+      <div class="input-prepend">
+        <span class="add-on"></span>
+        <%= f.text_field :middle_name, :autocomplete => "off", :class => "span2" %>
+      </div>
+
+      <%= f.label :last_name %>
+      <div class="input-prepend">
+        <span class="add-on"></span>
+        <%= f.text_field :last_name, :autocomplete => "off", :class => "span2" %>
+      </div>
+
       <%= f.label :email %>
       <div class="input-prepend">
         <span class="add-on">@</span>
