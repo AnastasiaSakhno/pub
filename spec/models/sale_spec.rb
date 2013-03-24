@@ -42,29 +42,49 @@ describe Sale do
     end
   end
 
-  it "should debit products after save" do
-    product1 = create_product Constants::Measure::KILO
-    product2 = create_product Constants::Measure::LITER
-    product3 = create_product Constants::Measure::UNIT
-    menu = FactoryGirl.create(:menu)
-    ingredient1 = create_ingredient product1, menu, 10
-    ingredient2 = create_ingredient product2, menu, 15
-    ingredient3 = create_ingredient product3, menu, 20
-    sale = Sale.new
-    sale.menu_id = menu.id
-    sale.count = 5
-    load_seeds
-    sale.seller_id = FactoryGirl.create(:user).id
-    sale.save!
-    check_product_change product1, ingredient1, sale
-    check_product_change product2, ingredient2, sale
-    check_product_change product3, ingredient3, sale
+  describe "products changing" do
+    before(:each) do
+      @product1 = create_product Constants::Measure::KILO
+      @product2 = create_product Constants::Measure::LITER
+      @product3 = create_product Constants::Measure::UNIT
+      @menu = FactoryGirl.create(:menu)
+      @ingredient1 = create_ingredient @product1, @menu, 10
+      @ingredient2 = create_ingredient @product2, @menu, 15
+      @ingredient3 = create_ingredient @product3, @menu, 20
+      @sale = Sale.new
+      @sale.menu_id = @menu.id
+      @sale.count = 5
+      load_seeds
+      @sale.seller_id = FactoryGirl.create(:user).id
+      @sale.save!
+    end
+
+    it "should debit products after save" do
+      check_product_debit @product1, @ingredient1, @sale
+      check_product_debit @product2, @ingredient2, @sale
+      check_product_debit @product3, @ingredient3, @sale
+    end
+
+    it "should restore products after save" do
+      product_count1 = Product.find(@product1.id).total_count
+      product_count2 = Product.find(@product2.id).total_count
+      product_count3 = Product.find(@product3.id).total_count
+      @sale.destroy
+      check_product_restore @product1, product_count1, @ingredient1, @sale
+      check_product_restore @product2, product_count2, @ingredient2, @sale
+      check_product_restore @product3, product_count3, @ingredient3, @sale
+    end
   end
   
   private
 
-  def check_product_change product, ingredient, sale
+  def check_product_debit product, ingredient, sale
     Product.find(product.id).total_count.should eq(product.total_count - product.amount_per_one * ingredient.amount * sale.count)
+  end
+
+
+  def check_product_restore product, product_count, ingredient, sale
+    Product.find(product.id).total_count.should eq(product_count + product.amount_per_one * ingredient.amount * sale.count)
   end
 
   def create_product measure
