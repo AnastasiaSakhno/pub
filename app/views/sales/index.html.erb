@@ -32,7 +32,6 @@
         <td><%=  I18n.localize(sale.datetime, :format => :long) %></td>
         <td><%= link_to (t :show), sale, class: 'btn btn-mini' %></td>
         <% if can? :manage, Sale %>
-            <td><%= link_to (t :edit), edit_sale_path(sale), class: 'btn btn-mini btn-warning' %></td>
             <td><%= button_to (t :destroy), sale, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
         <% end %>
       </tr>
