@@ -1,0 +1,32 @@
+<h1><%= t :arrivals %></h1>
+
+<table>
+  <tr>
+    <th><%= t 'activerecord.attributes.arrival.product_id' %></th>
+    <th><%= t 'activerecord.attributes.arrival.incoming_price' %></th>
+    <th><%= t 'activerecord.attributes.arrival.sale_price' %></th>
+    <th><%= t 'activerecord.attributes.arrival.count' %></th>
+    <th><%= t 'activerecord.attributes.arrival.receiver_id' %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @arrivals.each do |arrival| %>
+      <tr>
+        <td><%= Product.find(arrival.product_id).name %></td>
+        <td><%= arrival.incoming_price %></td>
+        <td><%= arrival.sale_price %></td>
+        <td><%= arrival.count %></td>
+        <% user = User.find(arrival.receiver_id) %>
+        <td><%= "#{user.last_name} #{user.name} #{user.middle_name}" %></td>
+        <td><%= link_to 'Show', arrival %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<% if can? :create, Arrival %>
+    <%= link_to 'New Arrival', new_arrival_path %>
+<% end %>

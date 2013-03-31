@@ -89,3 +89,7 @@ end
 def call_lambda lambda_func
   lambda_func.call
 end
+
+def regexp obj
+  Regexp.new obj.to_s
+end

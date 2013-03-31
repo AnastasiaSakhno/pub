@@ -26,7 +26,7 @@
       <br/>
       <%= f.select :seller_id, options_from_collection_for_select(User.find(:all,
                                                                           :joins => "JOIN users_roles ON users_roles.user_id = users.id
-                                                                          JOIN roles ON roles.name = 'employee' AND roles.id = users_roles.role_id",
+                                                                          JOIN roles ON roles.name in ('employee', 'admin') AND roles.id = users_roles.role_id",
                                                                           :select => "users.*"), "id", "email", @sale.seller_id), :include_blank => true %>
     </div>
     <div class="field">

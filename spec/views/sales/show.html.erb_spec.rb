@@ -10,9 +10,10 @@ describe "sales/show" do
 
   it "renders attributes in <p>" do
     render
-    rendered.should match(Regexp.new Menu.find(@sale.menu_id).name.to_s)
-    rendered.should match(Regexp.new @sale.price.to_s)
-    rendered.should match(Regexp.new User.find(@sale.seller_id).email.to_s)
-    rendered.should match(Regexp.new @sale.client_name.to_s)
+    rendered.should match(regexp Menu.find(@sale.menu_id).name)
+    rendered.should match(regexp @sale.price)
+    user = User.find(@sale.seller_id)
+    rendered.should match(regexp "#{user.last_name} #{user.name} #{user.middle_name}")
+    rendered.should match(regexp @sale.client_name)
   end
 end

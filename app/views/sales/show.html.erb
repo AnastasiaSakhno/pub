@@ -15,7 +15,8 @@
 
 <p>
   <b><%= t 'activerecord.attributes.sale.seller_id' %>:</b>
-  <%= User.find(@sale.seller_id).email %>
+  <% user = User.find(@sale.seller_id) %>
+  <%= "#{user.last_name} #{user.name} #{user.middle_name}" %>
 </p>
 
 <p>
@@ -28,7 +29,4 @@
   <%= @sale.datetime %>
 </p>
 
-<% if can? :manage, Sale %>
-    <%= link_to (t :edit), edit_sale_path(@sale) %> |
-<% end %>
 <%= link_to (t :back), sales_path %>

@@ -8,6 +8,7 @@ ua:
   posters: "Афіши"
   slides: "Слайди"
   sales: "Збут"
+  arrivals: "Надходження"
   products: "Продукти"
   menus: "Меню"
   categories: "Категорії"
@@ -168,6 +169,14 @@ ua:
         new: "Нова категорія"
         create: "Створити категорію"
         name: "Найменування"
+      arrival:
+        new: "Нове надходження"
+        create: "Створити надходження"
+        product_id: "Продукт"
+        incoming_price: "Ціна"
+        sale_price: ""
+        count: "Кількість"
+        receiver_id: "Приймаючий надходження"
     errors:
       messages:
         taken: "%{model} з таким ім'ям вже існує"

@@ -1,0 +1,27 @@
+<p>
+  <b><%= t 'activerecord.attributes.arrival.product_id' %></b>
+  <%= Product.find(@arrival.product_id).name %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.arrival.incoming_price' %></b>
+  <%= @arrival.incoming_price %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.arrival.sale_price' %></b>
+  <%= @arrival.sale_price %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.arrival.count' %></b>
+  <%= @arrival.count %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.arrival.receiver_id' %>:</b>
+  <% user = User.find(@arrival.receiver_id) %>
+  <%= "#{user.last_name} #{user.name} #{user.middle_name}" %>
+</p>
+
+<%= link_to 'Back', arrivals_path %>
