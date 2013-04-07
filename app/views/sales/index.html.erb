@@ -1,6 +1,6 @@
 <% if can? :create, Sale %>
     <%= link_to (t 'activerecord.attributes.sale.new'), new_sale_path, class: 'btn btn-inverse' %>
-    <%= link_to (t :get_sales_as_file), "sales/download", :class => 'btn btn-primary' %>
+    <%= link_to (t 'activerecord.attributes.sale.report'), "sales/download", :class => 'btn btn-primary' %>
 <% end %>
 
 <br/><br/>

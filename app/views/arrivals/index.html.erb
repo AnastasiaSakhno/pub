@@ -1,6 +1,14 @@
+<% if can? :create, Arrival %>
+    <%= link_to (t 'activerecord.attributes.arrival.new'), new_arrival_path, class: 'btn btn-inverse' %>
+    <%= link_to (t 'activerecord.attributes.arrival.report'), "arrivals/download", :class => 'btn btn-primary' %>
+<% end %>
+
+<br/><br/>
+
 <h1><%= t :arrivals %></h1>
 
-<table>
+<table class="table table-striped">
+  <thead>
   <tr>
     <th><%= t 'activerecord.attributes.arrival.product_id' %></th>
     <th><%= t 'activerecord.attributes.arrival.incoming_price' %></th>
@@ -11,7 +19,9 @@
     <th></th>
     <th></th>
   </tr>
+  </thead>
 
+  <tbody>
   <% @arrivals.each do |arrival| %>
       <tr>
         <td><%= Product.find(arrival.product_id).name %></td>
@@ -23,10 +33,5 @@
         <td><%= link_to 'Show', arrival %></td>
       </tr>
   <% end %>
+  </tbody>
 </table>
-
-<br/>
-
-<% if can? :create, Arrival %>
-    <%= link_to 'New Arrival', new_arrival_path %>
-<% end %>

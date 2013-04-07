@@ -42,7 +42,6 @@ ua:
   cellphone_value_2: "(095) 240 81 74"
   work_time: "Ми працюємо"
   work_time_value: "з 8:00 до 23:00"
-  get_sales_as_file: "Звіт"
   about_us_text: "МахноПаб - центр безвладдя у Дніпропетровську.
                   Це твій простір свободи.
                   МахноПаб це місце де ти нічим не обмежений.
@@ -159,6 +158,7 @@ ua:
         seller_id: "Продавець"
         client_name: "Покупець"
         count: "Кількість"
+        report: "Звіт"
       ingredient:
         new: "Новий інгредієнт"
         create: "Створити інгредієнт"
@@ -173,10 +173,11 @@ ua:
         new: "Нове надходження"
         create: "Створити надходження"
         product_id: "Продукт"
-        incoming_price: "Ціна"
-        sale_price: ""
+        incoming_price: "Ціна надхожденния"
+        sale_price: "Ціна продажу"
         count: "Кількість"
         receiver_id: "Приймаючий надходження"
+        report: "Звіт"
     errors:
       messages:
         taken: "%{model} з таким ім'ям вже існує"
