@@ -1,3 +1,5 @@
+require 'writeexcel'
+
 class ArrivalsController < ApplicationController
   # GET /arrivals
   # GET /arrivals.json
@@ -79,5 +81,35 @@ class ArrivalsController < ApplicationController
       format.html { redirect_to arrivals_url }
       format.json { head :no_content }
     end
+  end
+
+  def download
+    @date_from = 7.day.ago
+    @date_to = DateTime.now
+    @arrivals = Arrival.where(:created_at => @date_from..@date_to)
+    file_name = "public/downloads/arrivals/#{DateTime.now}.xls"
+    workbook = WriteExcel.new file_name
+    worksheet = workbook.add_worksheet
+    format = workbook.add_format
+    format.set_bold
+    format.set_align('right')
+    worksheet.write 0, 1, t('activerecord.attributes.arrival.product_id'), format
+    worksheet.write 0, 2, t('activerecord.attributes.arrival.count'), format
+    worksheet.write 0, 3, t('activerecord.attributes.arrival.incoming_price'), format
+    worksheet.write 0, 4, t('activerecord.attributes.arrival.sale_price'), format
+    worksheet.write 0, 5, t('activerecord.attributes.arrival.receiver_id'), format
+    worksheet.write 0, 6, t(:created_at), format
+    @arrivals.each_with_index do |arrival, i|
+      row = i + 1
+      worksheet.write row, 1, Product.find(arrival.product_id).name
+      worksheet.write row, 2, arrival.count
+      worksheet.write row, 3, arrival.incoming_price
+      worksheet.write row, 4, arrival.sale_price
+      user = User.find(arrival.receiver_id)
+      worksheet.write row, 5, "#{user.last_name} #{user.name} #{user.middle_name}"
+      worksheet.write row, 6, I18n.localize(arrival.created_at, :format => :long)
+    end
+    workbook.close
+    send_file file_name
   end
 end

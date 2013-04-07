@@ -1,5 +1,7 @@
 <% if can? :create, Arrival %>
     <%= link_to (t 'activerecord.attributes.arrival.new'), new_arrival_path, class: 'btn btn-inverse' %>
+<% end %>
+<% if can? :manage, Arrival %>
     <%= link_to (t 'activerecord.attributes.arrival.report'), "arrivals/download", :class => 'btn btn-primary' %>
 <% end %>
 

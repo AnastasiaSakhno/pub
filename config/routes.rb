@@ -1,5 +1,7 @@
 Makhnopub::Application.routes.draw do
-  resources :arrivals
+  resources :arrivals do
+    get :download, :on => :collection
+  end
 
 
   resources :sales do

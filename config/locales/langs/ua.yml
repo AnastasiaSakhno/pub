@@ -21,6 +21,7 @@ ua:
   sign_out: "Вихід"
   sign_up: "Реєстрація"
   my_profile: "Мій профіль"
+  created_at: "Створено"
   language: "Мова"
   language_value: "Українська"
   title: "МахноПАБ"
@@ -173,10 +174,10 @@ ua:
         new: "Нове надходження"
         create: "Створити надходження"
         product_id: "Продукт"
-        incoming_price: "Ціна надхожденния"
+        incoming_price: "Ціна приходу"
         sale_price: "Ціна продажу"
         count: "Кількість"
-        receiver_id: "Приймаючий надходження"
+        receiver_id: "Приймаючий"
         report: "Звіт"
     errors:
       messages:
