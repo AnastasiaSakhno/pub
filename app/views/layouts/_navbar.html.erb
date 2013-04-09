@@ -34,7 +34,7 @@
           <li><a href="/about"><%= t :about %></a></li>
           <li><a href="/contact"><%= t :contact %></a></li>
           <li><%= link_to (t :menus), menus_path %></li>
-          <% if can? :manage, :all %>
+          <% if current_user && (current_user.has_role?(:employee) || current_user.has_role?(:admin)) %>
               <li class="dropdown" id="manage">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                   <%= t :managing %>
@@ -42,9 +42,6 @@
                 </a>
                 <%= render 'layouts/managing' %>
               </li>
-          <% end %>
-          <% if can? [:read, :create], Sale %>
-              <li><%= link_to (t :sales), sales_path %></li>
           <% end %>
         </ul>
       </div>

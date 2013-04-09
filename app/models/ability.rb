@@ -8,6 +8,8 @@ class Ability
       can :manage, :all
     elsif user.has_role? :employee
       can [:read, :create], Sale
+      can [:read, :create], Arrival
+      can :manage, [Poster, Slide]
     end
   end
 end

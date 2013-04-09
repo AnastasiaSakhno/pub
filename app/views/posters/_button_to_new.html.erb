@@ -1,3 +1,3 @@
-<% if can? :manage, :all %>
+<% if can? :create, Poster %>
     <%= button_to "#{Poster.human_attribute_name(:new)}", new_poster_path, :method => :get, :class => "btn btn-primary" %>
 <% end %>
