@@ -21,13 +21,7 @@ body {
     padding: 9px 0;
 }
 
-/*@media (min-width: 1200px) {*/
-    /*#navbar-top .container {*/
-        /*width:1170px;*/
-    /*}*/
-/*}*/
-
-pre#about-makhno-pre {
+pre {
     white-space: pre-wrap;       /* css-3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */

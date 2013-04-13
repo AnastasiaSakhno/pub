@@ -234,6 +234,7 @@ DEPENDENCIES
   gmaps4rails
   jquery-rails
   libv8 (~> 3.11.8)
+  mail
   mini_magick
   mysql2
   rails (= 3.2.11)

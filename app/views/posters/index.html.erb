@@ -1,10 +1,12 @@
 <div>
   <%= render :partial => "posters/button_to_new" %>
 
-  <% @posters.each do |poster| %>
-      <%= render :template => 'posters/show', :locals => {:poster => @poster = poster} %>
-      <% if @posters.last != poster %>
-          <hr/>
+  <% cache ('poster_partial') do %>
+      <% @posters.each do |poster| %>
+          <%= render :template => 'posters/show', :locals => {:poster => @poster = poster} %>
+          <% if @posters.last != poster %>
+              <hr/>
+          <% end %>
       <% end %>
   <% end %>
 
