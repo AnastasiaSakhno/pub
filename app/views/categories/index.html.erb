@@ -7,7 +7,6 @@
     <th></th>
     <% if can? :manage, Category %>
         <th></th>
-        <th></th>
     <% end %>
   </tr>
   </thead>
@@ -19,7 +18,6 @@
         <td><%= link_to (t :show), category, class: 'btn btn-mini' %></td>
         <% if can? :manage, Category %>
             <td><%= link_to (t :edit), edit_category_path(category), class: 'btn btn-mini btn-warning' %></td>
-            <td><%= button_to (t :destroy), category, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
         <% end %>
       </tr>
   <% end %>

@@ -32,7 +32,7 @@
         <td><%= arrival.count %></td>
         <% user = User.find(arrival.receiver_id) %>
         <td><%= "#{user.last_name} #{user.name} #{user.middle_name}" %></td>
-        <td><%= link_to 'Show', arrival %></td>
+        <td><%= link_to (t :show), arrival, class: 'btn btn-mini' %></td>
       </tr>
   <% end %>
   </tbody>

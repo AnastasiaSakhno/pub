@@ -11,10 +11,6 @@
     <th><%= t 'activerecord.attributes.product.amount_per_one' %></th>
     <th><%= t 'activerecord.attributes.product.measure' %></th>
     <th></th>
-    <% if can? :manage, Product %>
-        <th></th>
-        <th></th>
-    <% end %>
   </tr>
   </thead>
 
@@ -29,10 +25,6 @@
         <td><%= product.amount_per_one %></td>
         <td><%= product.measure %></td>
         <td><%= link_to (t :show), product, class: 'btn btn-mini' %></td>
-        <% if can? :manage, Product %>
-            <td><%= link_to (t :edit), edit_product_path(product), class: 'btn btn-mini btn-warning' %></td>
-            <td><%= button_to (t :destroy), product, method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %></td>
-        <% end %>
       </tr>
   <% end %>
   </tbody>
