@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
     session[:locale] = params[:locale] if params[:locale]
     I18n.locale = session[:locale] || I18n.default_locale
   end
+
+  Warden::Manager.after_authentication do |user, auth, opts|
+    UserMailer.logged_in(user, I18n.locale).deliver if User.employee? user
+  end
+
+  Warden::Manager.before_logout do |user, auth, opts|
+    UserMailer.logged_out(user, I18n.locale).deliver if User.employee? user
+  end
 end

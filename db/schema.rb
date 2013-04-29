@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407214727) do
+ActiveRecord::Schema.define(:version => 20130418212846) do
 
   create_table "arrivals", :force => true do |t|
     t.integer  "product_id"
     t.float    "incoming_price"
-    t.integer  "count"
+    t.float    "count"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.float    "sale_price"

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   rolify
   has_many :sales
-  after_create :add_default_role
+  after_create :init
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
@@ -19,7 +19,14 @@ class User < ActiveRecord::Base
 
   private
 
-  def add_default_role
+  def init
     self.roles << Role.find_by_name(:user)
+    UserMailer.welcome(self, I18n.locale).deliver
+  end
+
+  public
+
+  def self.employee? user
+    user.roles.include? Role.find_by_name(:employee)
   end
 end

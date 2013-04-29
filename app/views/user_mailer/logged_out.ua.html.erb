@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<pre>
+  <%= @user.last_name %> <%= @user.name %> <%= @user.middle_name %>
+  вийшов у <%= I18n.localize(DateTime.now, :format => :long) %>
+</pre>
+</body>
+</html>
