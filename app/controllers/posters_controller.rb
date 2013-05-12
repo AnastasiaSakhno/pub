@@ -1,6 +1,5 @@
 class PostersController < ApplicationController
   load_and_authorize_resource
-  caches_action :index
   cache_sweeper :poster_sweeper, :only => [:create, :update, :destroy]
 
   # GET /posters

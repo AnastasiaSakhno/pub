@@ -9,3 +9,4 @@
 Role.find_or_create_by_name(:name => :admin)
 Role.find_or_create_by_name(:name => :user)
 Role.find_or_create_by_name(:name => :employee)
+Role.find_or_create_by_name(:name => :newsmaker)

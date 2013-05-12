@@ -4,9 +4,9 @@ class Ability
   def initialize(user)
     can :read, [Category, Ingredient, Menu, Poster, Slide]
     user ||= User.new # guest user (not logged in)
-    if user.has_role? :admin
-      can :manage, :all
-    elsif user.has_role? :employee
+    can :manage, :all if user.admin?
+    can :manage, [Poster, Slide] if user.newsmaker?
+    if user.employee?
       can [:read, :create], Sale
       can [:read, :create], Arrival
       can :manage, [Poster, Slide]

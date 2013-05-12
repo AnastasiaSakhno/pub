@@ -12,7 +12,6 @@ class PosterSweeper < ActionController::Caching::Sweeper
   private
 
   def expire_cache_for(poster)
-    expire_page(:controller => 'posters', :action => 'index')
-    expire_fragment('poster_partial')
+    expire_fragment "poster_image##{poster.id}"
   end
 end

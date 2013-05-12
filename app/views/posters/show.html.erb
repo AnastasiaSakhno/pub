@@ -2,7 +2,9 @@
   <p class="lead"><u><%= @poster.title %></u></p>
   <strong><p><%= I18n.localize(@poster.approximate_date, :format => :short) %></p></strong>
   <% if @poster.url.present? %>
-      <%= image_tag @poster.url, :class => "img-rounded", :width => "100%" %>
+      <% cache ("poster_image##{@poster.id}") do %>
+          <%= image_tag @poster.url, :class => "img-rounded", :width => "100%" %>
+      <% end %>
   <% end %>
   <br/><br/>
 
@@ -25,7 +27,7 @@
       </div>
   <% end %>
 
-  <% if can? :manage, :all %>
+  <% if can? :manage, :Poster %>
       <%= link_to (t :edit), edit_poster_path(@poster), :class => "btn-small" %>
       <%= link_to (t :destroy), @poster, method: :delete, data: {confirm: (t :confirmation)}, :class => "btn-small" %>
   <% end %>

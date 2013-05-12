@@ -1,5 +1,6 @@
 class SlidesController < ApplicationController
   load_and_authorize_resource
+  cache_sweeper :slide_sweeper, :only => [:create, :update, :destroy]
 
   # GET /slides
   # GET /slides.json

@@ -26,7 +26,19 @@ class User < ActiveRecord::Base
 
   public
 
-  def self.employee? user
-    user.roles.include? Role.find_by_name(:employee)
+  def employee?
+    has_role? :employee
+  end
+
+  def admin?
+    has_role? :admin
+  end
+
+  def newsmaker?
+    has_role? :newsmaker
+  end
+
+  def manager?
+    employee? || admin? || newsmaker?
   end
 end
