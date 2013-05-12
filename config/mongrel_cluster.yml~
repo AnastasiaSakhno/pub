@@ -1,8 +1,0 @@
---- 
-log_file: log/mongrel.log
-address: 127.0.0.1
-pid_file: tmp/pids/mongrel.pid
-port: "5000"
-servers: 3
-environment: development
-cwd: /home/anastasia/anastasia/pub

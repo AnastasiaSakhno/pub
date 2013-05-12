@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   Warden::Manager.after_authentication do |user, auth, opts|
-    UserMailer.logged_in(user, I18n.locale).deliver if user.employee?
+    UserMailer.logged_in(user, I18n.locale).deliver if user.manager?
   end
 
   Warden::Manager.before_logout do |user, auth, opts|
-    UserMailer.logged_out(user, I18n.locale).deliver if user.employee?
+    UserMailer.logged_out(user, I18n.locale).deliver if user.manager?
   end
 end
