@@ -5,7 +5,7 @@
 </head>
 <body>
 <pre>
-  <%= @user.last_name %> <%= @user.name %> <%= @user.middle_name %>
+  <%= @user.last_name %> <%= @user.name %> <%= @user.middle_name %> (<%= @user.email %>)
   вийшов у <%= I18n.localize(DateTime.now, :format => :long) %>
 </pre>
 </body>

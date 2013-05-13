@@ -20,6 +20,7 @@
 /config/environments/*
 /public/downloads
 /public/uploads
+/tasks
 dbsettings.txt
-ping
+/socket_listening
 Capfile
