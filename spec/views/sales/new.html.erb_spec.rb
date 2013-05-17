@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe "sales/new" do
   before(:each) do
+    create_and_sign_in_admin
     menu = FactoryGirl.create(:menu)
     assign(:sale, stub_model(Sale,
-      :menu_id => 1,
+      :menu_id => menu.id,
       :price => 1.5
     ).as_new_record)
   end

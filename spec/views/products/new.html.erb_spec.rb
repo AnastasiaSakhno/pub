@@ -22,7 +22,6 @@ describe "products/new" do
       assert_select "input#product_description", :name => "product[description]"
       assert_select "input#product_incoming_price", :name => "product[incoming_price]"
       assert_select "input#product_sale_price", :name => "product[sale_price]"
-      assert_select "input#product_total_count", :name => "product[total_count]"
       assert_select "input#product_amount_per_one", :name => "product[amount_per_one]"
       assert_select "select#product_measure", :name => "product[measure]"
     end

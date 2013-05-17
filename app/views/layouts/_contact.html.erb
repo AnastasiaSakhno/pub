@@ -1,7 +1,7 @@
 <% cache ('contact_partial') do %>
     <div class="hero-unit">
       <div class="row">
-        <div class="span5">
+        <div>
           <address>
             <strong><%= t :address %></strong><br>
             <%= t :address_value %>
@@ -25,7 +25,7 @@
           </address>
         </div>
 
-        <div class="span7">
+        <div>
           <%=
               # first variant
               # render :template => 'locations/index', :locals => {:locations => @locations = Location.all.to_gmaps4rails}

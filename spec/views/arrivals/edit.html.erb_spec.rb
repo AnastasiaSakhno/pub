@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "arrivals/edit" do
   before(:each) do
-    load_seeds
     create_and_sign_in_admin
+    FactoryGirl.create(:product)
     @arrival = assign(:arrival, FactoryGirl.create(:arrival))
   end
 

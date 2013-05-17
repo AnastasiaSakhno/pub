@@ -31,8 +31,8 @@
         </ul>
         <ul class="nav menu">
           <li class="active"><a href="/home"><%= t :home %></a></li>
-          <li><a href="/about"><%= t :about %></a></li>
           <li><a href="/contact"><%= t :contact %></a></li>
+          <li><a href="/about"><%= t :about %></a></li>
           <li><%= link_to (t :menus), menus_path %></li>
           <% if current_user && current_user.manager? %>
               <li class="dropdown" id="manage">
