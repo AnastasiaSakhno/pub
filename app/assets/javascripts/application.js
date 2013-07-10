@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery_nested_form
 
 $(function () {
     initCarousel();
@@ -33,6 +34,26 @@ $(function () {
         $('#ingredient_menu_id').val(menu_id);
         $('#create-ingredient').modal('show');
     });
+
+    //--------------table headers always on the top-----------------
+    $("table.table").each(function() {
+        $(this).wrap("<div class=\"divTableWithFloatingHeader\" style=\"position:relative\"></div>");
+
+        var originalHeaderRow = $("tr:first", this)
+        originalHeaderRow.before(originalHeaderRow.clone());
+        var clonedHeaderRow = $("tr:first", this)
+
+        clonedHeaderRow.addClass("tableFloatingHeader");
+        clonedHeaderRow.css("position", "absolute");
+        clonedHeaderRow.css("top", "0px");
+        clonedHeaderRow.css("left", $(this).css("margin-left"));
+        clonedHeaderRow.css("visibility", "hidden");
+
+        originalHeaderRow.addClass("tableFloatingHeaderOriginal");
+    });
+    UpdateTableHeaders();
+    $(window).scroll(UpdateTableHeaders);
+    $(window).resize(UpdateTableHeaders);
 });
 
 function initCarousel(){
@@ -64,4 +85,33 @@ function setActive(el, active) {
 
 function scrollUp() {
     $("html, body").animate({ scrollTop:0 }, 2000);
+}
+
+/**
+ * table headers always on the top
+ */
+function UpdateTableHeaders() {
+    $("div.divTableWithFloatingHeader").each(function() {
+        var originalHeaderRow = $(".tableFloatingHeaderOriginal", this);
+        var floatingHeaderRow = $(".tableFloatingHeader", this);
+        var offset = $(this).offset();
+        var scrollTop = $(window).scrollTop() + 43;
+        if ((scrollTop > offset.top) && (scrollTop < offset.top + $(this).height())) {
+            floatingHeaderRow.css("visibility", "visible");
+            floatingHeaderRow.css("top", Math.min(scrollTop - offset.top, $(this).height() - floatingHeaderRow.height()) + "px");
+
+            // Copy cell widths from original header
+            $("th", floatingHeaderRow).each(function(index) {
+                var cellWidth = $("th", originalHeaderRow).eq(index).css('width');
+                $(this).css('width', cellWidth);
+            });
+
+            // Copy row width from whole table
+            floatingHeaderRow.css("width", $(this).css("width"));
+        }
+        else {
+            floatingHeaderRow.css("visibility", "hidden");
+            floatingHeaderRow.css("top", "0px");
+        }
+    });
 }

@@ -1,7 +1,7 @@
 <h1><%= t :users %></h1>
 <br/>
 
-<% if can? :manage, :User %>
+<% if can? :manage, User %>
     <% @users.each do |user| %>
         <%= render :template => 'users/show', :locals => {:user => @user = user} %>
         <%= link_to (t :show), user, class: 'btn btn-mini' %>

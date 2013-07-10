@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
   def manager?
     employee? || admin? || newsmaker?
   end
+
+  def info
+    "#{self.last_name} #{self.name} #{self.middle_name} (#{self.email})"
+  end
 end

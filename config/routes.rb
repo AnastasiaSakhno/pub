@@ -1,4 +1,12 @@
 Makhnopub::Application.routes.draw do
+  resources :statuses
+
+
+  resources :orders do
+    put :close, :on => :member
+  end
+
+
   resources :arrivals do
     get :download, :on => :collection
   end

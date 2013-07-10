@@ -93,3 +93,13 @@ end
 def regexp obj
   Regexp.new obj.to_s
 end
+
+def create_order
+  @order = FactoryGirl.build(:order)
+  @order.sales.build
+  sale = @order.sales.first
+  sale.menu_id = FactoryGirl.create(:menu).id
+  sale.order_id = @order.id
+  @order.save
+  @order
+end

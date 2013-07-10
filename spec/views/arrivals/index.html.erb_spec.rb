@@ -18,8 +18,7 @@ describe "arrivals/index" do
     assert_select "tr>td", :text => Product.find(@arrival1.product_id).name, :count => 2
     assert_select "tr>td", :text => @arrival1.incoming_price, :count => 2
     assert_select "tr>td", :text => @arrival1.sale_price, :count => 2
-    user = User.find(@arrival1.receiver_id)
-    assert_select "tr>td", :text => "#{user.last_name} #{user.name} #{user.middle_name}", :count => 2
+    assert_select "tr>td", :text => User.find(@arrival1.receiver_id).info, :count => 2
     assert_select "tr>td", :text => @arrival1.count, :count => 2
   end
 end

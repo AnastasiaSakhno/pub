@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418212846) do
+ActiveRecord::Schema.define(:version => 20130707204419) do
 
   create_table "arrivals", :force => true do |t|
     t.integer  "product_id"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(:version => 20130418212846) do
     t.string   "picture"
   end
 
+  create_table "orders", :force => true do |t|
+    t.integer  "seller_id"
+    t.string   "client_name"
+    t.datetime "datetime"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "table_number"
+    t.integer  "status_id"
+  end
+
   create_table "posters", :force => true do |t|
     t.string   "url"
     t.string   "title"
@@ -93,12 +103,10 @@ ActiveRecord::Schema.define(:version => 20130418212846) do
   create_table "sales", :force => true do |t|
     t.integer  "menu_id"
     t.float    "price"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.datetime "datetime"
-    t.integer  "seller_id"
-    t.string   "client_name"
-    t.integer  "count",       :default => 1
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "count",      :default => 1
+    t.integer  "order_id"
   end
 
   create_table "slides", :force => true do |t|
@@ -107,6 +115,12 @@ ActiveRecord::Schema.define(:version => 20130418212846) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

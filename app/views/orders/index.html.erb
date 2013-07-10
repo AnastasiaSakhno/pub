@@ -1,0 +1,49 @@
+<h1><%= t :orders %></h1>
+
+<% Status.all.each do |status| %>
+    <%
+       orders = Order.where(:status_id => status.id)
+       if !orders.empty?
+    %>
+        <p><%= t "activerecord.attributes.order.status.#{status.name}" %></p>
+        <table class="table table-striped">
+          <tr>
+            <th><%= t 'activerecord.attributes.order.seller_id' %></th>
+            <th><%= t 'activerecord.attributes.order.client_name' %></th>
+            <th><%= t 'activerecord.attributes.order.table_number' %></th>
+            <th><%= t 'activerecord.attributes.order.datetime' %></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <% if can? :destroy, Order %>
+                <th></th>
+            <% end %>
+          </tr>
+
+          <% orders.each do |order| %>
+              <tr>
+                <td><%= User.find(order.seller_id).info %></td>
+                <td><%= order.client_name %></td>
+                <td><%= order.table_number %></td>
+                <td><%= I18n.localize(order.datetime, :format => :long) %></td>
+                <td><%= link_to 'Show', order %></td>
+                <td>
+                  <% if can? :update, order %><%= link_to 'Edit', edit_order_path(order) %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if can? :close, order %><%= link_to 'Close', close_order_path(order), method: :put, data: {confirm: (t :confirmation)} %>
+                  <% end %>
+                </td>
+                <% if can? :destroy, Order %>
+                    <td><%= link_to 'Destroy', order, method: :delete, data: {confirm: (t :confirmation)} %></td>
+                <% end %>
+              </tr>
+          <% end %>
+        </table>
+    <% end %>
+<% end %>
+
+<br/>
+
+<%= link_to (t 'activerecord.attributes.order.new'), new_order_path %>

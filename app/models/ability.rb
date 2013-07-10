@@ -7,8 +7,8 @@ class Ability
     can :manage, :all if user.admin?
     can :manage, [Poster, Slide] if user.newsmaker?
     if user.employee?
-      can [:read, :create], Sale
-      can [:read, :create], Arrival
+      can [:read, :create], [Sale, Arrival, Order]
+      can [:update, :close], Order, :status_id => Status.find_by_name(:new).id
       can :manage, [Poster, Slide]
     end
   end

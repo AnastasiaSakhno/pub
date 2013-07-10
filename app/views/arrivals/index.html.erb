@@ -17,8 +17,7 @@
     <th><%= t 'activerecord.attributes.arrival.sale_price' %></th>
     <th><%= t 'activerecord.attributes.arrival.count' %></th>
     <th><%= t 'activerecord.attributes.arrival.receiver_id' %></th>
-    <th></th>
-    <th></th>
+    <th><%= t :created_at %></th>
     <th></th>
   </tr>
   </thead>
@@ -30,8 +29,8 @@
         <td><%= arrival.incoming_price %></td>
         <td><%= arrival.sale_price %></td>
         <td><%= arrival.count %></td>
-        <% user = User.find(arrival.receiver_id) %>
-        <td><%= "#{user.last_name} #{user.name} #{user.middle_name}" %></td>
+        <td><%= User.find(arrival.receiver_id).info %></td>
+        <td><%= I18n.localize(arrival.created_at, :format => :long) %></td>
         <td><%= link_to (t :show), arrival, class: 'btn btn-mini' %></td>
       </tr>
   <% end %>

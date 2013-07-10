@@ -21,6 +21,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'dalli'
 gem 'writeexcel'
+gem 'nested_form'
 
 
 # Gems used only for assets and not required

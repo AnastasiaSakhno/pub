@@ -1,0 +1,46 @@
+<p>
+  <b><%= t 'activerecord.attributes.order.seller_id' %>:</b>
+  <%= User.find(@order.seller_id).info %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.order.client_name' %>:</b>
+  <%= @order.client_name %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.order.table_number' %>:</b>
+  <%= @order.table_number %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.order.datetime' %>:</b>
+  <%= I18n.localize(@order.datetime, :format => :long) %>
+</p>
+
+<p>
+  <b><%= t :sales %>:</b>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= t "activerecord.attributes.sale.menu_id" %></th>
+    <th><%= t "activerecord.attributes.sale.count" %></th>
+    <th><%= t "activerecord.attributes.sale.price" %></th>
+  </tr>
+  </thead>
+  <tbody id="sales">
+  <% @order.sales.each do |sale| %>
+      <tr class="fields">
+        <td><%= Menu.find(sale.menu_id).name %></td>
+        <td><%= sale.count %></td>
+        <td><%= sale.price %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</p>
+
+<%= link_to (t :back), orders_path %>
+<% if can? :close, @order %>
+    | <%= link_to 'Close', close_order_path(@order), method: :put, data: {confirm: (t :confirmation)} %>
+<% end %>

@@ -1,12 +1,12 @@
 class Sale < ActiveRecord::Base
+  belongs_to :order
   belongs_to :menu
-  belongs_to :user, :foreign_key => :seller_id
   before_create :init, :debit_products
   before_destroy :restore_products
-  attr_accessible :menu_id, :datetime, :price, :seller_id, :client_name, :count
+  attr_accessible :menu_id, :price, :count, :order_id
 
   validates :menu_id, :presence => true
-  validates :seller_id, :presence => true
+  validates :order_id, :presence => true
   validates :count, :presence => true, :numericality => { :greater_than => 0 }
 
   scope :ordered, -> { order("created_at desc") }
@@ -14,16 +14,15 @@ class Sale < ActiveRecord::Base
   private
 
   def init
-    self.datetime ||= Time.zone.now if new_record?
     self.price ||= Menu.find(self.menu_id).price if new_record?
   end
 
   def debit_products
-    change_products {|product, ingredient| product.total_count -= product.amount_per_one * ingredient.amount * self.count}
+    change_products {|product, ingredient| product.total_count -= ingredient.amount * self.count / product.amount_per_one}
   end
 
   def restore_products
-    change_products {|product, ingredient| product.total_count += product.amount_per_one * ingredient.amount * self.count}
+    change_products {|product, ingredient| product.total_count += ingredient.amount * self.count / product.amount_per_one}
   end
 
   def change_products &block

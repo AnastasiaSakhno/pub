@@ -1,6 +1,8 @@
 require 'writeexcel'
 
 class ArrivalsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /arrivals
   # GET /arrivals.json
   def index

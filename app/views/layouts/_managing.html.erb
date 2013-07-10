@@ -17,10 +17,10 @@
   <% if can? :create, Menu %>
       <li><%= link_to (t :menus), '/menus/table' %></li>
   <% end %>
-  <% if can? :create, Sale %>
-      <li><%= link_to (t :sales), sales_path %></li>
-  <% end %>
   <% if can? :create, Arrival %>
       <li><%= link_to (t :arrivals), arrivals_path %></li>
+  <% end %>
+  <% if can? :create, Order %>
+      <li><%= link_to (t :orders), orders_path %></li>
   <% end %>
 </ul>

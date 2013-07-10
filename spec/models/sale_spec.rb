@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Sale do
   it { should belong_to(:menu) }
-  it { should belong_to(:user) }
+  it { should belong_to(:order) }
   it { should validate_presence_of(:menu_id) }
-  it { should validate_presence_of(:seller_id) }
+  it { should validate_presence_of(:order_id) }
   it { should validate_presence_of(:count) }
 
   describe "default" do
@@ -13,19 +13,6 @@ describe Sale do
       @sale = FactoryGirl.create(:sale)
       @sale.menu_id = @menu.id
       @sale.save
-    end
-
-    describe "datetime" do
-      it "should be today's datetime if it does not set" do
-        @sale.datetime.to_s.should eq(Time.zone.now.to_s)
-      end
-
-      it "should stay the same if it set" do
-        datetime = 1.day.ago
-        @sale.datetime = datetime
-        @sale.save
-        @sale.datetime.should eq(datetime)
-      end
     end
 
     describe "price" do
@@ -55,7 +42,8 @@ describe Sale do
       @sale.menu_id = @menu.id
       @sale.count = 5
       load_seeds
-      @sale.seller_id = FactoryGirl.create(:user).id
+      @order = create_order
+      @sale.order_id = @order.id
       @sale.save!
     end
 
@@ -79,12 +67,12 @@ describe Sale do
   private
 
   def check_product_debit product, ingredient, sale
-    Product.find(product.id).total_count.should eq(product.total_count - product.amount_per_one * ingredient.amount * sale.count)
+    Product.find(product.id).total_count.should eq(product.total_count - ingredient.amount * sale.count / product.amount_per_one)
   end
 
 
   def check_product_restore product, product_count, ingredient, sale
-    Product.find(product.id).total_count.should eq(product_count + product.amount_per_one * ingredient.amount * sale.count)
+    Product.find(product.id).total_count.should eq(product_count + ingredient.amount * sale.count / product.amount_per_one)
   end
 
   def create_product measure

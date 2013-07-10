@@ -1,0 +1,65 @@
+<%= nested_form_for @order do |f| %>
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :table_number %>
+      <br/>
+      <%= f.text_field :table_number, :style => "background-color : #ff6" %>
+    </div>
+    <div class="field">
+      <%= f.label :seller_id %>
+      <br/>
+      <%= f.select :seller_id, options_from_collection_for_select(User.find(:all,
+                                                                            :joins => "JOIN users_roles ON users_roles.user_id = users.id
+                                                                          JOIN roles ON roles.name in ('employee', 'admin') AND roles.id = users_roles.role_id",
+                                                                            :select => "users.*"), "id", "email", current_user ? current_user.id : nil), :include_blank => true %>
+    </div>
+    <div class="field">
+      <%= f.label :client_name %>
+      <br/>
+      <%= f.text_field :client_name %>
+    </div>
+    <% if can? :manage, Order %>
+        <div class="field">
+          <%= f.label :datetime %>
+          <br/>
+          <%= f.datetime_select :datetime %>
+        </div>
+    <% end %>
+
+    <p><%= f.link_to_add (t "activerecord.attributes.sale.new"), :sales, :data => {:target => "#sales"} %></p>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t "activerecord.attributes.sale.menu_id" %></th>
+        <th><%= t "activerecord.attributes.sale.count" %></th>
+        <th><%= t "activerecord.attributes.sale.price" %></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody id="sales">
+      <%= f.fields_for :sales, :wrapper => false do |sale_form| %>
+          <tr class="fields">
+            <td><%= sale_form.collection_select :menu_id, Menu.all(:order => :name), :id, :name, :include_blank => true %></td>
+            <td><%= sale_form.number_field :count %></td>
+            <td><%= sale_form.text_field :price %></td>
+            <td><%= sale_form.link_to_remove (t :destroy) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-success' %>
+    </div>
+<% end %>

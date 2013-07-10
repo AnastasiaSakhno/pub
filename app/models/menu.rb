@@ -4,6 +4,7 @@ class Menu < ActiveRecord::Base
   has_many :ingredients
   has_many :products, :through => :ingredients
   has_many :sales
+  has_many :orders, :through => :sales
 
   validates :name, :presence => true
   validates :category_id, :presence => true
