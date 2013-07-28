@@ -4,7 +4,6 @@ describe Sale do
   it { should belong_to(:menu) }
   it { should belong_to(:order) }
   it { should validate_presence_of(:menu_id) }
-  it { should validate_presence_of(:order_id) }
   it { should validate_presence_of(:count) }
 
   describe "default" do
@@ -67,12 +66,16 @@ describe Sale do
   private
 
   def check_product_debit product, ingredient, sale
-    Product.find(product.id).total_count.should eq(product.total_count - ingredient.amount * sale.count / product.amount_per_one)
+    current_total_count = Product.find(product.id).total_count.round(3)
+    calculated_current_count = (product.total_count - ingredient.amount * sale.count / product.amount_per_one).round(3)
+    current_total_count.should eq(calculated_current_count)
   end
 
 
   def check_product_restore product, product_count, ingredient, sale
-    Product.find(product.id).total_count.should eq(product_count + ingredient.amount * sale.count / product.amount_per_one)
+    current_total_count = Product.find(product.id).total_count.round(3)
+    calculated_current_count = (product_count + ingredient.amount * sale.count / product.amount_per_one).round(3)
+    current_total_count.should eq(calculated_current_count)
   end
 
   def create_product measure

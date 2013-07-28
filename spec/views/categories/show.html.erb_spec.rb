@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "categories/show" do
   before(:each) do
+    create_and_sign_in_admin
     @category = assign(:category, stub_model(Category,
       :name => "Name"
     ))

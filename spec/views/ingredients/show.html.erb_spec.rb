@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "ingredients/show" do
   before(:each) do
+    create_and_sign_in_admin
     @ingredient = assign(:ingredient, stub_model(Ingredient,
       :product_id => 1,
       :menu_id => 2,

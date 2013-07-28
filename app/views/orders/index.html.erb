@@ -26,9 +26,10 @@
                 <td><%= order.client_name %></td>
                 <td><%= order.table_number %></td>
                 <td><%= I18n.localize(order.datetime, :format => :long) %></td>
-                <td><%= link_to 'Show', order %></td>
+                <td><%= link_to (t :show), order %></td>
+                <td><%= link_to 'Download', download_order_path(order) %></td>
                 <td>
-                  <% if can? :update, order %><%= link_to 'Edit', edit_order_path(order) %>
+                  <% if can? :update, order %><%= link_to (t :edit), edit_order_path(order) %>
                   <% end %>
                 </td>
                 <td>
@@ -36,7 +37,7 @@
                   <% end %>
                 </td>
                 <% if can? :destroy, Order %>
-                    <td><%= link_to 'Destroy', order, method: :delete, data: {confirm: (t :confirmation)} %></td>
+                    <td><%= link_to (t :destroy), order, method: :delete, data: {confirm: (t :confirmation)} %></td>
                 <% end %>
               </tr>
           <% end %>

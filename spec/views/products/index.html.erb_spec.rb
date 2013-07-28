@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "products/index" do
   before(:each) do
+    create_and_sign_in_admin
     @product1 = FactoryGirl.create(:product)
     @product2 = FactoryGirl.create(:product)
     assign(:products, [

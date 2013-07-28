@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "ingredients/index" do
   before(:each) do
+    create_and_sign_in_admin
     @menu = FactoryGirl.create(:menu)
     @product = FactoryGirl.create(:product)
     @amount = 1.5

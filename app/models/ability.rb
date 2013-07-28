@@ -6,9 +6,10 @@ class Ability
     user ||= User.new # guest user (not logged in)
     can :manage, :all if user.admin?
     can :manage, [Poster, Slide] if user.newsmaker?
+    cannot [:update, :close], Order, :status_id => Status.find_by_name(:closed).id
     if user.employee?
       can [:read, :create], [Sale, Arrival, Order]
-      can [:update, :close], Order, :status_id => Status.find_by_name(:new).id
+      can :download, Order
       can :manage, [Poster, Slide]
     end
   end

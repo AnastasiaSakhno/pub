@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "products/show" do
   before(:each) do
+    create_and_sign_in_admin
     @product = assign(:product, stub_model(Product,
       :name => "Name",
       :description => "Description",

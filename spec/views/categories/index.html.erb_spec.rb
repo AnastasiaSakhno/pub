@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "categories/index" do
   before(:each) do
+    create_and_sign_in_admin
     assign(:categories, [
       stub_model(Category,
         :name => "Name"

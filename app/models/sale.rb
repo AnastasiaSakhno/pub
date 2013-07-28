@@ -6,7 +6,6 @@ class Sale < ActiveRecord::Base
   attr_accessible :menu_id, :price, :count, :order_id
 
   validates :menu_id, :presence => true
-  validates :order_id, :presence => true
   validates :count, :presence => true, :numericality => { :greater_than => 0 }
 
   scope :ordered, -> { order("created_at desc") }
