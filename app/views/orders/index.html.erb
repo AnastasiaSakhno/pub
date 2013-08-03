@@ -12,12 +12,6 @@
             <th><%= t 'activerecord.attributes.order.client_name' %></th>
             <th><%= t 'activerecord.attributes.order.table_number' %></th>
             <th><%= t 'activerecord.attributes.order.datetime' %></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <% if can? :destroy, Order %>
-                <th></th>
-            <% end %>
           </tr>
 
           <% orders.each do |order| %>
@@ -27,15 +21,13 @@
                 <td><%= order.table_number %></td>
                 <td><%= I18n.localize(order.datetime, :format => :long) %></td>
                 <td><%= link_to (t :show), order %></td>
-                <td><%= link_to 'Download', download_order_path(order) %></td>
-                <td>
-                  <% if can? :update, order %><%= link_to (t :edit), edit_order_path(order) %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if can? :close, order %><%= link_to 'Close', close_order_path(order), method: :put, data: {confirm: (t :confirmation)} %>
-                  <% end %>
-                </td>
+                <td><%= link_to (t 'activerecord.attributes.order.download'), download_order_path(order), :target => "_blank" %></td>
+                <% if can? :update, order %>
+                    <td><%= link_to (t :edit), edit_order_path(order) %></td>
+                <% end %>
+                <% if can? :close, order %>
+                    <td><%= link_to (t 'activerecord.attributes.order.close'), close_order_path(order), method: :put, data: {confirm: (t :confirmation)} %></td>
+                <% end %>
                 <% if can? :destroy, Order %>
                     <td><%= link_to (t :destroy), order, method: :delete, data: {confirm: (t :confirmation)} %></td>
                 <% end %>

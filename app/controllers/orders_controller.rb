@@ -107,7 +107,7 @@ class OrdersController < ApplicationController
   def download
     @order = Order.find(params[:id])
 
-    file_name = "public/downloads/orders/#{@order.table_number}_#{DateTime.now}.xls"
+    file_name = "public/downloads/orders/#{@order.id}_#{@order.table_number}_#{DateTime.now}.xls"
     workbook = WriteExcel.new(file_name, :font => 'Roman', :size => 6)
     worksheet = workbook.add_worksheet
     brf = workbook.add_format
@@ -118,9 +118,10 @@ class OrdersController < ApplicationController
     worksheet.set_row(0, 40)
     worksheet.set_column('A:A', 20)
     worksheet.set_column('B:B', 4)
+    worksheet.set_column('C:D', 9.5)
     worksheet.insert_image('A1',
                            File.join('public', 'MakhnoPub_logo.png'),
-                           44, 3, 0.2, 0.2
+                           50, 3, 0.2, 0.2
     )
     worksheet.write 1, 0, t('activerecord.attributes.order.id'), brf
     worksheet.write 1, 1, @order.id, bf
@@ -151,6 +152,7 @@ class OrdersController < ApplicationController
     worksheet.merge_range("A#{bottom_row}:D#{bottom_row + 1}", t('activerecord.attributes.order.bottom_text'), vjf)
 
     workbook.close
-    send_file file_name
+    #send_file file_name
+    render partial: 'orders/print'
   end
 end

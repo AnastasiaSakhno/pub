@@ -168,7 +168,7 @@ ua:
         price: "Ціна"
         count: "Кількість"
         report: "Звіт"
-        total_price: Всього
+        total_price: Сума
       ingredient:
         new: "Новий інгредієнт"
         create: "Створити інгредієнт"
@@ -198,7 +198,9 @@ ua:
         table_number: Стіл №
         id: Рахунок
         welcome: Ласкаво просимо ще!
-        bottom_text: Станьте нашим постійним гостем та пройдіть таємну посвяту у манховці!
+        bottom_text: Приєднуйтесь до Армії Махно та отримуйте особисту картку махновця!
+        close: Закрити
+        download: Друкувати
         status:
           new: Нові замовлення
           closed: Закриті замовлення
@@ -255,6 +257,7 @@ ua:
       default: "%a, %d %b %Y %H:%M:%S %z"
       short: "%d %b %H:%M"
       long: "%d %b %Y, %H:%M"
+      standart: "%d %b, %H:%M"
     am: "am"
     pm: "pm"
 

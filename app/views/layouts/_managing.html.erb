@@ -8,14 +8,14 @@
   <% if can? :create, Slide %>
       <li><%= link_to (t :slides), slides_path %></li>
   <% end %>
-  <% if can? :create, Product %>
-      <li><%= link_to (t :products), products_path %></li>
-  <% end %>
   <% if can? :create, Category %>
       <li><%= link_to (t :categories), categories_path %></li>
   <% end %>
   <% if can? :create, Menu %>
       <li><%= link_to (t :menus), '/menus/table' %></li>
+  <% end %>
+  <% if can? :create, Product %>
+      <li><%= link_to (t :products), products_path %></li>
   <% end %>
   <% if can? :create, Arrival %>
       <li><%= link_to (t :arrivals), arrivals_path %></li>
