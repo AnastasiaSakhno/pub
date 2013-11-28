@@ -1,4 +1,9 @@
 <p>
+  <b><%= t 'activerecord.attributes.order.status_id' %>:</b>
+  <%= t "activerecord.attributes.order.status.#{Status.find(@order.status_id).name}" %>
+</p>
+
+<p>
   <b><%= t 'activerecord.attributes.order.seller_id' %>:</b>
   <%= User.find(@order.seller_id).info %>
 </p>
@@ -16,6 +21,11 @@
 <p>
   <b><%= t 'activerecord.attributes.order.datetime' %>:</b>
   <%= I18n.localize(@order.datetime, :format => :long) %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.order.statistic.sum' %>:</b>
+  <%= Sale.where(order_id: @order.id).select("sum(count*price) as 'order_sum'").first.order_sum %>
 </p>
 
 <p>

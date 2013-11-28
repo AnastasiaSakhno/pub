@@ -1,0 +1,26 @@
+<h1><%= t 'activerecord.attributes.order.statistic.daily_amounts' %></h1>
+
+<%= link_to (t :back), orders_path %>
+<br/><br/>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= t 'activerecord.attributes.order.statistic.date' %></th>
+    <th><%= t 'activerecord.attributes.order.statistic.unit_count' %></th>
+    <th><%= t 'activerecord.attributes.order.statistic.sum' %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @daily_amounts.each do |order| %>
+      <tr>
+        <td><%= I18n.localize(order.date, :format => :short) %></td>
+        <td><%= order.count %></td>
+        <td><%= order.day_sum %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>
+
+<%= link_to (t :back), orders_path %>

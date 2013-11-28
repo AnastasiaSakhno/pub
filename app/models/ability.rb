@@ -10,6 +10,7 @@ class Ability
     if user.employee?
       can [:read, :create], [Sale, Arrival, Order]
       can :download, Order
+      can [:update, :close], Order, :status_id => Status.find_by_name(:new).id
       can :manage, [Poster, Slide]
     end
   end

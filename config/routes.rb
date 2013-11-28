@@ -5,6 +5,7 @@ Makhnopub::Application.routes.draw do
   resources :orders do
     put :close, :on => :member
     get :download, :on => :member
+    get :statistic, :on => :collection
   end
 
 

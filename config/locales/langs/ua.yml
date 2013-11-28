@@ -4,6 +4,7 @@ ua:
   about: "Туточки про Махно"
   contact: "Осьочки наші контакти"
   managing: "Керування"
+  partners: "Наші партнери:"
   users: "Користувачі"
   posters: "Афіши"
   slides: "Слайди"
@@ -168,7 +169,7 @@ ua:
         price: "Ціна"
         count: "Кількість"
         report: "Звіт"
-        total_price: Сума
+        total_price: Всього
       ingredient:
         new: "Новий інгредієнт"
         create: "Створити інгредієнт"
@@ -194,6 +195,7 @@ ua:
         edit: "Редагування замовлення"
         datetime: "Дата та час"
         seller_id: "Продавець"
+        status_id: Статус
         client_name: "Покупець"
         table_number: Стіл №
         id: Рахунок
@@ -201,7 +203,16 @@ ua:
         bottom_text: Приєднуйтесь до Армії Махно та отримуйте особисту картку махновця!
         close: Закрити
         download: Друкувати
+        statistic:
+          title: Статистика
+          daily_amounts: Суми по днях
+          sum: Сума
+          unit_count: Продано одиниць
+          date: Дата
         status:
+          new: Нове замовлення
+          closed: Закрите замовлення
+        statuses:
           new: Нові замовлення
           closed: Закриті замовлення
 

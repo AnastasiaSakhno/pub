@@ -102,6 +102,22 @@ class OrdersController < ApplicationController
     end
   end
 
+  # GET /orders/statistic
+  # GET /orders/statistic.json
+  def statistic
+    @daily_amounts = Order
+    .joins(:sales)
+    .where(:status_id => Status.find_by_name(:closed).id)
+    .select("date(orders.created_at) as 'date', sum(count) as 'count', sum(count*price) as 'day_sum'")
+    .order("date(orders.created_at) desc")
+    .group("date(orders.created_at)")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @orders }
+    end
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def download

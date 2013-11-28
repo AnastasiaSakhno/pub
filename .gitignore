@@ -17,6 +17,7 @@
 /.idea
 /config/database.yml
 /config/deploy.rb
+/config/initializers/*
 /config/environments/*
 /public/downloads
 /public/uploads

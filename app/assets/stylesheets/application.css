@@ -32,3 +32,20 @@ pre {
 th {
     background-color: lightgrey;
 }
+
+.with-my-friends-title {
+    margin: 0 auto;
+    position: relative;
+    top: 5px;
+    text-transform: none;
+    font-weight: bold;
+}
+
+.span-middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.partner-text {
+    font-size: 13px;
+}

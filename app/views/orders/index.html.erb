@@ -1,17 +1,24 @@
 <h1><%= t :orders %></h1>
+<%= link_to (t 'activerecord.attributes.order.new'), new_order_path %>
+<%= link_to (t 'activerecord.attributes.order.statistic.title'), statistic_orders_path %>
+<br/><br/>
 
 <% Status.all.each do |status| %>
     <%
-       orders = Order.where(:status_id => status.id)
+       orders = Order.where(:status_id => status.id).order("created_at desc")
        if !orders.empty?
     %>
-        <p><%= t "activerecord.attributes.order.status.#{status.name}" %></p>
+        <p><%= t "activerecord.attributes.order.statuses.#{status.name}" %></p>
         <table class="table table-striped">
           <tr>
             <th><%= t 'activerecord.attributes.order.seller_id' %></th>
             <th><%= t 'activerecord.attributes.order.client_name' %></th>
             <th><%= t 'activerecord.attributes.order.table_number' %></th>
             <th><%= t 'activerecord.attributes.order.datetime' %></th>
+            <th><%= t 'activerecord.attributes.order.statistic.sum' %></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
 
           <% orders.each do |order| %>
@@ -20,6 +27,7 @@
                 <td><%= order.client_name %></td>
                 <td><%= order.table_number %></td>
                 <td><%= I18n.localize(order.datetime, :format => :long) %></td>
+                <td><%= Sale.where(order_id: order.id).select("sum(count*price) as 'order_sum'").first.order_sum %></td>
                 <td><%= link_to (t :show), order %></td>
                 <td><%= link_to (t 'activerecord.attributes.order.download'), download_order_path(order), :target => "_blank" %></td>
                 <% if can? :update, order %>
@@ -40,3 +48,5 @@
 <br/>
 
 <%= link_to (t 'activerecord.attributes.order.new'), new_order_path %>
+<%= link_to (t 'activerecord.attributes.order.statistic.title'), statistic_orders_path %>
+</div>
