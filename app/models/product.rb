@@ -17,4 +17,12 @@ class Product < ActiveRecord::Base
   def init
     self.total_count ||= 0 if new_record?
   end
+
+  def self.clear
+    ProductMailer.clear_products(User.current_user, I18n.locale).deliver
+    Product.all.each do |product|
+      product.total_count = 0
+      product.save!
+    end
+  end
 end

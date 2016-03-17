@@ -14,9 +14,10 @@
 
           <address>
             <strong><%= t :phone %></strong><br>
-            <abbr title="<%= t :phone_type_m_title %>"><%= t :phone_type_m %>:</abbr> <%= t :cellphone_value_1 %>
-            <br/>
-            <abbr title="<%= t :phone_type_m_title %>"><%= t :phone_type_m %>:</abbr> <%= t :cellphone_value_2 %>
+            <% 3.times do |i| %>
+              <abbr title="<%= t :phone_type_m_title %>"><%= t :phone_type_m %>:</abbr> <%= t "cellphone_value_#{i+1}" %>
+              <br/>
+            <% end %>
           </address>
 
           <address>

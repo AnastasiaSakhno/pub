@@ -1,0 +1,11 @@
+<div class="well">
+      <% cache ("menu_page_image##{@menu_page.id}") do %>
+          <%= image_tag @menu_page.picture, :class => "img-rounded", :width => "100%" %>
+      <% end %>
+  <br/><br/>
+
+  <% if can? :manage, :MenuPage %>
+      <%= link_to (t :edit), edit_menu_page_path(@menu_page), :class => "btn-small" %>
+      <%= link_to (t :destroy), @menu_page, method: :delete, data: {confirm: (t :confirmation)}, :class => "btn-small" %>
+  <% end %>
+</div>

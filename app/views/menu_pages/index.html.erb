@@ -1,0 +1,14 @@
+<div>
+  <%= render :partial => "menu_pages/button_to_new" %>
+
+  <% @menu_pages.each do |menu_page| %>
+      <%= render :template => 'menu_pages/show', :locals => {:menu_page => @menu_page = menu_page} %>
+      <% if @menu_pages.last != menu_page %>
+          <hr/>
+      <% end %>
+  <% end %>
+
+  <% if !@menu_pages.blank? %>
+      <%= render :partial => "menu_pages/button_to_new" %>
+  <% end %>
+</div>

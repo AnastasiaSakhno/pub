@@ -1,3 +1,9 @@
+<% if !(t :important_message).blank? %>
+  <div class="alert alert-danger" role="alert">
+    <%= t :important_message %>
+  </div>
+<% end %>
+
 <div class="hero-unit">
   <%= render :partial => "layouts/slide", :locale => {:slides => @slides = Slide.ordered_slides} %>
 </div>

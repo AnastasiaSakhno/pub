@@ -1,0 +1,32 @@
+#!/bin/bash
+
+RESULT_FILE=${HOME}/tmp/socket_listenning
+echo ${RESULT_FILE}
+exec 4> ${RESULT_FILE}
+while true
+do
+	echo "$(date)" >&4
+	RESULT=$(ps x | grep :60127 | grep thin)
+#	RESULT=$(ps x | grep 'thin -d -p 8000' | grep ruby)
+	echo ${RESULT} >&4
+	echo ${RESULT}
+	if [[ ! -z $RESULT ]]; then
+		echo 'ok' >&4
+	else
+		echo 'error' >&4
+#		init.d/mongrel restart production >&4
+		/usr/sbin/start-stop-daemon --start \
+		               --exec $HOME/.gems/bin/thin -- \
+			       -d \
+			       -a 195.234.4.50 \
+			       -p 60127 \
+			       --max-persistent-conns 50 \
+			       -P /home/virtwww/w_makhnopub-dp-ua_1fddcf2b/logs_ror/ror_w_makhnopub-dp-ua_1fddcf2b.pid \
+			       -l /home/virtwww/w_makhnopub-dp-ua_1fddcf2b/logs_ror/ror_`date "+%y-%m-%d"`.log \
+			       -c /home/virtwww/w_makhnopub-dp-ua_1fddcf2b/http \
+			       -e production \
+			       start
+#		rails s thin -d -p 8000 >&4
+	fi
+	sleep 60
+done

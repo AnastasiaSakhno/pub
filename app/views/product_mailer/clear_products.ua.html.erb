@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<p><%= "#{@user.name} #{@user.middle_name} #{@user.last_name} (#{@user.email})" %> очистив продукти!</p>
+
+<p>На момент до очищення у наявності були такі продукти:</p>
+
+<table>
+  <tr>
+    <th><%= t 'activerecord.attributes.product.name' %></th>
+    <th><%= t 'activerecord.attributes.product.description' %></th>
+    <th><%= t 'activerecord.attributes.product.incoming_price' %></th>
+    <th><%= t 'activerecord.attributes.product.sale_price' %></th>
+    <th><%= t 'activerecord.attributes.product.total_count' %></th>
+    <th><%= t 'activerecord.attributes.product.amount_per_one' %></th>
+    <th><%= t 'activerecord.attributes.product.measure' %></th>
+  </tr>
+
+  <% @products.each do |product| %>
+      <% if product.total_count != 0 %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.incoming_price %></td>
+            <td><%= product.sale_price %></td>
+            <td><%= product.total_count %></td>
+            <td><%= product.amount_per_one %></td>
+            <td><%= product.measure %></td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+
+<br>
+
+</body>
+</html>

@@ -1,1 +1,2 @@
-<%= render :template => 'posters/index', :locale => {:posters => @posters = Poster.ordered_posters} %>
+<%= render :template => 'posters/index', :locale => {:posters => @posters = Poster.future_ordered_posters} %>
+<%= link_to (t 'show_all'), posters_path %>

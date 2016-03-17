@@ -1,24 +1,21 @@
 Makhnopub::Application.routes.draw do
-  resources :statuses
-
 
   resources :orders do
     put :close, :on => :member
     get :download, :on => :member
     get :statistic, :on => :collection
   end
-
-
   resources :arrivals do
     get :download, :on => :collection
   end
-
-
   resources :sales do
     get :download, :on => :collection
   end
   resources :menus do
     get :table, :on => :collection
+  end
+  resources :products do
+    put :clear, :on => :collection
   end
 
 
@@ -27,8 +24,9 @@ Makhnopub::Application.routes.draw do
 
   resources :categories
   resources :posters
-  resources :products
   resources :slides
+  resources :menu_pages
+  resources :statuses
   #resources :locations
 
   devise_for :users

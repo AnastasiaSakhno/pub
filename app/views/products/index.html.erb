@@ -1,5 +1,12 @@
 <h1><%= t :products %></h1>
 
+<% if can? :manage, Product %>
+    <%= link_to (t 'activerecord.attributes.product.new'), new_product_path, class: 'btn btn-inverse' %>
+    <%= link_to (t 'activerecord.attributes.product.clear'), clear_products_path, method: :put, data: {confirm: (t :confirmation)} , class: 'btn btn-inverse' %>
+<% end %>
+
+<br/><br/>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -29,9 +36,3 @@
   <% end %>
   </tbody>
 </table>
-
-<br/>
-
-<% if can? :manage, Product %>
-    <%= link_to (t 'activerecord.attributes.product.new'), new_product_path, class: 'btn btn-inverse' %>
-<% end %>

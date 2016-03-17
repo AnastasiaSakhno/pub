@@ -45,4 +45,16 @@ class User < ActiveRecord::Base
   def info
     "#{self.last_name} #{self.name} #{self.middle_name} (#{self.email})"
   end
+
+  def after_database_authentication
+    User.current_user=self
+  end
+
+  def self.current_user
+    Thread.current[:current_user]
+  end
+
+  def self.current_user=(usr)
+    Thread.current[:current_user] = usr
+  end
 end

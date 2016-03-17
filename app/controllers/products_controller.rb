@@ -81,4 +81,14 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # PUT /products
+  def clear
+    Product.clear
+
+    respond_to do |format|
+      format.html { redirect_to products_url, notice: (t 'activerecord.attributes.product.cleared') }
+      format.json { head :no_content }
+    end
+  end
 end

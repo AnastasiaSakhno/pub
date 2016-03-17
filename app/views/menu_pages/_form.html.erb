@@ -1,0 +1,10 @@
+<%= form_for(@menu_page) do |f| %>
+    <div><%= f.label :picture %>
+      <br/>
+      <%= f.file_field :picture %>
+      <%= f.hidden_field :picture_cache %>
+    </div>
+    <div class="actions">
+      <%= f.submit "#{t :continue}" %>
+    </div>
+<% end %>

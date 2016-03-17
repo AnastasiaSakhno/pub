@@ -1,0 +1,3 @@
+<% if can? :create, MenuPage %>
+    <%= button_to "#{MenuPage.human_attribute_name(:new)}", new_menu_page_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>
