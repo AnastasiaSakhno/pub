@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "arrivals/index" do
+describe "arrivals/fill" do
   before(:each) do
     load_seeds
     create_and_sign_in_admin

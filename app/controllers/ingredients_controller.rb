@@ -6,7 +6,7 @@ class IngredientsController < ApplicationController
     @ingredients = Ingredient.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # fillhtml.erb
       format.json { render json: @ingredients }
     end
   end

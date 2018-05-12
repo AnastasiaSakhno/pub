@@ -1,20 +1,23 @@
-<%= form_tag('articles', method: :get, remote: true) do %>
-    <div class="field">
-      <%= label_tag :cast_id %><br/>
-      <%= select_tag :cast_id, options_from_collection_for_select(Cast.all, :id, :name, cast.try(:id)),
-                     {data: {remote: true,
-                             url: articles_path},
-                      include_blank: true
-                     }
-      %>
+<%= form_tag('', method: :get, remote: true) do %>
+    <div class='row'>
+      <div class='span3'>
+        <%= select_tag :cast_id, options_from_collection_for_select(Cast.all, :id, :name, @cast.try(:id)),
+                       {
+                           data: { remote: true, url: admin_materials_path },
+                           prompt: t('activerecord.attributes.cast.choose')
+                       }
+        %>
+      </div>
+      <div class='span9' id='material_name'>
+        <%= render 'admin/materials/filter', cast: @cast %>
+      </div>
+    </div>
 
-    </div>
-    <div id="materials_filter">
-      <%= render 'materials_filter' %>
-    </div>
+    <%= submit_tag (t :filter), class: 'btn btn-primary' %>
+    <%= link_to (t :reset_filters), admin_materials_path(cast_id: ''), remote: true, class: 'btn' %>
 
 <% end %>
 
-<div id="articles">
+<div id='articles'>
   <%= render 'articles' %>
 </div>

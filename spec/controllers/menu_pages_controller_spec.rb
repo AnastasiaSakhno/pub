@@ -30,10 +30,10 @@ describe MenuPagesController do
   # MenuPagesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
+  describe "GET fill" do
     it "assigns all menu_pages as @menu_pages" do
       menu_page = MenuPage.create! valid_attributes
-      get :index, {}, valid_session
+      get :fill, {}, valid_session
       assigns(:menu_pages).should eq([menu_page])
     end
   end

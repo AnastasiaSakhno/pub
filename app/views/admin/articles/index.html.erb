@@ -1,0 +1,25 @@
+<h4><%= t 'articles' %></h4>
+
+<table class="table">
+  <tr>
+    <th><%= t 'activerecord.attributes.article.name' %></th>
+    <th><%= t 'activerecord.attributes.article.desc' %></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @material.articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.name, admin_cast_material_article_path(@cast, @material, article) %></td>
+        <td><%= article.desc %></td>
+        <% if can? :manage, Article %>
+            <td><%= link_to (t :edit), edit_admin_cast_material_article_path(@cast, @material, article) %></td>
+            <td><%= link_to (t :destroy), admin_cast_material_article_path(@cast, @material, article), method: :delete, data: {confirm: (t :confirmation)}, :class => "btn-small" %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to (t 'activerecord.attributes.article.new'), new_admin_cast_material_article_path(@cast, @material) %>

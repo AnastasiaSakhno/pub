@@ -11,7 +11,7 @@ class Ability
       can [:read, :create], [Sale, Arrival, Order]
       can :download, Order
       can [:update, :close], Order, :status_id => Status.find_by_name(:new).id
-      can :manage, [Poster, Slide]
+      can :manage, [Poster, Slide, Cast, Material, Article]
     end
   end
 end

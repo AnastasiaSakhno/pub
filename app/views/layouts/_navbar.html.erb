@@ -33,6 +33,7 @@
           <li><a href="/contact"><%= t :contact %></a></li>
           <li><a href="/about"><%= t :about %></a></li>
           <li><%= link_to (t :menus), menu_pages_path %></li>
+          <li><%= link_to (t :articles_in_menu), articles_path %></li>
           <% if current_user && current_user.manager? %>
               <li class="dropdown" id="manage">
                 <a class="dropdown-toggle" data-toggle="dropdown">
@@ -41,9 +42,6 @@
                 </a>
                 <%= render 'layouts/managing' %>
               </li>
-          <% end %>
-          <% if can? :create, Order %>
-              <li><%= link_to (t 'activerecord.attributes.order.new'), new_order_path %></li>
           <% end %>
         </ul>
       </div>

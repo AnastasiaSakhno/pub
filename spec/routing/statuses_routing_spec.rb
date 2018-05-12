@@ -3,8 +3,8 @@ require "spec_helper"
 describe StatusesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/statuses").should route_to("statuses#index")
+    it "routes to #fill" do
+      get("/statuses").should route_to("statuses#fill")
     end
 
     it "routes to #new" do

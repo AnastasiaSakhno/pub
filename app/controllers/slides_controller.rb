@@ -8,7 +8,7 @@ class SlidesController < ApplicationController
     @slides = Slide.ordered_slides
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # fillhtml.erb
       format.json { render json: @slides }
     end
   end

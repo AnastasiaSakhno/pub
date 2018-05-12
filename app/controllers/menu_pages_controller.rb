@@ -8,7 +8,7 @@ class MenuPagesController < ApplicationController
     @menu_pages = MenuPage.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # fillhtml.erb
       format.json { render json: @menu_pages }
     end
   end

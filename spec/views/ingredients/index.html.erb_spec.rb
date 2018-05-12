@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "ingredients/index" do
+describe "ingredients/fill" do
   before(:each) do
     create_and_sign_in_admin
     @menu = FactoryGirl.create(:menu)

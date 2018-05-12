@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "products/index" do
+describe "products/fill" do
   before(:each) do
     create_and_sign_in_admin
     @product1 = FactoryGirl.create(:product)

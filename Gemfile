@@ -1,11 +1,11 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.18'
 gem 'carrierwave'
 gem 'devise'
 gem 'mini_magick'
@@ -23,6 +23,10 @@ gem 'dalli'
 gem 'writeexcel'
 gem 'nested_form'
 gem 'unf'
+gem 'json', '1.8.3'
+gem 'jquery-rails'
+gem 'will_paginate-bootstrap', '0.2.5'
+# gem 'byebug'
 
 
 # Gems used only for assets and not required
@@ -46,7 +50,6 @@ group :test do
   gem 'capybara'
 end
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

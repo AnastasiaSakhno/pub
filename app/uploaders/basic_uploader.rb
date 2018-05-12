@@ -1,9 +1,4 @@
-require 'carrierwave/processing/mime_types'
-
 class BasicUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MimeTypes
-
-  process :set_content_type
 
   storage :file
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "categories/index" do
+describe "categories/fill" do
   before(:each) do
     create_and_sign_in_admin
     assign(:categories, [

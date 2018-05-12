@@ -9,8 +9,7 @@ class ArrivalsController < ApplicationController
     @arrivals = Arrival.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @arrivals }
+      format.html # fill.html.erb      format.json { render json: @arrivals }
     end
   end
 

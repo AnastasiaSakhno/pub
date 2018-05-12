@@ -1,2 +1,9 @@
-$('#material_id')
-    .html('<%= j(render 'articles/materials', locale: {materials: @materials = @cast.materials}) %>')
+$('#cast_id').val("<%= @cast ? @cast.id : '' %>")
+
+$('#material_name')
+    .html('<%= j(render 'filter', cast: @cast) %>')
+
+$('.material-checkbox').click(function() {
+  $(this).attr('checked', !$(this).attr('checked'))
+  $(this).parent().toggleClass('active')
+})

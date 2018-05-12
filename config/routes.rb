@@ -1,5 +1,17 @@
 Makhnopub::Application.routes.draw do
 
+  namespace :admin do
+    resources :casts do
+      resources :materials do
+        resources :articles
+      end
+    end
+    resources :articles, only: [:new, :create]
+    resources :materials, only: :index
+  end
+
+  resources :articles
+
   resources :orders do
     put :close, :on => :member
     get :download, :on => :member
@@ -17,11 +29,7 @@ Makhnopub::Application.routes.draw do
   resources :products do
     put :clear, :on => :collection
   end
-
-
   resources :ingredients
-
-
   resources :categories
   resources :posters
   resources :slides
@@ -85,8 +93,8 @@ Makhnopub::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # just remember to delete public/fill.html.
+  # root :to => 'welcome#fill'
 
   # See how all your routes lay out with "rake routes"
 

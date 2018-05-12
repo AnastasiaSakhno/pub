@@ -13,9 +13,9 @@ describe IngredientsController do
 
   it{ should be_able_to(:manage, Ingredient.new) }
 
-  describe "GET index" do
+  describe "GET fill" do
     it "assigns all ingredients as @ingredients" do
-      get :index, {}
+      get :fill, {}
       assigns(:ingredients).should eq([@ingredient])
     end
   end

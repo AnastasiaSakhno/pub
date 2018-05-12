@@ -14,6 +14,6 @@ class WelcomeController < ApplicationController
   private
 
   def fill_posters
-    @posters = Poster.scoped
+    @posters ||= Poster.scoped
   end
 end

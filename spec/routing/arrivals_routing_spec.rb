@@ -3,8 +3,8 @@ require "spec_helper"
 describe ArrivalsController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/arrivals").should route_to("arrivals#index")
+    it "routes to #fill" do
+      get("/arrivals").should route_to("arrivals#fill")
     end
 
     it "routes to #new" do

@@ -7,8 +7,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @orders }
+      format.html # fill.html.erb      format.json { render json: @orders }
     end
   end
 
@@ -113,7 +112,7 @@ class OrdersController < ApplicationController
     .group("date(orders.created_at)")
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # fillhtml.erb
       format.json { render json: @orders }
     end
   end

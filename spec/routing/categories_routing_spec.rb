@@ -3,8 +3,8 @@ require "spec_helper"
 describe CategoriesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/categories").should route_to("categories#index")
+    it "routes to #fill" do
+      get("/categories").should route_to("categories#fill")
     end
 
     it "routes to #new" do

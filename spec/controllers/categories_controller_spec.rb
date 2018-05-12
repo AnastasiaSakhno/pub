@@ -11,10 +11,10 @@ describe CategoriesController do
 
   it { should be_able_to(:manage, Category.new) }
 
-  describe "GET index" do
+  describe "GET fill" do
     it "assigns all categories as @categories" do
       category = Category.create! valid_attributes
-      get :index, {}
+      get :fill, {}
       assigns(:categories).should eq([category])
     end
   end

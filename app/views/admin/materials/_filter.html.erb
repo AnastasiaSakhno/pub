@@ -1,8 +1,8 @@
 <div class='btn-group' data-toggle='buttons'>
-  <% cast.try(:materials).try(:each) do |material| %>
-      <%= label_tag "cast_material_id_#{material.id}", class: 'btn' do %>
-          <%= check_box_tag :material_ids, material.id, true, class: 'material-checkbox', name: 'cast[material_ids][]', id: "cast_material_id_#{material.id}" %>
-          <%= material.name %>
+  <% (cast ? [cast] : Cast.all).map(&:materials).flatten.map(&:name).uniq.each_with_index do |material_name, i| %>
+      <%= label_tag "cast_material_name_#{i}", class: 'btn active' do %>
+          <%= check_box_tag :material_name, material_name, true, class: 'material-checkbox', name: 'cast[material_name][]', id: "cast_material_name_#{i}" %>
+          <%= material_name %>
       <% end %>
   <% end %>
 </div>

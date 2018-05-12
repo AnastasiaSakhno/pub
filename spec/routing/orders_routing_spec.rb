@@ -3,8 +3,8 @@ require "spec_helper"
 describe OrdersController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/orders").should route_to("orders#index")
+    it "routes to #fill" do
+      get("/orders").should route_to("orders#fill")
     end
 
     it "routes to #new" do

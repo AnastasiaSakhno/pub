@@ -1,0 +1,12 @@
+<ol class="breadcrumb">
+  <li><%= link_to @material.cast.name, admin_cast_path(@material.cast) %></li>
+  <li>-></li>
+  <li class="active"><%= @material.name %></li>
+</ol>
+
+<%= render template: 'admin/articles/index', cast: @cast, material: @material %>
+<br><br>
+
+
+<%= link_to (t :edit), edit_admin_cast_material_path(@material.cast, @material) %> |
+<%= link_to (t :show_all), admin_cast_materials_path(@material.cast) %>

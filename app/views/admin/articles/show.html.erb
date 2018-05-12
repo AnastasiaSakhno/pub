@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+  <li><%= link_to @article.cast.name, admin_cast_path(@article.cast) %></li>
+  <li>-></li>
+  <li><%= link_to @article.material.name, admin_cast_material_path(@article.cast, @article.material) %></li>
+  <li>-></li>
+  <li class="active"><%= @article.name %></li>
+</ol>
+
+<p>
+  <b>Desc:</b>
+  <%= @article.desc %>
+</p>
+
+<% cache ("article_image##{@article.id}") do %>
+    <%= image_tag @article.picture, :class => "img-rounded", :width => "100%" %>
+<% end %>
+
+<% if can? :manage, :Article %>
+    <%= link_to (t :edit), edit_admin_cast_material_article_path(@article.cast, @article.material, @article), :class => "btn-small" %>
+    <%= link_to (t :destroy), admin_cast_material_article_path(@article.cast, @article.material, @article), method: :delete, data: {confirm: (t :confirmation)}, :class => "btn-small" %>
+<% end %>
+<%= link_to (t :show_all), admin_cast_material_articles_path(@article.cast, @article.material) %>

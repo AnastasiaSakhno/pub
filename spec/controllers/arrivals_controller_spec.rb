@@ -19,9 +19,9 @@ describe ArrivalsController do
 
   it { should be_able_to(:manage, Arrival.new) }
 
-  describe "GET index" do
+  describe "GET fill" do
     it "assigns all arrivals as @arrivals" do
-      get :index, {}
+      get :fill, {}
       assigns(:arrivals).should eq([@arrival])
     end
   end

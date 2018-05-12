@@ -1,2 +1,1 @@
-$('#materials_filter').html("<%= escape_javascript(render 'materials_filter') %>")
-$('#articles').html("<%= escape_javascript(render 'articles', locale: {articles: @articles = @articles}) %>")
+$('#articles').html("<%= j(render 'articles', locale: {articles: @articles = @articles}) %>")

@@ -1,0 +1,5 @@
+<h1><%= "#{Material.human_attribute_name(:new)} #{@cast.name}" %></h1>
+
+<%= render 'form' %>
+
+<%= link_to (t :show_all), admin_cast_materials_path(@cast) %>

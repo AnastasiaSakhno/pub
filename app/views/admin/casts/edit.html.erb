@@ -1,0 +1,6 @@
+<h1><%= t 'activerecord.attributes.cast.edit' %></h1>
+
+<%= render 'form', url: admin_cast_path(@cast) %>
+
+<%= link_to (t :show), admin_cast_path(@cast) %> |
+<%= link_to (t :show_all), admin_casts_path %>

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   def init
     self.roles << Role.find_by_name(:user)
-    UserMailer.welcome(self, I18n.locale).deliver
+    # UserMailer.welcome(self, I18n.locale).deliver
   end
 
   public

@@ -3,8 +3,8 @@ require "spec_helper"
 describe MenuPagesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/menu_pages").should route_to("menu_pages#index")
+    it "routes to #fill" do
+      get("/menu_pages").should route_to("menu_pages#fill")
     end
 
     it "routes to #new" do

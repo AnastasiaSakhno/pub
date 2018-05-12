@@ -2,7 +2,7 @@
 #  load_and_authorize_resource
 #  respond_to :json, :html
 #
-#  def index
+#  def fill
 #    @locations = Location.all.to_gmaps4rails
 #    @json = Location.all.to_gmaps4rails
 #    respond_with @json

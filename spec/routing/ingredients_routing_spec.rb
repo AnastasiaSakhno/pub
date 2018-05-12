@@ -3,8 +3,8 @@ require "spec_helper"
 describe IngredientsController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/ingredients").should route_to("ingredients#index")
+    it "routes to #fill" do
+      get("/ingredients").should route_to("ingredients#fill")
     end
 
     it "routes to #new" do

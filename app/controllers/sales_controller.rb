@@ -9,7 +9,7 @@ class SalesController < ApplicationController
     @sales = Sale.ordered
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # fillhtml.erb
       format.json { render json: @sales }
     end
   end

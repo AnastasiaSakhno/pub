@@ -1,0 +1,23 @@
+<h1><%= t :casts %></h1>
+
+<table>
+  <tr>
+    <th><%= t 'activerecord.attributes.cast.name' %></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @casts.each do |cast| %>
+  <tr>
+    <td><%= link_to cast.name, admin_cast_path(cast) %></td>
+    <td><%= link_to (t :edit), edit_admin_cast_path(cast) %></td>
+    <td><%= link_to (t :destroy), admin_cast_path(cast), method: :delete,
+                    data: { confirm: (t 'activerecord.attributes.article.confirm', count: cast.articles.count) } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to (t 'activerecord.attributes.cast.new'), new_admin_cast_path %>

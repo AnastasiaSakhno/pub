@@ -1,4 +1,3 @@
-
 ua:
   home: "Домашня сторінка"
   about: "Туточки про Махно"
@@ -15,6 +14,10 @@ ua:
   menus: "Меню"
   categories: "Категорії"
   ingredients: "Інгредієнти"
+  articles: "Вироби"
+  articles_in_menu: "Сувенірна крамничка"
+  materials: "Матеріали"
+  casts: "Категорії сувенірів"
   KILO: "кілограм"
   LITER: "літри"
   UNIT: "Одиниць"
@@ -32,6 +35,8 @@ ua:
   back: "Назад"
   show: "Показати"
   show_all: "Показати всі"
+  filter: 'Фільтрувати'
+  reset_filters: "Скинути фільтри"
   confirmation: "Ви впевнені?"
   continue: "Продовжити"
   address: "Наша адреса"
@@ -125,6 +130,9 @@ ua:
       menu: меню
       ingredient: інгредієнт
       order: замовлення
+      cast: "Категорія"
+      material: "Матеріал"
+      article: "Вироб"
     attributes:
       user:
         name: "Ім'я"
@@ -224,6 +232,24 @@ ua:
         statuses:
           new: Нові замовлення
           closed: Закриті замовлення
+      cast:
+        new: "Нова категорія"
+        edit: "Редагування категорії"
+        create: "Cтворити категорію"
+        choose: "Категорія не обрана"
+        name: "Найменування"
+      material:
+        new: "Новий матеріал"
+        edit: "Редагування матеріалу для категорії"
+        create: "Cтворити матеріал"
+        name: "Найменування"
+      article:
+        new: "Новий сувенір"
+        edit: "Редагування сувеніру"
+        name: "Найменування"
+        desc: "Опис"
+        picture: "Зображення"
+        confirm: "Ви впевнені, що бажаєте видалити всі %{count} сувенір(-а/-ів)?"
 
     errors:
       messages:
@@ -307,6 +333,8 @@ ua:
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
+      user:
+        not_found_in_database: 'Невірний користувач або пароль.'
     sessions:
       signed_in: 'Вхід виконано.'
       signed_out: 'Ви вийшли з системи.'
@@ -342,3 +370,7 @@ ua:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+
+  will_paginate:
+    next_label: '>>>'
+    previous_label: '<<<'

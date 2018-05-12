@@ -1,0 +1,5 @@
+<h1><%= t 'activerecord.attributes.article.edit' %></h1>
+
+<%= render 'form' %>
+
+<%= link_to (t :show_all), admin_cast_material_articles_path(@article.cast, @article.material) %>

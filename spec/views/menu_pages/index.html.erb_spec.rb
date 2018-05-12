@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "menu_pages/index" do
+describe "menu_pages/fill" do
   before(:each) do
     assign(:menu_pages, [
       stub_model(MenuPage,

@@ -6,7 +6,7 @@ class MenusController < ApplicationController
     @menus = Menu.ordered_by_category
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # fillhtml.erb
       format.json { render json: @menus }
     end
   end

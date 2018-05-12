@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141214163623) do
+ActiveRecord::Schema.define(:version => 20161017164307) do
 
   create_table "arrivals", :force => true do |t|
     t.integer  "product_id"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(:version => 20141214163623) do
     t.datetime "updated_at",     :null => false
     t.float    "sale_price"
     t.integer  "receiver_id"
+  end
+
+  create_table "articles", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "material_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "picture"
+  end
+
+  add_index "articles", ["material_id"], :name => "index_articles_on_material_id"
+
+  create_table "casts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -47,6 +64,15 @@ ActiveRecord::Schema.define(:version => 20141214163623) do
     t.string   "street"
     t.integer  "building"
   end
+
+  create_table "materials", :force => true do |t|
+    t.string   "name"
+    t.integer  "cast_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "materials", ["cast_id"], :name => "index_materials_on_cast_id"
 
   create_table "menu_pages", :force => true do |t|
     t.string   "picture"

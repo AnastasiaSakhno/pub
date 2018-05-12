@@ -1,0 +1,11 @@
+<p>
+  <b><%= t 'activerecord.attributes.cast.name' %>:</b>
+  <%= @cast.name %>
+</p>
+
+<%= render template: 'admin/materials/index', cast: @cast %>
+<br><br>
+
+
+<%= link_to (t :edit), edit_admin_cast_path(@cast) %> |
+<%= link_to (t :show_all), admin_casts_path %>

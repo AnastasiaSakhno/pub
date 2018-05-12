@@ -3,8 +3,8 @@ require "spec_helper"
 describe SalesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/sales").should route_to("sales#index")
+    it "routes to #fill" do
+      get("/sales").should route_to("sales#fill")
     end
 
     it "routes to #new" do

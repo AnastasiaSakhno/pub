@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "orders/index" do
+describe "orders/fill" do
   before(:each) do
     create_and_sign_in_admin
     @order = create_order

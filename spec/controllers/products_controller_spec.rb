@@ -14,9 +14,9 @@ describe ProductsController do
   
   it { should be_able_to(:manage, Product.new) }
 
-  describe "GET index" do
+  describe "GET fill" do
     it "assigns all products as @products" do
-      get :index, {}
+      get :fill, {}
       assigns(:products).should eq([@product])
     end
   end

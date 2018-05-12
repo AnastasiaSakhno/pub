@@ -1,0 +1,23 @@
+<h2><%= "#{t 'activerecord.models.cast'}: #{@cast.name}" %></h2>
+<h3><%= t :materials %></h3>
+
+<table>
+  <tr>
+    <th><%= t 'activerecord.attributes.material.name' %></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @materials.each do |material| %>
+  <tr>
+    <td><%= material.name %></td>
+    <td><%= link_to (t :show), cast_material_path(@cast, material) %></td>
+    <td><%= link_to (t :edit), edit_cast_material_path(@cast, material) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<br />
+
+<%= link_to (t 'activerecord.attributes.material.new'), new_cast_material_path(@cast) %>

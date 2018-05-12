@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+  <li><%= link_to @article.cast.name, admin_cast_path(@article.cast) %></li>
+  <li>-></li>
+  <li><%= link_to @article.material.name, admin_cast_material_path(@article.cast, @article.material) %></li>
+  <li>-></li>
+  <li class="active"><%= @article.name %></li>
+</ol>
+
+<%= form_for([:admin, @article.cast, @article.material, @article]) do |f| %>
+    <div class="field">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :desc %><br/>
+      <%= f.text_area :desc %>
+    </div>
+    <div><%= f.label :picture %>
+      <br/>
+      <%= f.file_field :picture %>
+      <%= f.hidden_field :picture_cache %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
