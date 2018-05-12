@@ -1,0 +1,8 @@
+<div class='btn-group' data-toggle='buttons'>
+  <% cast.try(:materials).try(:each) do |material| %>
+      <%= label_tag "cast_material_id_#{material.id}", class: 'btn' do %>
+          <%= check_box_tag :material_ids, material.id, true, class: 'material-checkbox', name: 'cast[material_ids][]', id: "cast_material_id_#{material.id}" %>
+          <%= material.name %>
+      <% end %>
+  <% end %>
+</div>

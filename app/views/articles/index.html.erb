@@ -1,0 +1,20 @@
+<%= form_tag('articles', method: :get, remote: true) do %>
+    <div class="field">
+      <%= label_tag :cast_id %><br/>
+      <%= select_tag :cast_id, options_from_collection_for_select(Cast.all, :id, :name, cast.try(:id)),
+                     {data: {remote: true,
+                             url: articles_path},
+                      include_blank: true
+                     }
+      %>
+
+    </div>
+    <div id="materials_filter">
+      <%= render 'materials_filter' %>
+    </div>
+
+<% end %>
+
+<div id="articles">
+  <%= render 'articles' %>
+</div>

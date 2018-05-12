@@ -1,0 +1,14 @@
+<% @articles.each_slice(3) do |partition| %>
+    <div class="row">
+      <% partition.each do |article| %>
+          <div class="span4">
+            <% cache ("article_image##{article.id}") do %>
+                <%= image_tag article.picture, :class => "img-rounded", :width => "100%" %>
+            <% end %>
+            <h2><%= article.name %></h2>
+            <p><%= article.desc %></p>
+            <p><%= link_to (t :show), cast_material_article_path(article.material.cast, article.material, article), class: "btn" %></p>
+          </div>
+      <% end %>
+    </div>
+<% end %>
