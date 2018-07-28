@@ -7,6 +7,7 @@ module Admin
     respond_to :html
 
     def index
+      cast
       @articles = material.articles
     end
 

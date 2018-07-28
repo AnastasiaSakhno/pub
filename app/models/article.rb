@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
 
   delegate :cast_id, :to => :material, allow_nil: true
 
-  attr_accessible :desc, :name, :picture, :picture_cache
+  attr_accessible :desc, :name, :cost, :picture, :picture_cache
 
   scope :by_cast_id, ->(value) { joins(:material).joins("INNER JOIN casts ON casts.id = materials.cast_id").where("casts.id = ?", value) }
   scope :by_material_id, ->(value) { where(material_id: value) }

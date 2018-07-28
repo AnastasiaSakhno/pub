@@ -1,0 +1,21 @@
+<div class="carousel slide" id="photo-carousel">
+  <div class="carousel-inner">
+    <% @photos.each do |photo| %>
+        <% if @photos.first == photo %>
+            <div class="item active">
+        <% else %>
+            <div class="item">
+        <% end %>
+          <%= image_tag photo.url%>
+
+          <div class="carousel-caption">
+            <h4><%= photo.title %></h4>
+
+            <p><%= photo.description %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <a class="left carousel-control" href="#photo-carousel" data-slide="prev">‹</a>
+  <a class="right carousel-control" href="#photo-carousel" data-slide="next">›</a>
+</div>

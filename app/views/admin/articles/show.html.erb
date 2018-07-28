@@ -6,10 +6,14 @@
   <li class="active"><%= @article.name %></li>
 </ol>
 
-<p>
-  <b>Desc:</b>
-  <%= @article.desc %>
-</p>
+<pre>
+  <b><%= t 'activerecord.attributes.article.name' %>: </b><%= @article.name %>
+  <b><%= t 'activerecord.attributes.article.cost' %>: </b><%= @article.cost %>
+  <% unless @article.desc.blank? %>
+    <b><%= t 'activerecord.attributes.article.desc' %>:</b>
+    <%= @article.desc %>
+  <% end %>
+</pre>
 
 <% cache ("article_image##{@article.id}") do %>
     <%= image_tag @article.picture, :class => "img-rounded", :width => "100%" %>

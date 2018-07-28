@@ -1,8 +1,0 @@
-<div class="alert alert-danger" role="alert">
-  <%= t :important_message %>
-</div>
-
-<div class="hero-unit">
-  <%= render :partial => "layouts/slide", :locale => {:slides => @slides = Slide.ordered_slides} %>
-</div>
-<pre><%= t :about_us_text %></pre>

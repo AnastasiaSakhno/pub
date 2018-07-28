@@ -1,0 +1,32 @@
+<p>
+  <b><%= t 'activerecord.attributes.sale.menu_id' %>:</b>
+  <%= Menu.find(@sale.menu_id).name %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.sale.count' %>:</b>
+  <%= @sale.count %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.sale.price' %>:</b>
+  <%= @sale.price %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.sale.seller_id' %>:</b>
+  <% user = User.find(@sale.seller_id) %>
+  <%= "#{user.last_name} #{user.name} #{user.middle_name}" %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.sale.client_name' %>:</b>
+  <%= @sale.client_name %>
+</p>
+
+<p>
+  <b><%= t 'activerecord.attributes.sale.datetime' %>:</b>
+  <%= @sale.datetime %>
+</p>
+
+<%= link_to (t :back), sales_path %>

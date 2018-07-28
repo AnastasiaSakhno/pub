@@ -1,5 +1,5 @@
 module RemoteLinkPaginationHelper
-  class LinkRenderer < BootstrapPagination::Rails
+  class LinkRenderer < WillPaginate::ActionView::LinkRenderer
     def link(text, target, attributes = {})
       attributes['data-remote'] = true
       super

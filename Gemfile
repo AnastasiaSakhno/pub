@@ -17,7 +17,6 @@ gem 'capistrano'
 gem 'dispatcher'
 gem 'thin'
 gem 'libv8', '~> 3.11.8'
-gem 'therubyracer'
 gem 'execjs'
 gem 'dalli'
 gem 'writeexcel'
@@ -25,14 +24,14 @@ gem 'nested_form'
 gem 'unf'
 gem 'json', '1.8.3'
 gem 'jquery-rails'
-gem 'will_paginate-bootstrap', '0.2.5'
-# gem 'byebug'
+gem 'will_paginate', '~> 3.1.0'
+#gem 'byebug'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -48,6 +47,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'pry'
 end
 
 

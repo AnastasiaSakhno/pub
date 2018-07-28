@@ -3,6 +3,7 @@
 <table class="table">
   <tr>
     <th><%= t 'activerecord.attributes.article.name' %></th>
+    <th><%= t 'activerecord.attributes.article.cost' %></th>
     <th><%= t 'activerecord.attributes.article.desc' %></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
   <% @material.articles.each do |article| %>
       <tr>
         <td><%= link_to article.name, admin_cast_material_article_path(@cast, @material, article) %></td>
+        <td><%= article.cost %></td>
         <td><%= article.desc %></td>
         <% if can? :manage, Article %>
             <td><%= link_to (t :edit), edit_admin_cast_material_article_path(@cast, @material, article) %></td>

@@ -2,10 +2,12 @@
     <div class="row">
       <% partition.each do |article| %>
           <div class="span4">
-            <% cache ("article_image##{article.id}") do %>
-                <%= image_tag article.picture, :class => "img-rounded", :width => "100%" %>
+            <%= link_to article_path(article) do %>
+              <% cache ("article_image##{article.id}") do %>
+                  <%= image_tag article.picture, :class => "img-rounded", :width => "100%" %>
+              <% end %>
             <% end %>
-            <h3><%= link_to article.name, article_path(article) %></h3>
+            <h3><%= link_to "#{article.name}, #{article.cost} #{t 'activerecord.attributes.article.default_currency'}", article_path(article) %></h3>
           </div>
       <% end %>
     </div>

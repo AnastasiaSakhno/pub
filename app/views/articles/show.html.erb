@@ -1,5 +1,5 @@
 <div class="well">
-  <h2><%= article.name %></h2>
+  <h2><%= "#{article.name}, #{article.cost} #{t 'activerecord.attributes.article.default_currency'}" %></h2>
   <p><%= article.desc %></p>
   <% if article.picture.present? %>
       <% cache ("article_image##{article.id}") do %>

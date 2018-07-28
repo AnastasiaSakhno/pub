@@ -21,6 +21,16 @@
           </address>
 
           <address>
+            <strong><%= t :messangers %></strong><br>
+            <%= content_tag :span, class: 'messanger-icon', href: 'viber://public?id=makhnopub', self: true do -%>
+              <%= show_svg('viber.svg') %>
+            <% end -%>
+            <%= content_tag :span, class: 'messanger-icon', href: 'https://telegram.me/makhnopub' do -%>
+              <%= show_svg('telegram.svg') %>
+            <% end -%>
+          </address>
+
+          <address>
             <strong><%= t :email %></strong><br>
             <a href="mailto:#"><%= t :email_value %></a>
           </address>
