@@ -238,7 +238,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   rolify
   rspec-rails
-  sass-rails (~> 3.2.1)
+  sass-rails (~> 3.2.3)
   shoulda-matchers
   thin
   uglifier (>= 1.0.3)
