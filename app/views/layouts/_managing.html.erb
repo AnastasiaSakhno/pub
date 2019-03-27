@@ -1,4 +1,7 @@
 <ul class="dropdown-menu menu">
+  <% if can? :manage, TableReservation %>
+      <li><%= link_to (t :table_reservations), table_reservations_path %></li>
+  <% end %>
   <% if can? :manage, User %>
       <li><%= link_to (t :users), users_path %></li>
   <% end %>
