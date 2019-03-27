@@ -61,6 +61,7 @@ module Makhnopub
     config.assets.version = '1.0'
     config.action_controller.perform_caching = true
     config.autoload_paths += %W(#{config.root}/app/sweepers)
+    config.autoload_paths += %W(#{config.root}/app/services)
 
     config.generators do |g|
       g.test_framework  :rspec
