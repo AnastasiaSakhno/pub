@@ -26,6 +26,7 @@ gem 'json', '1.8.3'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 #gem 'byebug'
+gem 'figaro'
 
 
 # Gems used only for assets and not required
