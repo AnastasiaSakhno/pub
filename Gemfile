@@ -25,7 +25,8 @@ gem 'unf'
 gem 'json', '1.8.3'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
-#gem 'byebug'
+gem 'jwt', '~> 1.5', '>= 1.5.4'
+gem 'strong_parameters'
 gem 'figaro'
 
 
@@ -41,6 +42,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'pry'
+  gem 'rb-readline'
+end
+
 group :test do
   gem 'rspec-rails'
   gem 'webrat'
@@ -48,7 +54,6 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'pry'
 end
 
 
