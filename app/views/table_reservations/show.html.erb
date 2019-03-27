@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @table_reservation.date %>
+</p>
+
+<p>
+  <b>Hall:</b>
+  <%= @table_reservation.hall %>
+</p>
+
+<p>
+  <b>Table:</b>
+  <%= @table_reservation.table %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @table_reservation.user_name %>
+</p>
+
+<p>
+  <b>User phone:</b>
+  <%= @table_reservation.user_phone %>
+</p>
+
+<p>
+  <b>People number:</b>
+  <%= @table_reservation.people_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_table_reservation_path(@table_reservation) %> |
+<%= link_to 'Back', table_reservations_path %>

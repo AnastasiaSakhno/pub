@@ -18,6 +18,7 @@ ua:
   articles_in_menu: "Сувенірна крамничка"
   materials: "Матеріали"
   casts: "Категорії сувенірів"
+  table_reservations: "Резервування столів"
   KILO: "кілограм"
   LITER: "літри"
   UNIT: "Одиниць"
@@ -253,6 +254,19 @@ ua:
         default_currency: "грн"
         picture: "Зображення"
         confirm: "Ви впевнені, що бажаєте видалити всі %{count} сувенір(-а/-ів)?"
+      table_reservation:
+        new: "Новий резерв"
+        edit: "Редагування резерву"
+        date: Дата та час
+        hall: Зал
+        table: Стіл
+        user_name: Ім'я
+        user_phone: Телефон
+        people_number: Кількість людей
+        status: Статус
+        confirm: Підтвердити
+        reject: Вилучити
+        destroy: Видалити
 
     errors:
       messages:

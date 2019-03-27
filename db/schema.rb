@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180522220805) do
+ActiveRecord::Schema.define(:version => 20190312170534) do
 
   create_table "arrivals", :force => true do |t|
     t.integer  "product_id"
@@ -155,6 +155,23 @@ ActiveRecord::Schema.define(:version => 20180522220805) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "table_reservations", :force => true do |t|
+    t.integer  "chat_id",       :limit => 8,                    :null => false
+    t.date     "date",                                          :null => false
+    t.integer  "hall"
+    t.integer  "table"
+    t.integer  "hour_from"
+    t.integer  "hour_to"
+    t.string   "user_name"
+    t.string   "user_phone"
+    t.integer  "people_number"
+    t.string   "status",                     :default => "new", :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  add_index "table_reservations", ["date"], :name => "index_table_reservations_on_date"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
