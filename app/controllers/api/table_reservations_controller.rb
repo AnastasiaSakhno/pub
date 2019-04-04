@@ -25,9 +25,7 @@ module Api
     private
 
     def table_reservation_params
-      params
-        .require(:table_reservation)
-        .permit(:chat_id, :date, :hall, :table, :hour_from, :hour_to, :user_name, :user_phone, :people_number, :status)
+      params[:table_reservation]
     end
   end
 end

@@ -26,7 +26,6 @@ gem 'json', '1.8.3'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'jwt', '~> 1.5', '>= 1.5.4'
-gem 'strong_parameters'
 gem 'figaro'
 
 
@@ -37,7 +36,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
+  # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
