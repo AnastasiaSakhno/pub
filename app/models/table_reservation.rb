@@ -1,8 +1,11 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 class TableReservation < ActiveRecord::Base
   attr_accessible :chat_id, :date, :hall, :hour_from, :hour_to, :people_number, :table, :user_name, :user_phone, :status
 
-  HALL1_TABLES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-  HALL2_TABLES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+  HALL1_TABLES = (1..13).map { |x| x.to_s }
+  HALL2_TABLES = (1..23).map { |x| "П#{x}"}
 
   scope :for_date, ->(date) { where(date: date) }
   scope :for_hall, ->(hall) { where(hall: hall) }
