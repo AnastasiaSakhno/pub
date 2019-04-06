@@ -6,6 +6,9 @@ class TableReservation < ActiveRecord::Base
 
   HALL1_TABLES = (1..13).map { |x| x.to_s }
   HALL2_TABLES = (1..23).map { |x| "П#{x}"}
+  AVAILABLE_TIME = (12 * 60)
+                      .upto(24 * 60)
+                      .each_with_object([]) { |m, acc| acc << "%02d:%02d" % [m / 60, m % 60] if m % 30 == 0 }
 
   scope :for_date, ->(date) { where(date: date) }
   scope :for_hall, ->(hall) { where(hall: hall) }
@@ -27,7 +30,14 @@ class TableReservation < ActiveRecord::Base
   	reserved_tables = for_date(latest.date)
   						.for_hall(latest.hall)
   						.for_time_between(latest.time_from, latest.time_to)
+              .not_rejected
+              .pluck(ActiveRecord::Base.connection.quote_column_name(:table))
   	all_tables - reserved_tables
+  end
+
+  def available_to_times
+    from = AVAILABLE_TIME.index(time_from.strftime('%H:%M')) + 1
+    AVAILABLE_TIME.slice(from, AVAILABLE_TIME.size)
   end
 
   private

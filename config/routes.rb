@@ -4,6 +4,8 @@ Makhnopub::Application.routes.draw do
     post :login, to: "sessions#create"
     resources :table_reservations, only: [:create, :update]
     namespace :table_reservations do
+      resources :available_from_times, only: :index
+      resources :available_to_times, only: :index
       resources :available_tables, only: :index
       resource :latest, only: :show
     end

@@ -160,9 +160,10 @@ ActiveRecord::Schema.define(:version => 20190312170534) do
     t.integer  "chat_id",       :limit => 8,                    :null => false
     t.date     "date",                                          :null => false
     t.integer  "hall"
-    t.integer  "table"
-    t.integer  "hour_from"
-    t.integer  "hour_to"
+    t.string   "table"
+    t.time     "time_from"
+    t.time     "time_lasts_up"
+    t.time     "time_to"
     t.string   "user_name"
     t.string   "user_phone"
     t.integer  "people_number"
