@@ -4,7 +4,11 @@ module Api
       respond_to :json
 
       def show
-        render json: TableReservation.latest(params[:chat_id])
+      	if params[:chat_id]
+	        render json: TableReservation.latest(params[:chat_id])
+	      else
+          fail! 'Need to specify :chat_id param', status: 400
+        end
       end
     end
   end
