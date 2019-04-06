@@ -257,7 +257,8 @@ ua:
       table_reservation:
         new: "Новий резерв"
         edit: "Редагування резерву"
-        date: Дата та час
+        date: Дата
+        hours: Години (з, по)
         hall: Зал
         table: Стіл
         user_name: Ім'я
