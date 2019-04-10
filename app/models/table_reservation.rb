@@ -21,7 +21,7 @@ class TableReservation < ActiveRecord::Base
   before_save :define_time_lasts_up, if: :time_from_changed?
 
   def self.latest(chat_id)
-  	TableReservation.find_last_by_chat_id(chat_id)
+  	TableReservation.in_new.find_last_by_chat_id(chat_id)
   end
 
   def self.available_tables(chat_id)
