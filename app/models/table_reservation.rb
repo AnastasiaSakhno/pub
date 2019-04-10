@@ -16,7 +16,11 @@ class TableReservation < ActiveRecord::Base
   	where("time_from <= :time_from AND time_to >= :time_to
   	 OR time_from <= :time_from AND time_to <= :time_to
   	 OR time_from >= :time_from AND time_to >= :time_to", { time_from: time_from, time_to: time_to }) }
-  scope :not_rejected, -> { where(arel_table[:status].not_eq(:rejected))}
+  scope :in_ok_statuses, -> { 
+    where(arel_table[:status].not_eq(:rejected))
+    .where(arel_table[:status].not_eq(:cenceled))
+  }
+  scope :in_new, -> { where(status: :new) }
 
   before_save :define_time_lasts_up, if: :time_from_changed?
 
@@ -30,7 +34,7 @@ class TableReservation < ActiveRecord::Base
   	reserved_tables = for_date(latest.date)
   						.for_hall(latest.hall)
   						.for_time_between(latest.time_from, latest.time_to)
-              .not_rejected
+              .in_ok_statuses
               .pluck(ActiveRecord::Base.connection.quote_column_name(:table))
   	all_tables - reserved_tables
   end
