@@ -2,7 +2,11 @@ class TableReservationsController < ApplicationController
   # GET /table_reservations
   # GET /table_reservations.json
   def index
-    @table_reservations = TableReservation.all
+    @status = params[:status] || :filled
+    @statuses = t('activerecord.attributes.table_reservation.statuses').map { |st|
+      OpenStruct.new(id: st[0], name: st[1])
+    }
+    @table_reservations = TableReservation.where(status: @status)
 
     respond_to do |format|
       format.html # index.html.erb

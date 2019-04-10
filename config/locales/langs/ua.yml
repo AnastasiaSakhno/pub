@@ -266,8 +266,15 @@ ua:
         people_number: Кількість людей
         status: Статус
         confirm: Підтвердити
-        reject: Вилучити
+        reject: Відхилити
         destroy: Видалити
+        statuses:
+          new: Новий
+          filled: Заповнений
+          cancelled: Недозаповнений 
+          confirmed: Підтвержений
+          rejected: Відхилино
+          not_come: Не прийшов
 
     errors:
       messages:

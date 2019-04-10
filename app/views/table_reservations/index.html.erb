@@ -1,5 +1,13 @@
+<script type="text/javascript">
+  function changeStatus(value) {
+    window.location = "/table_reservations?status="+value
+  }
+</script>
+
 <h1><%= t :table_reservations %></h1>
-<%= link_to (t 'activerecord.attributes.table_reservation.new'), new_table_reservation_path %>
+<%= select_tag :status, options_from_collection_for_select(@statuses, :id, :name, @status), onchange: 'changeStatus(this.value)'
+%>
+
 <br /><br />
 
 <table class="table table-striped">
