@@ -135,6 +135,7 @@ ua:
       cast: "Категорія"
       material: "Матеріал"
       article: "Вироб"
+      table_reservation: замовлення
     attributes:
       user:
         name: "Ім'я"
@@ -265,8 +266,8 @@ ua:
         user_phone: Телефон
         people_number: Кількість людей
         status: Статус
-        confirm: Підтвердити
-        reject: Відхилити
+        time_from: З години
+        time_to: До години
         destroy: Видалити
         statuses:
           new: Новий

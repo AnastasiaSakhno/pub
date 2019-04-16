@@ -1,6 +1,6 @@
-<h1>Editing table_reservation</h1>
+<h1><%= t 'activerecord.attributes.table_reservation.edit' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @table_reservation %> |
-<%= link_to 'Back', table_reservations_path %>
+<%= link_to (t :show), @table_reservation %> |
+<%= link_to (t :back), table_reservations_path %>

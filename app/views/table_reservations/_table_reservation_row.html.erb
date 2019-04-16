@@ -1,0 +1,17 @@
+<td><%= @table_reservation.date %></td>
+<td><%= "#{@table_reservation.time_from.try(:strftime, '%H:%M')} - #{@table_reservation.time_to.try(:strftime, '%H:%M')}" %></td>
+<td><%= @table_reservation.hall %></td>
+<td><%= @table_reservation.table %></td>
+<td><%= @table_reservation.user_name %></td>
+<td><%= @table_reservation.user_phone %></td>
+<td><%= @table_reservation.people_number %></td>
+<td>
+    <%= select :table_reservation, :status, options_from_collection_for_select(statuses, :id, :name, @table_reservation.status), {},
+                   {
+                       data: { remote: true, url: table_reservation_path(@table_reservation), method: :put }
+                   }
+    %>
+        
+</td>
+<td><%= link_to (t 'activerecord.attributes.table_reservation.edit'), edit_table_reservation_path(@table_reservation) %></td>
+<td><%= link_to (t :destroy), @table_reservation, method: :delete, data: {confirm: (t :confirmation)}%></td>

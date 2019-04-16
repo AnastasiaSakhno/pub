@@ -1,16 +1,21 @@
 class TableReservationsController < ApplicationController
+  respond_to :html, :js
+
+  include DateHelper
+
   # GET /table_reservations
   # GET /table_reservations.json
   def index
     @status = params[:status] || :filled
-    @statuses = t('activerecord.attributes.table_reservation.statuses').map { |st|
-      OpenStruct.new(id: st[0], name: st[1])
-    }
-    @table_reservations = TableReservation.where(status: @status)
+    @date = date_from_date_select_params(params[:search], :date) || Date.current
+
+    @table_reservations = TableReservation.for_status(@status)
+      .for_date(@date)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @table_reservations }
+      format.js { render :index }
     end
   end
 
@@ -60,7 +65,19 @@ class TableReservationsController < ApplicationController
   # PUT /table_reservations/1
   # PUT /table_reservations/1.json
   def update
-    update_attrs(params[:table_reservation])
+    @table_reservation = TableReservation.find(params[:id])
+
+    respond_to do |format|
+      if @table_reservation.update_attributes(params[:table_reservation])
+        format.html { redirect_to :index, notice: 'Table reservation was successfully updated.' }
+        format.json { head :no_content }
+        format.js
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @table_reservation.errors, status: :unprocessable_entity }
+        format.js
+      end
+    end
   end
 
   # DELETE /table_reservations/1
@@ -72,30 +89,6 @@ class TableReservationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to table_reservations_url }
       format.json { head :no_content }
-    end
-  end
-
-  def confirm
-    update_attrs(status: :confirmed)
-  end
-
-  def reject
-    update_attrs(status: :rejected)
-  end
-
-  private
-
-  def update_attrs(attrs)
-    @table_reservation = TableReservation.find(params[:id])
-
-    respond_to do |format|
-      if @table_reservation.update_attributes(attrs)
-        format.html { redirect_to @table_reservation, notice: 'Table reservation was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @table_reservation.errors, status: :unprocessable_entity }
-      end
     end
   end
 end

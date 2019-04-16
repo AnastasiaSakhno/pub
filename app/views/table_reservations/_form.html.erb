@@ -13,7 +13,15 @@
 
   <div class="field">
     <%= f.label :date %><br />
-    <%= f.datetime_select :date %>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :time_from %><br />
+    <%= f.time_select :time_from %>
+  </div>
+  <div class="field">
+    <%= f.label :time_to %><br />
+    <%= f.time_select :time_to %>
   </div>
   <div class="field">
     <%= f.label :hall %><br />
@@ -35,7 +43,11 @@
     <%= f.label :people_number %><br />
     <%= f.number_field :people_number %>
   </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.collection_select :status, statuses, :id, :name %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>

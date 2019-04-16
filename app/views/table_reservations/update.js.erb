@@ -1,0 +1,3 @@
+$('#<%= "table_reservation_#{@table_reservation.id}" %>')
+  .html('<%= j(render "table_reservation_row", table_reservation: @table_reservation) %>')
+$('#<%= "table_reservation_#{@table_reservation.id}" %>').fadeOut()

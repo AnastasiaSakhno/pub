@@ -1,50 +1,11 @@
-<script type="text/javascript">
-  function changeStatus(value) {
-    window.location = "/table_reservations?status="+value
-  }
-</script>
-
 <h1><%= t :table_reservations %></h1>
-<%= select_tag :status, options_from_collection_for_select(@statuses, :id, :name, @status), onchange: 'changeStatus(this.value)'
-%>
+<%= render 'filter_form' %>
 
 <br /><br />
 
-<table class="table table-striped">
-  <tr>
-    <th><%= t 'activerecord.attributes.table_reservation.date' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.hours' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.hall' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.table' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.user_name' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.user_phone' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.people_number' %></th>
-    <th><%= t 'activerecord.attributes.table_reservation.status' %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @table_reservations.each do |table_reservation| %>
-  <tr>
-    <td><%= table_reservation.date %></td>
-    <td><%= "#{table_reservation.time_from.try(:strftime, '%H:%M')} - #{table_reservation.time_to.try(:strftime, '%H:%M')}" %></td>
-    <td><%= table_reservation.hall %></td>
-    <td><%= table_reservation.table %></td>
-    <td><%= table_reservation.user_name %></td>
-    <td><%= table_reservation.user_phone %></td>
-    <td><%= table_reservation.people_number %></td>
-    <td><%= table_reservation.status %></td>
-    <td><%= link_to (t 'activerecord.attributes.table_reservation.edit'), edit_table_reservation_path(table_reservation) %></td>
-    <% if table_reservation.status == 'new' %>
-        <td><%= link_to (t 'activerecord.attributes.table_reservation.confirm'), confirm_table_reservation_path(table_reservation), method: :put %></td>
-        <td><%= link_to (t 'activerecord.attributes.table_reservation.reject'), reject_table_reservation_path(table_reservation), method: :put %></td>
-        <td><%= link_to (t :destroy), table_reservation, method: :delete, data: {confirm: (t :confirmation)}%></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
+<div id='table_reservations'>
+  <%= render 'table_reservations', locale: { table_reservations: @table_reservations = @table_reservations } %>
+</div>
 
 <br />
 

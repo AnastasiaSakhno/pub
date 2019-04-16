@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <tr>
+    <th><%= t 'activerecord.attributes.table_reservation.date' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.hours' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.hall' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.table' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.user_name' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.user_phone' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.people_number' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation.status' %></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @table_reservations.each do |table_reservation| %>
+  <tr id='<%= "table_reservation_#{table_reservation.id}" %>'>
+    <%= render 'table_reservation_row', locale: {table_reservation: @table_reservation = table_reservation} %>
+  </tr>
+<% end %>
+</table>

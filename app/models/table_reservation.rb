@@ -12,6 +12,7 @@ class TableReservation < ActiveRecord::Base
 
   scope :for_date, ->(date) { where(date: date) }
   scope :for_hall, ->(hall) { where(hall: hall) }
+  scope :for_status, ->(status) { where(status: status) }
   scope :for_time_between, ->(time_from, time_to) { 
   	where("time_from <= :time_from AND time_to >= :time_to
   	 OR time_from <= :time_from AND time_to <= :time_to

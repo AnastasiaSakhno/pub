@@ -46,10 +46,7 @@ Makhnopub::Application.routes.draw do
   resources :slides
   resources :menu_pages
   resources :statuses
-  resources :table_reservations do
-    put :confirm, on: :member
-    put :reject, on: :member
-  end
+  resources :table_reservations
   #resources :locations
 
   devise_for :users
