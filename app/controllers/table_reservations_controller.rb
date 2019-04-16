@@ -11,11 +11,11 @@ class TableReservationsController < ApplicationController
 
     @table_reservations = TableReservation.for_status(@status)
       .for_date(@date)
+      .paginate(page: params[:page], per_page: 6)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @table_reservations }
-      format.js { render :index }
     end
   end
 

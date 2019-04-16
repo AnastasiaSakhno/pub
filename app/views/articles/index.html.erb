@@ -1,4 +1,4 @@
-<%= form_tag('', method: :get, remote: true) do %>
+<%= form_tag('', method: :get) do %>
     <div class='row'>
       <div class='span3'>
         <%= select_tag :cast_id, options_from_collection_for_select(Cast.all, :id, :name, @cast.try(:id)),
@@ -14,7 +14,7 @@
     </div>
 
     <%= submit_tag (t :filter), class: 'btn btn-primary' %>
-    <%= link_to (t :reset_filters), admin_materials_path(cast_id: ''), remote: true, class: 'btn' %>
+    <%= link_to (t :reset_filters), articles_path, class: 'btn' %>
 
 <% end %>
 
