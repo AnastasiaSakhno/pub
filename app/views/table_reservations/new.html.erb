@@ -1,5 +1,5 @@
-<h1>New table_reservation</h1>
+<h1><%= TableReservation.human_attribute_name(:new) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', table_reservations_path %>
+<%= link_to (t :back), table_reservations_path %>

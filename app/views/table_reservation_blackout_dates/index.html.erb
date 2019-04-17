@@ -1,0 +1,21 @@
+<h4><%= t 'table_reservation_blackout_dates' %></h4>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= t 'activerecord.attributes.table_reservation_blackout_date.date' %></th>
+    <th><%= t 'activerecord.attributes.table_reservation_blackout_date.hall' %></th>
+    <th></th>
+  </tr>
+
+<% @table_reservation_blackout_dates.each do |table_reservation_blackout_date| %>
+  <tr>
+    <td><%= table_reservation_blackout_date.date %></td>
+    <td><%= table_reservation_blackout_date.hall %></td>
+    <td><%= link_to (t :destroy), table_reservation_blackout_date, method: :delete, data: { confirm: (t :confirmation) } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to (t 'activerecord.attributes.table_reservation_blackout_date.new'), new_table_reservation_blackout_date_path %>

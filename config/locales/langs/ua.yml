@@ -19,6 +19,7 @@ ua:
   materials: "Матеріали"
   casts: "Категорії сувенірів"
   table_reservations: "Резервування столів"
+  table_reservation_blackout_dates: "Заборонені дати резервування"
   KILO: "кілограм"
   LITER: "літри"
   UNIT: "Одиниць"
@@ -136,6 +137,7 @@ ua:
       material: "Матеріал"
       article: "Вироб"
       table_reservation: замовлення
+      table_reservation_blackout_date: дату
     attributes:
       user:
         name: "Ім'я"
@@ -260,7 +262,7 @@ ua:
         edit: "Редагування резерву"
         date: Дата
         hours: Години (з, по)
-        hall: Зал
+        hall: Зала
         table: Стіл
         user_name: Ім'я
         user_phone: Телефон
@@ -276,6 +278,11 @@ ua:
           confirmed: Підтвержений
           rejected: Відхилино
           not_come: Не прийшов
+      table_reservation_blackout_date:
+        new: "Нова дата"
+        edit: "Редагування резерву"
+        date: Дата
+        hall: Зала
 
     errors:
       messages:

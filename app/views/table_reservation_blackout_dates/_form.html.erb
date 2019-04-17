@@ -1,0 +1,25 @@
+<%= form_for(@table_reservation_blackout_date) do |f| %>
+  <% if @table_reservation_blackout_date.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@table_reservation_blackout_date.errors.count, "error") %> prohibited this table_reservation_blackout_date from being saved:</h2>
+
+      <ul>
+      <% @table_reservation_blackout_date.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :hall %><br />
+    <%= f.number_field :hall %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -47,6 +47,7 @@ Makhnopub::Application.routes.draw do
   resources :menu_pages
   resources :statuses
   resources :table_reservations
+  resources :table_reservation_blackout_dates
   #resources :locations
 
   devise_for :users
