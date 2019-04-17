@@ -17,5 +17,6 @@ class CreateTableReservations < ActiveRecord::Migration
     end
 
     add_index :table_reservations, :date
+    add_index :table_reservations, :status
   end
 end

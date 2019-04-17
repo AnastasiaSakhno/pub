@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20190416173214) do
   end
 
   add_index "table_reservations", ["date"], :name => "index_table_reservations_on_date"
+  add_index "table_reservations", ["status"], :name => "index_table_reservations_on_status"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
