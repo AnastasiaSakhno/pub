@@ -13,6 +13,7 @@ class TableReservation < ActiveRecord::Base
   scope :for_date, ->(date) { where(date: date) }
   scope :for_hall, ->(hall) { where(hall: hall) }
   scope :for_status, ->(status) { where(status: status) }
+  scope :for_phone_number, ->(phone_number) { where(phone_number: phone_number) }
   scope :for_time_between, ->(time_from, time_to) { 
   	where("time_from <= :time_from AND time_to >= :time_to
   	 OR time_from <= :time_from AND time_to <= :time_to
@@ -21,12 +22,11 @@ class TableReservation < ActiveRecord::Base
     where(arel_table[:status].not_eq(:rejected))
     .where(arel_table[:status].not_eq(:cenceled))
   }
-  scope :in_new, -> { where(status: :new) }
 
   before_save :define_time_lasts_up, if: :time_from_changed?
 
   def self.latest(chat_id)
-  	TableReservation.in_new.find_last_by_chat_id(chat_id)
+  	TableReservation.for_status(:new).find_last_by_chat_id(chat_id)
   end
 
   def self.available_tables(chat_id)

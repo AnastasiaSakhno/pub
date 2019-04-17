@@ -2,12 +2,13 @@ Makhnopub::Application.routes.draw do
 
   namespace :api do
     post :login, to: "sessions#create"
-    resources :table_reservations, only: [:create, :update]
+    resources :table_reservations, only: [:create, :update, :destroy]
     resources :table_reservation_blackout_dates, only: :index
     namespace :table_reservations do
       resources :available_from_times, only: :index
       resources :available_to_times, only: :index
       resources :available_tables, only: :index
+      resources :black_lists, only: :index
       resource :latest, only: :show
     end
   end

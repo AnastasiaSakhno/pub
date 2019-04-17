@@ -22,6 +22,14 @@ module Api
       end
     end
 
+    def destroy
+      @table_reservation = TableReservation.find(params[:id])
+
+      @table_reservation.destroy
+
+      head :no_content
+    end
+
     private
 
     def table_reservation_params
