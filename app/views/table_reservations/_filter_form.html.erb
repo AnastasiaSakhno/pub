@@ -1,5 +1,6 @@
-<%= form_tag(table_reservations_path, method: :get) do %>
-  <%= select_tag :status, options_from_collection_for_select(statuses, :id, :name, @status) %>
-  <%= date_select :search, :date, { start_year: Date.current.year, default: @date } %>
+<%= form_tag(table_reservations_path, method: :get, id: 'table_reservations_filter') do %>
+  <%= select_tag :status, options_from_collection_for_select(statuses, :id, :name, @status), include_blank: true %>
+  <input type='text' autocomplete='off' class='datepicker' name='search[date]'>
+  <br/>
   <%= submit_tag t(:filter), class: 'btn btn-primary' %>
 <% end %>

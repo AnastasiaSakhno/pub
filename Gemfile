@@ -27,6 +27,7 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'jwt', '~> 1.5', '>= 1.5.4'
 gem 'figaro'
+gem 'bootstrap-datepicker-rails'
 
 
 # Gems used only for assets and not required

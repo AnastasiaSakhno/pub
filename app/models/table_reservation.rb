@@ -10,7 +10,7 @@ class TableReservation < ActiveRecord::Base
                       .upto(24 * 60)
                       .each_with_object([]) { |m, acc| acc << "%02d:%02d" % [m / 60, m % 60] if m % 30 == 0 }
 
-  scope :for_date, ->(date) { where(date: date) }
+  scope :for_date, ->(date) { where(date: date.to_date) }
   scope :for_hall, ->(hall) { where(hall: hall) }
   scope :for_status, ->(status) { where(status: status) }
   scope :for_user_phone, ->(user_phone) { where(user_phone: user_phone) }

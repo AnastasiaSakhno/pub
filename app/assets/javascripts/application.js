@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require jquery_nested_form
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.ua.js
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
+//= require_tree .
 
 $(function () {
     initCarousel();

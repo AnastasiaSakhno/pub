@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190416173214) do
+ActiveRecord::Schema.define(:version => 20190617142213) do
 
   create_table "arrivals", :force => true do |t|
     t.integer  "product_id"
@@ -166,8 +166,8 @@ ActiveRecord::Schema.define(:version => 20190416173214) do
   add_index "table_reservation_blackout_dates", ["date", "hall"], :name => "index_table_reservation_blackout_dates_on_date_and_hall", :unique => true
 
   create_table "table_reservations", :force => true do |t|
-    t.integer  "chat_id",       :limit => 8,                    :null => false
-    t.date     "date",                                          :null => false
+    t.integer  "chat_id"
+    t.date     "date",                             :null => false
     t.integer  "hall"
     t.string   "table"
     t.time     "time_from"
@@ -176,9 +176,9 @@ ActiveRecord::Schema.define(:version => 20190416173214) do
     t.string   "user_name"
     t.string   "user_phone"
     t.integer  "people_number"
-    t.string   "status",                     :default => "new", :null => false
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.string   "status",        :default => "new", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "table_reservations", ["date"], :name => "index_table_reservations_on_date"

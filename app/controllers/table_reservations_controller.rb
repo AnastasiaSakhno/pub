@@ -1,17 +1,16 @@
 class TableReservationsController < ApplicationController
   respond_to :html, :js
 
-  include DateHelper
-
   # GET /table_reservations
   # GET /table_reservations.json
   def index
-    @status = params[:status] || :filled
-    @date = date_from_date_select_params(params[:search], :date) || Date.current
+    @status = params[:status]
+    @date = params[:search] ? params[:search][:date] : nil
 
-    @table_reservations = TableReservation.for_status(@status)
-      .for_date(@date)
-      .paginate(page: params[:page], per_page: 6)
+    @table_reservations = TableReservation.scoped
+    @table_reservations = @table_reservations.for_status(@status) unless @status.blank?
+    @table_reservations = @table_reservations.for_date(@date) unless @date.blank?
+    @table_reservations = @table_reservations.paginate(page: params[:page], per_page: 6)
 
     respond_to do |format|
       format.html # index.html.erb
